@@ -1,0 +1,522 @@
+\documentclass[smaller]{beamer}
+
+\usepackage{helvet}
+\usepackage{hyperref, graphicx}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{etoolbox}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usepackage{ulem}
+\usepackage{fontspec}
+%\usepackage[T1]{fontenc}
+%\setmainfont{Cambria}
+%\usefonttheme{serif}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[ ]
+{
+\begin{frame}{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{11} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal - use in headings
+
+% Custom colors
+\usepackage{color}
+\definecolor{TUGray}{RGB}{101,101,137}
+\definecolor{TUBlack}{RGB}{30,0,0}
+\definecolor{mygreen}{RGB}{45,111,63}
+\definecolor{keywords}{RGB}{205,114,0}
+\definecolor{comments}{RGB}{181,51,139}
+\definecolor{strings}{RGB}{58,144,81}
+\definecolor{numeric}{RGB}{66,110,176}
+\definecolor{linos}{rgb}{0.4,0.4,0.4}
+\definecolor{links}{rgb}{0,0.4,0.75}
+
+\definecolor{bggray}{RGB}{232, 233, 235}
+
+\usecolortheme[named=mygreen]{structure}
+\setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
+
+\setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
+
+\hypersetup{colorlinks, linkcolor=links, urlcolor=links}
+
+
+
+\usepackage[sfdefault,scaled=.85]{FiraSans}
+\usepackage{newtxsf}
+
+\usepackage{listings}
+
+\newtoggle{InString}{}% Keep track of if we are within a string
+\togglefalse{InString}% Assume not initally in string
+
+\newcommand\digitstyle{\color{numeric}}
+\makeatletter
+\newcommand{\ProcessDigit}[1]
+{%
+  \ifnum\lst@mode=\lst@Pmode\relax%
+   {\digitstyle #1}%
+  \else
+    #1%
+  \fi
+}
+\makeatother
+
+\lstset{literate=%
+    {0}{{{\ProcessDigit{0}}}}1
+    {1}{{{\ProcessDigit{1}}}}1
+    {2}{{{\ProcessDigit{2}}}}1
+    {3}{{{\ProcessDigit{3}}}}1
+    {4}{{{\ProcessDigit{4}}}}1
+    {5}{{{\ProcessDigit{5}}}}1
+    {6}{{{\ProcessDigit{6}}}}1
+    {7}{{{\ProcessDigit{7}}}}1
+    {8}{{{\ProcessDigit{8}}}}1
+    {9}{{{\ProcessDigit{9}}}}1
+	{<=}{{\(\leq\)}}1
+	{>=}{{\(\geq\)}}1,
+	% morestring=[b]",
+    % morestring=[b]',
+    % morecomment=[l]{//},
+}
+
+\lstdefinelanguage{Pseudo}{
+    morekeywords={return, while, if, for, input},
+    morecomment=[l]{\#},
+}
+
+% Pseudocode style
+\newcommand\pseudostyle{\lstset{
+language=Pseudo,
+basicstyle=\fontfamily{ccr}\scriptsize,
+commentstyle=\it\scriptsize\color{linos},
+keywordstyle=\it\bfseries\scriptsize,
+mathescape=true,
+literate=
+    {=}{$\leftarrow{}$}{1}
+    {==}{$={}$}{1}
+    {<=}{{\(\leq\)}}1
+	{>=}{{\(\geq\)}}1,
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=12pt,
+belowskip=0pt,
+frame=tB,
+keepspaces=true
+}}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttfamily\tiny,
+numbers=left,
+numberstyle=\tiny\color{linos},
+morekeywords={self, np},              % Add keywords here
+keywordstyle=\tiny\color{keywords},
+commentstyle=\it\tiny\color{comments},    % Custom highlighting style
+stringstyle=\tiny\color{strings},
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=0pt,
+belowskip=0pt,
+escapeinside={(*@}{@*)},
+frame=l,                         % Any extra options here
+showstringspaces=false,
+keepspaces=true
+}}
+
+% Pseudocode environment
+\lstnewenvironment{pseudo}[1][]
+{
+    \pseudostyle
+    \lstset{
+        #1
+    }
+}
+{}
+
+% Python environment 
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{
+	#1
+	}
+}
+{}
+
+% wrap the Python environment
+\newenvironment{codeblock}
+    {\hfill\begin{beamerboxesrounded}[lower=codecol, width=0.8\textwidth]
+    \medskip
+
+    }
+    { 
+    \end{beamerboxesrounded}\hfill
+    }
+
+\theoremstyle{example}
+\newtheorem{question}{Question}
+
+\newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
+\newcommand{\ttt}[1]{{\small\texttt{#1}}}
+\newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
+
+\newcommand{\x}{\textbf{x}}
+\newcommand{\ix}[1]{{\it #1}}
+
+\author{Chris Cornwell}
+\date{April 7, 2025}
+\title{Survey of Machine Learning models, cont'd}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{Decision Trees}
+
+%%%%
+\begin{frame}
+\frametitle{Intro}
+Decision trees are another example of a powerful model function for machine learning. 
+\begin{itemize}
+    \item Often used for classification (binary or multi-label); however, they can be used for regression tasks as well. 
+    \item Similar to neural networks which are capable of approximating any function, if the ``size'' of the decision tree is unrestrained then it can, in theory, produce an arbitrarily close approximation to any desired classification of points.
+\end{itemize}
+
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Construction of a decision tree}
+To build a decision tree, begin with a \textbf{decision stump} on $\mathbb R^d$. 
+
+\begin{itemize}
+    \item Let $\omega = (b, \theta, j)$ be a triple consisting of $b\in\mathbb R$, $\theta\in\{1,-1\}$, and $j$ an integer with $1\le j\le d$. Then, define $f_{\omega}(\x) = \textrm{sign}(\theta(b - \x_j))$, where $\textrm{sign}(z)$ is 1 if $z\ge 0$ and is -1 otherwise. Such functions are called decision stumps.
+    \item Note that a decision stump is a special type of half-space model that has normal vector with a single non-zero component (i.e., $\textbf{w} = (0,\ldots,0,-\theta,0,\ldots,0)$). 
+\end{itemize}
+
+\centering
+\includegraphics[height=0.3\textheight]{../../Images/decision_stump.png}
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Construction}
+    \begin{itemize}
+        \item Given sample data, $\mathcal S = \{(\x_i, \ix y_i)\}_{i=1}^n$ with $\x_i\in\mathbb R^d$, the decision stump which is the best fit may be found simply by minimizing error {--} that is, find the values of $b, \theta$, and $j$ that achieves the highest accuracy on $\mathcal S$. 
+        \item If there is no point in $\mathcal S$ between $\{x_{j} = b\}$ and $\{x_{j} = b'\}$, then the accuracy for $(b,\theta,j)$ and $(b',\theta,j)$ are the same. So, one can consider those values of $b$ that are an average of two ``consecutive'' $x_{i,j}$ from $\mathcal S$ (as well as one that is less than all such $j^{th}$ coordinates, and one that is larger than all). This gives a finite set of decision stumps to check.
+        \item A naive algorithm to determine the most accurate among this finite set of decision stumps takes on the order of $dn^2$ operations. \newline 
+        However, there is a more efficient approach, taking only $dn\log(n)$ time.
+    \end{itemize}
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Construction of a decision tree}
+A decision stump is a decision tree with ``depth'' 1. That is, can think of a decision tree as a collection of nested decision stumps, on smaller and smaller subsets of the data.
+
+Begin with a decision stump on all the data; i.e., find a hyperplane $ x_j = b$, where $ 1\le j\le d$ and $b$ is some number and each data point is on one side: for each $\x_i \in \mathcal S$, either $x_{i,j} < b$ or $ x_{i,j} > b$. This splits the data into two subsets.
+
+How do you choose where to make a split? You could use the highest accuracy approach described for stumps, but this has disadvantages when the proportion of $\ix y_i$ that are positive, compared to negative, is unbalanced.
+
+Often, something called \textbf{Information Gain} is used, which is defined via an entropy function $e$. That is, set $e(r) = -r\log(r) - (1-r)\log(1-r)$. Now, before making a split, set $r$ to be the proportion of $\ix y_i$ that are $1$ and $m$ the number of points. 
+
+Next, define $r_+$ (resp.\ $r_-$) to be the proportion of points on the positive (resp.\ negative) side of the split that will have label $1$, and let $m_+$ (resp.\ $m_-$) be the numbers of points on the positive (resp.\ negative) side. The information gain of the split is 
+    \[e(r) - (\frac{m_+}{m}e(r_+) + \frac{m_-}{m}e(r_-)).\]
+
+\end{frame}
+
+%Often when decision trees are discussed, the data is converted to points which have binary coordinates (either 0 or 1); however, it is not necessary. Here I will discuss data points with \( d\) numerical coordinates, in \( \mathbb R\), as I have before.  If you wish, you can translate to the binary setting by using 0 or 1 to represent whether or not the given data is larger than some threshold in each coordinate.
+
+%%%%
+\begin{frame}
+    \frametitle{Multiple branches}
+The goal of the process is to recursively partition each side. On each step, one chooses the split with maximum Information Gain, at each step restricting to the two subset of data points on one side. The process ends when points in the same part have the same label, or until some predetermined depth is reached. 
+
+An innermost region (where points have the same label) corresponds to a \textbf{leaf} of the tree.
+
+\centering 
+\includegraphics[height=0.35\textheight]{../../Images/decision_tree.png}
+\end{frame}
+
+%Below is a potential set of data for binary classification, with only 4 negatively-labeled points (the red points). If the first split made is along the horizontal line \( x_2 = -1.8\) (so \( j = 2\) and \(b = -1.8\)), then all but one point above the line is blue and 3 of the 12 points below the line are red.
+
+%[gallery columns="2" size="medium" ids="948,949"]
+
+%Call the top region above the line the positive region of the split; below the line is the negative region. Continuing with nested splits into each side, one could imagine using two more splits in the positive region to isolate the one red point. A way to isolate the three red points in the negative side is with three additional nested splits on that side (see the figure below).
+
+%I have drawn the corresponding decision tree to the right, where the dashed lines in the figure correspond to branchings of the tree. The branches of the tree are labeled with + or -, corresponding the side of the line one is following (in each split for <em>this</em> tree, the negative side is the one side that contains red points).
+
+%[gallery columns="2" size="medium" ids="950,952"]
+
+% Each leaf of the tree is a node where there are no further splittings beyond it, labeled by the labels of points in that region. The <strong>depth</strong> of a decision tree is defined to be the maximal number of branches that can be followed from the top node to a leaf. So the depth of the example decision tree is 4.
+
+%%%%
+\begin{frame}
+    \frametitle{Decision tree model}
+    Start by determining a decision tree on training data, as above. Then, given test data (not yet "seen" by the model), the decision tree model will check in which partition the test point resides. Then, it labels the test point with the label of the corresponding leaf. 
+    
+    Often (to avoid overfitting), you decide beforehand on the depth of the tree (the maximal number of splits to get to a leaf). Since this will result in having more than one label in some of the partitions (and possibly all), the label given to a test point in each leaf is a function of the training labels in that partition {--} if the goal is classification, with some categorical labels, the label that has majority; if the goal is regression, with numerical labels, the mean, or the median, could be used.
+\end{frame}
+
+
+% Now, to define \( IG\) of a split, first let \( r = {\bf P}(y=1)\), the probability that the label is 1 (in the particular subset you have restricted to <em>before</em> the split). Let \( m\) be the number of points under consideration. In our example above, and <em>after</em> the first split along \( x_2 = -1.8\) was made, say we are in the positive side where there is 1 red point (negatively labeled), and are trying to figure out where to make the second splitting. Then \( m = 38\) (there are \( 38\) points above the horizontal line), and \(r = 37/38\).
+
+% Next, for a potential splitting, let \(r_+ = {\bf P}(y=1\ |\ x\text{ on the + side})\) be the fraction of blue (+1 labeled) points on the positive side of that split. Similarly, define \(r_- = {\bf P}(y=1\ |\ x\text{ on the - side})\). Also, let \( m_{\pm}\) be the total number of points on each side. In the continuing example, say the potential split is along the line \( x_1 =-3.9\) (one of the second level splits depicted in the figure above). Then \(r_+ = 35/35 = 1\) and \(r_- = 2/3\).
+
+% Now, with \(r, r_+,\) and \(r_-\) defined, the information gain of a split \( s\) is \( IG(s) = e(r) - (\frac{m_+}{m}e(r_+) + \frac{m_-}{m}e(r_-))\). Note that it actually doesn't matter which side of the line is the positive or negative side, just where the splitting line is. For the continuing example, the information gain is
+% <p style="text-align: center;">\( e(37/38) - (\frac{35}{38}e(1) + \frac{3}{38}e(2/3)) \approx 0.07.\)</p>
+% If you were to use \( IG\) to build a decision tree, then at each step you must find the split, on the subset of the data under consideration, that has maximal information gain.
+
+% <sup id="footnote4">4.</sup> <span style="color: gray;">It is important to consider this a definition, not a consequence of the logarithmic expression given above. While you can get \( 0\) from <em>a limit</em> of that expression as \( r\to 0^+\), it is <span style="text-decoration: underline;">not</span> equal to its value. Trying to say it is might not lead to trouble if you only think this way for the purpose of the calculation of a single entropy function value. However, if you attempt to do any arithmetic and use properties of logarithms, thinking of \( 0\log 0\) as being equal to \( 0\) will easily lead to statements like \( 1 = 2\).</span>
+
+% <sup id="footnote5">5.</sup> <span style="color: gray;">The logarithm function can have any base. Most of the time, in discussions of Information Gain, the base is 2 due to the area of study that the idea comes from.</span>
+
+\section{Clustering}
+
+\begin{frame}
+    \frametitle{What is clustering?}
+    Intuitively, want to group together data points into subsets, i.e., \textit{clusters}, so that \textit{similar} points are in the same cluster and dissimilar points are in different clusters. These data do not have labels. 
+    
+    \begin{itemize}
+        \item Presuming the numerical coordinates of the data have meaning, ``similar'' points could be those that are sufficiently close.
+    \end{itemize}
+    
+    \textbf{Goal:} Given sample data $\mathcal S=\{\x_i\}_{i=1}^n$, want to determine clusters $C_1,C_2,\ldots,C_k$ (for some $k$), so that $C_1\cup C_2\cup \ldots\cup C_K= \mathcal S$ and $C_i\cap C_j = \emptyset$ when $i\ne j$.
+    \vfill 
+
+    \textit{An inherent difficulty}: the clustering problem is ill-defined. 
+    \begin{itemize}
+        \item For example, you might have a sequence of data points $\x_1,\ldots,\x_m$ such that $\x_i$ and $\x_{i+1}$ are similar (close enough to be called similar) for each $1\le i\le m-1$, however $\x_1$ and $\x_m$ might be very dissimilar. While $\x_i$ and $x_{i+1}$ should be in the same cluster, this causes the problem of putting $\x_1$ and $\x_m$ ending up in the same cluster.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Applications of clustering}
+    Despite its ill-defined nature, clustering is needed (sometimes in an initial processing step) for many data analysis tasks. 
+
+    Some examples include:
+    \begin{itemize}
+        \item Market segmentation: clustering expected customers based on characteristics, either for targeted marketing or to inform product design.
+        \item Gene expression clustering: computational biologists will cluster genes based on how their expression in different experiments.
+        \item Astronomical data analysis: clustering stars or galaxies based on their proximity.
+        \item Social network analysis: for example, identifying ``communities'' (clusters of users) based on interactions on social media.
+    \end{itemize}
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{$k$-means}
+    Let $\mathcal S=\{\x_i\}_{i=1}^n$, with each $\x_i\in\mathbb R^d$ for some dimension $d$.
+
+    \begin{itemize}
+        \item The $k$-means algorithm is a common approach for clustering $\mathcal S$. 
+        \item You choose $k$, and your goal is to find $k$ clusters, $C_1, C_2,\ldots, C_k$ so that $\mathcal S=C_1\cup\ldots C_k$, where we want the sum $\sum_{j=1}^k\sum_{\x_i\in C_j} |\x_i - \mu_{j}|^2$ to be minimized. 
+        \item Here, $\mu_j$ is the centroid of $C_j$, meaning that $\mu_j$ is the point in $\mathbb R^d$ that minimizes, over $\mu\in\mathbb R^d$, the sum $\sum_{\x\in C_j}|\x - \mu|^2$.
+        \begin{itemize}
+            \item Note that, in fact, $\mu_j = \frac{1}{|C_j|}\sum_{\x \in C_j}\x$.
+        \end{itemize}
+    \end{itemize}
+
+    \centering
+    \includegraphics[height=0.35\textheight]{../../Images/kmeans_0.png}
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{$k$-means Procedure}
+    
+    The procedure to carry out $k$-means clustering is the following. First, randomly initialize $k$ centroids. Then: 
+    \begin{enumerate}
+        \item For each $i=1,2,\ldots,n$, determine $1\le j(i)\le k$, which is the index such that $\mu_{j(i)}$ is the closest centroid to $\x_i$. A point $\x_i$ is in $C_j$ when $j=j(i)$.
+        \item Update $\mu_1,\mu_2,\ldots,\mu_k$ so that, for $1\le j\le k$, the vector $\mu_j$ is the centroid of the points in $C_j$.
+        \item Iterate steps 1 and 2 until there is no $\x_i$ that ``changes its cluster'', i.e., until the assignment $i\mapsto j(i)$ that is made in 1 is the same as it was in the previous iteration.
+    \end{enumerate}
+
+    At each iteration, if some point has changed the cluster it is in, then the value of $\sum_{j=1}^k\sum_{\x_i\in C_j} |\x_i - \mu_{j}|^2 = \sum_{i=1}^n|\x_i - \mu_{j(i)}|^2$ decreases. Hence, the algorithm terminates because, as there are finitely many points in $\mathcal S$, there are only a finite number of possibilities for the list $\mu_1, \mu_2, \ldots, \mu_k$.
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Visual of $k$-means in $\mathbb R^2$}
+    
+    \begin{wrapfigure}{r}{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=0.25\textwidth]{../../Images/kmeans_0.png}
+        \end{center}
+        \caption{Initial centroids}
+    \end{wrapfigure}
+
+    We show a visualization of the procedure for $k$-means on data in $\mathbb R^2$, with $k=2$.
+    \vspace*{12pt}
+
+    Initially, we choose two arbitrary centroids. These are drawn in black.
+
+    Then, the first step is to go through all of our data (drawn in ) and determine which of the two centroids is closest to each point. This assigns each point to one of the two clusters.
+
+\vfill
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Visual of $k$-means in $\mathbb R^2$}
+    
+    \begin{wrapfigure}{r}{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=0.25\textwidth]{../../Images/kmeans_1.png}
+        \end{center}
+        \caption{Assigned clusters}
+    \end{wrapfigure}
+
+    We show a visualization of the procedure for $k$-means on data in $\mathbb R^2$, with $k=2$.
+    \vspace*{12pt}
+
+    Here, the two clusters are shown. 
+    
+    The points in one are drawn in light blue and the points in the other are drawn in red.  
+
+    The centroid of each cluster is displayed, outlined in the color of its cluster. The next step is to recompute the centroids.
+
+\vfill
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Visual of $k$-means in $\mathbb R^2$}
+    
+    \begin{wrapfigure}{r}{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=0.25\textwidth]{../../Images/kmeans_2.png}
+        \end{center}
+        \caption{Updated clusters}
+    \end{wrapfigure}
+
+    We show a visualization of the procedure for $k$-means on data in $\mathbb R^2$, with $k=2$.
+    \vspace*{12pt}
+
+    The two newly computed centroids are shown. 
+    
+    In addition, we reassign points based on the (new) centroid that is closest. 
+
+    We notice that 4 of points have been removed from the blue cluster into the red cluster; also, 3 points have been removed from red cluster into the blue.
+
+\vfill
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Visual of $k$-means in $\mathbb R^2$}
+    
+    \begin{wrapfigure}{r}{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=0.25\textwidth]{../../Images/kmeans_3.png}
+        \end{center}
+        \caption{Updated clusters}
+    \end{wrapfigure}
+
+    We show a visualization of the procedure for $k$-means on data in $\mathbb R^2$, with $k=2$.
+    \vspace*{12pt}
+
+    Again, we compute new centroids and reassign points based on the centroid that is closest. 
+    
+    In this step, there is 1 point that was previously in the blue cluster which changes into red. And 4 points that were in the red cluster have been moved into the blue cluster.
+
+\vfill
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Visual of $k$-means in $\mathbb R^2$}
+    
+    \begin{wrapfigure}{r}{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=0.25\textwidth]{../../Images/kmeans_4.png}
+        \end{center}
+        \caption{Updated centroids}
+    \end{wrapfigure}
+
+    We show a visualization of the procedure for $k$-means on data in $\mathbb R^2$, with $k=2$.
+    \vspace*{12pt}
+
+    We compute new centroids again. 
+    
+    This time there is no change in the way that points are assigned to clusters when finding the closest centroid. 
+    
+    Since there is no change to the clustering assignment, the procedure terminates with these centroids.
+
+\vfill
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{$k$-means depends on Initial Centroids}
+    
+    \begin{figure}
+        \begin{center}
+            \includegraphics[height=0.5\textheight]{../../Images/kmeans_balldata0.png}
+        \end{center}
+        \caption{A data set to cluster}
+    \end{figure}
+\phantom{With initial centroids of $(0,0.5)$ and $(0, 0.25)$}
+\vfill
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{$k$-means depends on Initial Centroids}
+    
+    \begin{figure}
+        \begin{center}
+            \includegraphics[height=0.5\textheight]{../../Images/kmeans_balldata1.png}
+        \end{center}
+        \caption{A data set to cluster}
+    \end{figure}
+With initial centroids of $(0,0.5)$ and $(0, 0.25)$.
+\vfill
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{$k$-means depends on Initial Centroids}
+    
+    \begin{figure}
+        \begin{center}
+            \includegraphics[height=0.5\textheight]{../../Images/kmeans_balldata2.png}
+        \end{center}
+        \caption{A data set to cluster}
+    \end{figure}
+With initial centroids of $(0,0.26)$ and $(0, 0.1)$.
+\vfill
+\end{frame}
+
+\begin{frame}
+    \frametitle{Density-Based Spatial Clustering for Applications with Noise}
+    DBSCAN clustering does not require choosing a number of clusters at the start. 
+
+    \begin{itemize}
+        \item Near a given point in $\mathcal S$, whether it gets included in a nearby cluster is based on the \textit{density} of points (in $\mathcal S$) near that given point. 
+        \item The procedure builds a directed graph (network of vertices and edges); vertices are points in $\mathcal S$; which edges are included is based on a choice of parameters, and takes into account the nearby density of points. 
+        \item Connectedness through edges of the graph determines when points are in the same cluster.
+    \end{itemize}
+    An example of a graph built in the DBSCAN procedure is drawn below. Points are colored according to their cluster.
+
+    \centering
+    \includegraphics[height=0.35\textheight]{../../Images/dbscan_graph.png}
+\end{frame}
+
+\end{document}

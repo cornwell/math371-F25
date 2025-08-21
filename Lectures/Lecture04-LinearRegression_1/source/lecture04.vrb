@@ -1,0 +1,9 @@
+\frametitle{Another example, Advertising data}
+If you switch the role of $x$- and $y$-coordinates, you can still do linear regression; i.e., for purpose of a thought experiment, predict the TV data as the \emph{response}, instead of the Sales.
+
+The LSR line for the data is then \textbf{not} the same line, if you switch the roles of TV and Sales in the algorithm to get $\hat{\bf p}$.
+
+\vspace*{12pt}
+\centering
+\includegraphics[height=0.4\textheight]{advertising-plot2.png}
+

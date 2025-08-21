@@ -1,0 +1,415 @@
+\documentclass{beamer}
+
+\usepackage{helvet}
+\usepackage{hyperref, graphicx}
+\usepackage{amsthm}
+\usepackage{etoolbox}
+\usepackage{multicol}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[ ]
+{
+\begin{frame}{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{11} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal - use in headings
+
+% Custom colors
+\usepackage{color}
+\definecolor{TUGray}{RGB}{101,101,137}
+\definecolor{TUBlack}{RGB}{30,0,0}
+\definecolor{mygreen}{RGB}{45,111,63}
+\definecolor{keywords}{RGB}{205,114,0}
+\definecolor{comments}{RGB}{181,51,139}
+\definecolor{strings}{RGB}{58,144,81}
+\definecolor{numeric}{RGB}{66,110,176}
+\definecolor{linos}{rgb}{0.4,0.4,0.4}
+\definecolor{links}{rgb}{0,0.4,0.75}
+
+\definecolor{bggray}{RGB}{232, 233, 235}
+
+\usecolortheme[named=mygreen]{structure}
+\setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
+
+\setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
+
+\hypersetup{colorlinks, linkcolor=links, urlcolor=links}
+
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,scaled=.85]{FiraSans}
+\usepackage{newtxsf}
+
+\usepackage{listings}
+
+\newtoggle{InString}{}% Keep track of if we are within a string
+\togglefalse{InString}% Assume not initally in string
+
+\newcommand\digitstyle{\color{numeric}}
+\makeatletter
+\newcommand{\ProcessDigit}[1]
+{%
+  \ifnum\lst@mode=\lst@Pmode\relax%
+   {\digitstyle #1}%
+  \else
+    #1%
+  \fi
+}
+\makeatother
+
+\lstset{literate=%
+    {0}{{{\ProcessDigit{0}}}}1
+    {1}{{{\ProcessDigit{1}}}}1
+    {2}{{{\ProcessDigit{2}}}}1
+    {3}{{{\ProcessDigit{3}}}}1
+    {4}{{{\ProcessDigit{4}}}}1
+    {5}{{{\ProcessDigit{5}}}}1
+    {6}{{{\ProcessDigit{6}}}}1
+    {7}{{{\ProcessDigit{7}}}}1
+    {8}{{{\ProcessDigit{8}}}}1
+    {9}{{{\ProcessDigit{9}}}}1
+	{<=}{{\(\leq\)}}1
+	{>=}{{\(\geq\)}}1,
+	% morestring=[b]",
+    % morestring=[b]',
+    % morecomment=[l]{//},
+}
+
+\lstdefinelanguage{Pseudo}{
+    morekeywords={begin, end, return, while},
+    morecomment=[l]{\#},
+}
+
+% Pseudocode style
+\newcommand\pseudostyle{\lstset{
+language=Pseudo,
+basicstyle=\fontfamily{ccr}\scriptsize,
+commentstyle=\it\scriptsize\color{linos},
+keywordstyle=\it\bfseries\scriptsize,
+mathescape=true,
+literate=
+    {=}{$\leftarrow{}$}{1}
+    {==}{$={}$}{1},
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=12pt,
+belowskip=0pt,
+frame=tB,
+keepspaces=true
+}}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttfamily\tiny,
+numbers=left,
+numberstyle=\tiny\color{linos},
+morekeywords={self, np},              % Add keywords here
+keywordstyle=\tiny\color{keywords},
+commentstyle=\it\tiny\color{comments},    % Custom highlighting style
+stringstyle=\tiny\color{strings},
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=0pt,
+belowskip=0pt,
+escapeinside={(*@}{@*)},
+frame=l,                         % Any extra options here
+showstringspaces=false,
+keepspaces=true
+}}
+
+% Pseudocode environment
+\lstnewenvironment{pseudo}[1][]
+{
+    \pseudostyle
+    \lstset{
+        #1
+    }
+}
+{}
+
+% Python environment 
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{
+	#1
+	}
+}
+{}
+
+% wrap the Python environment
+\newenvironment{codeblock}
+    {\hfill\begin{beamerboxesrounded}[lower=codecol, width=0.8\textwidth]
+    \medskip
+
+    }
+    { 
+    \end{beamerboxesrounded}\hfill
+    }
+
+\theoremstyle{example}
+\newtheorem{question}{Question}
+
+\newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
+\newcommand{\ttt}[1]{{\small\texttt{#1}}}
+\newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
+
+\author{Chris Cornwell}
+\date{Feb 11, 2025}
+\title{Linear Regression, Method 1}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Overview of linear regression task}
+
+%%%%
+\begin{frame}[fragile]
+\frametitle{The goal}
+\begin{itemize}
+    \item Setting: have points in the plane, say $n$ of them. Say the points are $(x_1,y_1), (x_2,y_2), \ldots, (x_n,y_n)$.
+    \item \textbf{Goal:} \emph{Model} them as being ``noisy'' points from a line, finding ``best fit'' line (the closest linear model). This line is also called the \textbf{least squares regression} (LSR) line.
+    \pause
+    \item \textbf{Running example:} A data set, \lstinline[language=Python, stringstyle=\ttfamily\color{strings}]{'Example1.csv'}, with 50 points, is \href{https://github.com/cornwell/math371-S25/blob/main/DataSets/}{available here}; these points are displayed in the plot.
+\end{itemize}
+
+\vspace*{12pt}
+\centering
+\includegraphics[height=0.3\textheight]{example1.png}
+
+\end{frame}
+
+\section{The procedure}
+
+%%%%
+\begin{frame}[fragile]
+\frametitle{Finding the LSR line}
+\begin{figure}\label{fig:running-example}
+\includegraphics[height=0.4\textheight]{example1.png}
+\caption{Our running example}
+\end{figure}
+
+\vspace*{-6pt}
+How do we find the LSR line?
+
+\pause
+Can get the slope $m$, intercept $b$ simply from using the \ttt{polyfit} function in NumPy. If \ttt{x}, \ttt{y} are the arrays with $x$- and $y$-coordinates:
+
+
+\begin{codeblock}
+
+\begin{python}[numbers=none]
+np.polyfit(x,y,1)
+\end{python}
+
+\end{codeblock}
+
+\end{frame}
+
+%%%%
+\begin{frame}[fragile]
+\frametitle{Finding the LSR line}
+% \begin{figure}\label{fig:running-example}
+% \includegraphics[height=0.3\textheight]{example1.png}
+% \caption{Our running example}
+% \end{figure}
+
+But, how are the slope, intercept found?
+
+\pause
+\begin{itemize}
+    \item If a slope $m$ and intercept $b$ existed so that $(x_1,y_1),\ldots,(x_{50},y_{50})$ \emph{were} points on $y = mx+b$, then 
+    \[y_i = mx_i + b\]
+would hold for all $1\le i\le 50$.
+\end{itemize}
+
+\pause
+\begin{enumerate}
+    \item Write those 50 equations as a matrix equation. Setting: 
+    \[{\scriptsize A = \begin{bmatrix}x_1 & 1 \\ x_2 & 1 \\ \vdots & \vdots \\ x_{50} & 1\end{bmatrix}; \qquad 
+      {\bf y} = \begin{bmatrix}y_1 \\ y_2 \\ \vdots \\ y_{50}\end{bmatrix}, }\]
+    and writing\footnote{Will use ${\bf p}$ for this vector, for the rest of these slides.} ${\bf p} = $ {\small $\begin{bmatrix}m\\ b\end{bmatrix}$}, the matrix equation is $A{\bf p} = {\bf y}$.
+\end{enumerate}
+    
+\vfill
+\end{frame}
+    
+%%%%
+\begin{frame}
+\frametitle{Finding the LSR line}
+Now the equation $A{\bf p} = {\bf y}$ does not have a solution (those points are \emph{not} on a line). 
+
+\onslide<2-> 
+\textbf{Next idea:} (\emph{thinking of noise being in $y$-coordinate direction}) 
+\begin{itemize}
+    \item Get vector $\hat{\bf y}$ that is \emph{as close to} ${\bf y}$ \emph{as possible}, so that $A{\bf p} = \hat{\bf y}$ has a solution.
+    \onslide<3->{
+    \item For each $i$, we either increase or decrease $y_i$ by a (hopefully small) amount, $y_i \leadsto \hat{y}_i$. We make $|{\bf y} - \hat{\bf y}|$ as small as possible.
+    }
+\end{itemize}
+
+\begin{multicols}{2}
+\onslide<4->{
+\begin{enumerate}
+\setcounter{enumi}{1}
+    \item Done by solving \mbox{$A^TA{\bf p} = A^T{\bf y}$ (normal equations).} \newline 
+If ${\bf p} = \begin{bmatrix}\hat{m} \\ \hat{b}\end{bmatrix}$ is the solution, then $\hat{\bf y}$ is given by $A\begin{bmatrix}\hat{m} \\ \hat{b}\end{bmatrix}$.
+\end{enumerate}
+}
+
+\onslide<2->{
+\includegraphics[height=0.3\textheight]{Project_to_CA.jpeg}
+}
+\end{multicols}
+
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{Normal equation}
+Why does solving $A^TA{\bf p} = A^T{\bf y}$ give the right thing?
+\vspace*{12pt}
+
+\pause
+Related to orthogonal vectors in $\mathbb R^n$ (in the example, $\mathbb R^{50}$).
+
+\begin{itemize}
+    \item If $A{\bf p} = \hat{\bf y}$ has a solution, then $\hat{\bf y}\in\mathbb R^{50}$ is in column space of $A$.
+    \pause
+    \item ${\bf y} = {\bf z}_1 + {\bf z}_2$, where ${\bf z}_1$ in null space of $A^T$ and ${\bf z}_2$ in column space of $A$.\newline 
+    \qquad (\emph{Note: Null space of $A^T$ orthogonal to column space of $A$.})
+    \pause
+    \item As ${\bf z}_2$ in column space, $\exists$ $\hat{\bf p}$ so that $A\hat{\bf p} = {\bf z}_2$.\pause \hspace*{0.5em}
+    But then, 
+    \[A^T(A\hat{\bf p}) = A^T{\bf z}_2 = A^T({\bf y} - {\bf z}_1) = A^T{\bf y}.\]
+    And ${\bf z}_2$ is closest, since subtracted ${\bf z}_1$ from ${\bf y}$, orthogonal to column space: \newline 
+    \[{\bf z}_2 = \hat{\bf y}.\]
+\end{itemize}
+
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{Finding the LSR line}
+\textbf{Normal equations:} 
+\[(A^TA){\bf p} = A^T{\bf y}.\]
+
+\pause
+\textbf{Note:}
+\begin{itemize}
+    \item $A^TA$ is $2\times 2$ matrix, $A^T{\bf y}\in\mathbb R^2$, and $A^TA$ is invertible as long as there exists $x_i\ne x_j$.
+\end{itemize}
+
+\pause 
+\begin{enumerate}
+\setcounter{enumi}{2}
+    \item Pretty straightforward to find solution to $(A^TA){\bf p} = A^T{\bf y}$.
+\end{enumerate}
+
+\pause 
+So, three steps: 
+\begin{enumerate}
+    \item Write the $n$ equations in matrix form. (get matrix $A$, vector ${\bf y}$)
+    \item Get matrix $A^TA$ and vector $A^T{\bf y}$ for normal equations: \mbox{$A^TA{\bf p} = A^T{\bf y}$.}
+    \item Use a method to solve normal equations for ${\bf p}$.
+\end{enumerate}
+\end{frame}
+
+\section{Implementing the procedure}
+
+%%%%
+\begin{frame}[fragile]
+\frametitle{Solving normal equation, in pseudocode}
+Procedure to carry out the steps:
+\begin{enumerate}
+    \item Write the $n$ equations in matrix form. (get matrix $A$, vector ${\bf y}$)
+    \item Get matrix $A^TA$ and vector $A^T{\bf y}$ for normal equations: \mbox{$A^TA{\bf p} = A^T{\bf y}$.}
+    \item Use a method to solve normal equations for ${\bf p}$.
+\end{enumerate}
+
+\pause
+\vspace*{12pt}
+Given $(x_1,y_1), (x_2,y_2), \ldots, (x_n, y_n)$, as a NumPy array (call it \ttt{D}, with shape \ttt{(n,2)}): 
+
+\begin{pseudo}
+A = [x coordinates, all 1s] # 2-column matrix
+y = y coordinates
+# next, get 2x2 matrix and 2-vector
+Compute A.T times A; compute A.T times y
+Solve normal eq'ns (numpy solve, or use inverse)
+return solution 
+\end{pseudo}
+
+\end{frame}
+
+\section{Examples}
+
+%%%%
+\begin{frame}
+\frametitle{Result on running example}
+For the data (linked to above) with 50 points, the LSR line comes out close to
+    \[y = 1.520275x - 0.33458.\]
+\pause
+A plot of the line (in red), alongside the points, looks as follows.
+
+\vspace*{12pt}
+\centering
+\includegraphics[height=0.4\textheight]{example1-lsrline.png}
+\end{frame}
+
+%%%%
+\begin{frame}[fragile]
+\frametitle{Another example, Advertising data}
+In the \href{https://github.com/cornwell/math371-S25/blob/main/DataSets/}{DataSets folder}, the \lstinline[language=Python, stringstyle=\ttfamily\color{strings}]{'Advertising.csv'} file contains data on amounts spent (in thousands of dollars) on TV, Radio, and Newspaper advertising in 200 different markets, as well as the amounts sold in each market (in thousands of units).
+
+\pause
+We will look more at this data later. For now, plotted here are the columns \lstinline[language=Python, stringstyle=\ttfamily\color{strings}]{('TV', 'Sales')}.
+
+\vspace*{12pt}
+\centering
+\includegraphics[height=0.4\textheight]{advertising-plot1.png}
+
+\end{frame}
+
+%%%%
+\begin{frame}[fragile]
+\frametitle{Another example, Advertising data}
+If you switch the role of $x$- and $y$-coordinates, you can still do linear regression; i.e., for purpose of a thought experiment, predict the TV data as the \emph{response}, instead of the Sales.
+
+\onslide<2->{
+The LSR line for the data is then \textbf{not} the same line, if you switch the roles of TV and Sales in the algorithm to get $\hat{\bf p}$.
+}
+
+\vspace*{12pt}
+\centering
+\includegraphics[height=0.4\textheight]{advertising-plot1.png}
+
+\end{frame}
+    
+%%%%
+\begin{frame}[fragile]
+\frametitle{Another example, Advertising data}
+If you switch the role of $x$- and $y$-coordinates, you can still do linear regression; i.e., for purpose of a thought experiment, predict the TV data as the \emph{response}, instead of the Sales.
+
+The LSR line for the data is then \textbf{not} the same line, if you switch the roles of TV and Sales in the algorithm to get $\hat{\bf p}$.
+
+\vspace*{12pt}
+\centering
+\includegraphics[height=0.4\textheight]{advertising-plot2.png}
+
+\end{frame}
+
+\end{document}

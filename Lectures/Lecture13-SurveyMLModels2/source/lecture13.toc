@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{Decision Trees}{3}{0}{1}
+\beamer@sectionintoc {2}{Clustering}{10}{0}{2}

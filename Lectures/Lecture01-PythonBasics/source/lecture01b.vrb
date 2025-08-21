@@ -1,0 +1,34 @@
+\frametitle{Ways of constructing lists, continued}
+In the previous slide, the variable \ttt{some}\ct{_}\ttt{list} is assigned by a \emph{list comprehension}.
+
+\begin{codeblock}
+
+\begin{python}[numbers=none]
+some_list = [item(n) for n in range(50)]
+\end{python}
+
+\end{codeblock}
+
+\pause
+In list comprehensions: can add a condition to check. For example, if you only want to include \ttt{item(n)} if it is even, then you can write the following.
+
+\begin{codeblock}
+
+\begin{python}[numbers=none]
+some_list = [item(n) for n in range(50) if item(n) % 2 == 0]
+\end{python}
+
+\end{codeblock}
+
+\pause
+\vfill
+A more complicated example: get those $x$ between 1 and 100 at which the function $1000\frac{x}{(x^3+1)}$ has value between 0.5 and 2.
+
+\begin{codeblock}
+
+\begin{python}[numbers=none]
+[x for x in range(1,101) if 0.5 < 1000*x/(x**3+1) < 2]
+\end{python}
+
+\end{codeblock}
+

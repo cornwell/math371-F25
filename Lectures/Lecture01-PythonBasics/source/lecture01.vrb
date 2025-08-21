@@ -1,0 +1,35 @@
+\frametitle{Slicing lists}
+Recall: if \ttt{my}\ct{_}\ttt{list} is a list, the item at index \ct{i} is found with \ttt{my}\ct{_}\lsitem{list}{i}.
+
+To get shorter list with consecutive items from \ttt{my}\ct{_}\ttt{list}.
+
+%\pause
+\begin{codeblock}
+
+\begin{python}
+my_list = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+# Return letters at index 1 to 4 (excluding 4)
+print(my_list[1:4])
+
+# Leave off number either left of colon, or right of it;
+# will go from the start, or until the end
+print(my_list[:5])
+
+# Negative numbers to step back from end of the list
+print(my_list[-1])
+print(my_list[-2:])
+\end{python}
+
+\end{codeblock}
+
+%\pause
+There is an easy way to reverse the order of a list.\footnote{Only as an output. This does not change the list variable unless you reassign it.}
+
+\begin{codeblock}
+
+\begin{python}[numbers=none]
+my_list[::-1]
+\end{python}
+
+\end{codeblock}
+

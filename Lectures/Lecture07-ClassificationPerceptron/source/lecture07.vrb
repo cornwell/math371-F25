@@ -1,0 +1,14 @@
+\frametitle{Perceptron algorithm}
+Suppose the data is linearly separable. Also, \ttt{x} is an $n\times d$ array of points, with i$^{th}$ row equal to ${\bf x}_i$, and \ttt{y} is array of the labels. The Perceptron algorithm finds \ttt{W} iteratively as follows.\footnote{Recall, in pseudo-code block, left-facing arrow means \textit{assign} to variable on left.}
+\pause
+
+\begin{pseudo}
+input: x, y  ## x is n by d, y is 1d array
+X = append 1 to each row of x
+W = (0,0,...,0)  ## Initial W
+while (exists i with y[i]*dot(W, X[i]) <= 0){
+    W = W + y[i]*X[i]
+}
+return W
+\end{pseudo}
+

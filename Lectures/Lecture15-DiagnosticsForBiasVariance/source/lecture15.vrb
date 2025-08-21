@@ -1,0 +1,41 @@
+\frametitle{Cross-Validation}
+
+\begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{l}
+        {\footnotesize\color{blue}Model 1} \\
+        {\footnotesize\color{blue}Model 2} \\
+        {\footnotesize\color{blue}Model 3} \\
+        {\footnotesize\color{blue}Model 4} \\
+        {\footnotesize\color{blue}Model 5}
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \begin{tabular}{|p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|}
+        \hline
+        \quad train & \quad train & \quad train & \quad train & \quad valid \\
+        \hline
+        \hline
+        \quad train & \quad train & \quad train & \quad valid & \quad train \\
+        \hline
+        \hline
+        \quad train & \quad train & \quad valid & \quad train & \quad train \\
+        \hline
+        \hline
+        \quad train & \quad valid & \quad train & \quad train & \quad train \\
+        \hline
+        \hline
+        \quad valid & \quad train & \quad train & \quad train & \quad train \\
+        \hline
+    \end{tabular}
+\end{center}
+\vspace*{-10pt}
+{\color{blue}
+\begin{center}
+    \begin{tabular}{p{0.09\textwidth}p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}}
+        \phantom{i} & \ttt{subset[0]} & \ttt{subset[1]} & \ttt{subset[2]} & \ttt{subset[3]} & \ttt{subset[4]}
+    \end{tabular}
+\end{center}
+}
+
+After computing the training and validation losses for the 5 models, as described, one can use them for diagnosing and selecting hyperparameters {--} for example, average the 5 scores and use the average as the value of $\mathcal L_{train}$ and $\mathcal L_{valid}$ when comparing to other hyperparameter choices.
+

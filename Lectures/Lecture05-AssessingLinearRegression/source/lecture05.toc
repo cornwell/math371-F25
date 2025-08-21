@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{Assuming the data does have a linear relationship}{3}{0}{1}
+\beamer@sectionintoc {2}{Measuring how well LSR line fits}{20}{0}{2}

@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{Classification tasks}{3}{0}{1}
+\beamer@sectionintoc {2}{Half-space model}{11}{0}{2}
+\beamer@sectionintoc {3}{Perceptron algorithm}{25}{0}{3}

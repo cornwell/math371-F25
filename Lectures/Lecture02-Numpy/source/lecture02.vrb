@@ -1,0 +1,24 @@
+\frametitle{Experiment with runtime for universal function}
+Now, we will use broadcasting to compute the exponential of the identity matrix.
+
+\pause
+Run the following code in your Jupyter notebook.
+
+\begin{codeblock}
+
+\begin{python}
+id_matrix = np.eye(1000)
+exp_matrix = np.zeros((1000, 1000))
+start = time.time()
+exp_matrix = np.exp(id_matrix)
+end = time.time()
+print(f"Seconds taken: {end-start}.")
+\end{python}
+
+\end{codeblock}
+
+\vspace*{12pt}
+\pause
+\begin{itemize}
+    \item[] Again, the output is the number of seconds of runtime. For this approach with \ttt{np.exp()}, my computer took around 0.0045 seconds. That is over 100 times faster than writing the loop!
+\end{itemize}

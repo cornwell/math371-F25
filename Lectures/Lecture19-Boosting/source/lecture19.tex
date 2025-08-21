@@ -1,0 +1,295 @@
+\documentclass[smaller]{beamer}
+
+\usepackage{helvet}
+\usepackage{hyperref, graphicx}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{etoolbox}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+\usepackage{ulem}
+\usepackage{fontspec}
+%\usepackage[T1]{fontenc}
+%\setmainfont{Cambria}
+%\usefonttheme{serif}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[ ]
+{
+\begin{frame}{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{11} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal - use in headings
+
+% Custom colors
+\usepackage{color}
+\definecolor{TUGray}{RGB}{101,101,137}
+\definecolor{TUBlack}{RGB}{30,0,0}
+\definecolor{mygreen}{RGB}{45,111,63}
+\definecolor{keywords}{RGB}{205,114,0}
+\definecolor{comments}{RGB}{181,51,139}
+\definecolor{strings}{RGB}{58,144,81}
+\definecolor{numeric}{RGB}{66,110,176}
+\definecolor{linos}{rgb}{0.4,0.4,0.4}
+\definecolor{links}{rgb}{0,0.4,0.75}
+
+\definecolor{bggray}{RGB}{232, 233, 235}
+
+\definecolor{cerulean}{RGB}{4, 133, 209}
+
+\usecolortheme[named=mygreen]{structure}
+\setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
+
+\setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
+
+\hypersetup{colorlinks, linkcolor=links, urlcolor=links}
+
+
+
+\usepackage[sfdefault,scaled=.85]{FiraSans}
+\usepackage{newtxsf}
+
+\usepackage{listings}
+
+\newtoggle{InString}{}% Keep track of if we are within a string
+\togglefalse{InString}% Assume not initally in string
+
+\newcommand\digitstyle{\color{numeric}}
+\makeatletter
+\newcommand{\ProcessDigit}[1]
+{%
+  \ifnum\lst@mode=\lst@Pmode\relax%
+   {\digitstyle #1}%
+  \else
+    #1%
+  \fi
+}
+\makeatother
+
+\lstset{literate=%
+    {0}{{{\ProcessDigit{0}}}}1
+    {1}{{{\ProcessDigit{1}}}}1
+    {2}{{{\ProcessDigit{2}}}}1
+    {3}{{{\ProcessDigit{3}}}}1
+    {4}{{{\ProcessDigit{4}}}}1
+    {5}{{{\ProcessDigit{5}}}}1
+    {6}{{{\ProcessDigit{6}}}}1
+    {7}{{{\ProcessDigit{7}}}}1
+    {8}{{{\ProcessDigit{8}}}}1
+    {9}{{{\ProcessDigit{9}}}}1
+	{<=}{{\(\leq\)}}1
+	{>=}{{\(\geq\)}}1,
+	% morestring=[b]",
+    % morestring=[b]',
+    % morecomment=[l]{//},
+}
+
+\lstdefinelanguage{Pseudo}{
+    morekeywords={return, while, if, for, input},
+    morecomment=[l]{\#},
+}
+
+% Pseudocode style
+\newcommand\pseudostyle{\lstset{
+language=Pseudo,
+basicstyle=\fontfamily{ccr}\scriptsize,
+commentstyle=\it\scriptsize\color{linos},
+keywordstyle=\it\bfseries\scriptsize,
+mathescape=true,
+literate=
+    {=}{$\leftarrow{}$}{1}
+    {==}{$={}$}{1}
+    {<=}{{\(\leq\)}}1
+	{>=}{{\(\geq\)}}1,
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=12pt,
+belowskip=0pt,
+frame=tB,
+keepspaces=true
+}}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttfamily\tiny,
+numbers=left,
+numberstyle=\tiny\color{linos},
+morekeywords={self, np},              % Add keywords here
+keywordstyle=\tiny\color{keywords},
+commentstyle=\it\tiny\color{comments},    % Custom highlighting style
+stringstyle=\tiny\color{strings},
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=0pt,
+belowskip=0pt,
+escapeinside={(*@}{@*)},
+frame=l,                         % Any extra options here
+showstringspaces=false,
+keepspaces=true
+}}
+
+% Pseudocode environment
+\lstnewenvironment{pseudo}[1][]
+{
+    \pseudostyle
+    \lstset{
+        #1
+    }
+}
+{}
+
+% Python environment 
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{
+	#1
+	}
+}
+{}
+
+% wrap the Python environment
+\newenvironment{codeblock}
+    {\hfill\begin{beamerboxesrounded}[lower=codecol, width=0.8\textwidth]
+    \medskip
+
+    }
+    { 
+    \end{beamerboxesrounded}\hfill
+    }
+
+\theoremstyle{example}
+\newtheorem{question}{Question}
+
+\newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
+\newcommand{\ttt}[1]{{\small\texttt{#1}}}
+\newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
+
+\newcommand{\x}{\textbf{x}}
+\newcommand{\ix}[1]{{\it #1}}
+
+\author{Chris Cornwell}
+\date{May 8, 2025}
+\title{Boosting}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+%%%%
+\begin{frame}
+    \frametitle{Boosting - General Idea}
+
+    \textbf{Boosting} is a technique that trains models which each have high Bias {--} low Variance {--} and it creates a particular linear combination of these models which is a better fit for the data (this ``boosted'' model having increased Variance).
+    \pause
+    \vspace{12pt}
+
+    \begin{itemize}
+        \item Ideally, the simple models, that have high Bias, allow for very efficient training, keeping computation times small.
+        \pause
+        \item Two popular algorithms for this general idea are AdaBoost and ``Gradient Boosted Decision Trees'' {--} which are used in a tool called XGBoost.
+    \end{itemize}
+    
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{The $0$-$1$ Loss Function and Learning Algorithms}
+    For our assumptions with boosting, we consider the setting of binary classification. There is a clear generalization to multi-label Classification tasks. Additionally, one can adapt it to a Regression task (using a different loss function). 
+    
+    \pause
+    For binary classification, write the empirical $0$-$1$ \textbf{loss function} as $\mathcal L_{\mathcal S}^{01}$; it is defined as follows. Given a prediction function $f:\mathbb R^d\to\{1, -1\}$, the loss function on data $\mathcal S = \{(\x_i,\ix y_i)\}_{i=1}^n$ is the probability that $f(\x_i) \ne \ix y_i$. That is, 
+        \[\mathcal L_{\mathcal S}^{01}(f) = \frac{|\{i\ :\ f(\x_i) \ne \ix y_i\}|}{n}.\]
+    \pause
+    Population loss: probability that $f(\x) \ne \ix y$ when $(\x,\ix y)$ is drawn from the population.
+
+    \pause
+    A \textbf{learner} or \textbf{learning algorithm} is a procedure or rule that finds (or trains) $f_{\mathcal S}$ from given training data $\mathcal S$. 
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Loss with weights}
+    Recall how each empirical loss function $\mathcal L_{\mathcal S}$ is the average of a ``per-example'' loss over the set $\mathcal S$. In the $0$-$1$ case, a per-example loss of 
+    \[\ell^{01}(f, (\x,\ix y)) = \begin{cases}0,\ \text{if }f(\x)=\ix y\\ 1,\ \text{else}\end{cases}\] 
+    \vspace{-6pt}
+    gives us that $\mathcal L_{\mathcal S}^{01}(f)$ is the average over $\mathcal S$; \pause\ that is 
+        \[\mathcal L_{\mathcal S}^{01}(f) = \frac1{n}\ell^{01}(f, (\x_1,\ix y_1)) + \frac1{n}\ell^{01}(f, (\x_2,\ix y_2)) + \ldots + \frac1{n}\ell^{01}(f, (\x_n,\ix y_n)).\]
+    \pause
+    In this average, each point in $\mathcal S$ is \textit{weighted} equally. However, given a probability vector $\textbf{p} = (p_1,p_2,\ldots,p_n)$, we could weight points in $\mathcal S$ according to $\textbf{p}$: 
+        \[p_1\ell^{01}(f, (\x_1,\ix y_1)) + p_2\ell^{01}(f, (\x_2,\ix y_2)) + \ldots + p_n\ell^{01}(f, (\x_n,\ix y_n)).\]
+    \pause
+    We'll write $\mathcal L_{\mathcal S}^{01}(f, \textbf{p})$ for this weighted loss function. Note that a similar weighted loss exists for any ``standard'' empirical loss function.\footnote{The standard one corresponding to $\textbf{p} = (1/n, 1/n,\ldots,1/n)$.}
+
+    \pause
+    Below, we begin with a learner that does okay, but $\mathcal L_{\mathcal S}^{01}(f_{\mathcal S})$ may not be that ``small''; however, through weighted loss and adaptively changing $\textbf{p}$, we build one with much better $0$-$1$ loss.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Weak Learners}
+    For $\gamma$, with $0 < \gamma < \frac12$, we call a learning algorithm a $\gamma$-\textbf{weak learner} if, for any $0 < \delta < 1$, there is a positive integer $N$ so that whenever $|\mathcal S| \ge N$ then the learning algorithm determines $f_{\mathcal S}$ so that $\mathcal L_{\mathcal S}^{01}(f_{\mathcal S}) \le \frac{1}{2} - \gamma$.
+
+    \pause
+    \vspace{12pt}
+    Note that, for a sufficiently large set of training data $\mathcal S$, a $\gamma$-weak learner will produce a prediction function $f_{\mathcal S}$ that is incorrect less than half of the time. That is, for small $\gamma$, this is a bit better than using a coin flip.
+
+    \pause
+    Decision stumps can be viewed as weak learners. More precisely, for data where the label should have a single sign ($+1$ or $-1$) for all $\x$ that have some coordinate $x_j$ that is in a fixed interval, decision stumps are $\gamma$-weak learners for some $0 < \gamma < \frac16$.
+
+    \pause
+    Since decision stumps are decision trees that have only depth 1, and they are weak learners for such a classification problem, decision trees are also weak learners. 
+    \begin{itemize}
+        \pause
+        \item Hence, it is common to use decision trees with small max depth as the base model in a boosting algorithm.
+    \end{itemize}
+\end{frame}
+
+\section{AdaBoost}
+
+\begin{frame}
+    \frametitle{Description of AdaBoost}
+    One chooses a number $T$ of \textit{rounds} for the AdaBoost algorithm. In round $t$, with $1\le t\le T$, say that $f_t$ is the basic model that is trained in that round. That round will also have a corresponding coefficient $w_t$. The final (boosted) model is given by 
+            \[f(\x) = \operatorname{sign}(w_1f_1(\x) + w_2f_2(\x) + \ldots + w_Tf_T(\x)).\]
+    
+    \pause
+    The procedure for finding $f_t$ and $w_t$ is the following. 
+
+    In each round $t$, there is a probability vector $\textbf{p}^{(t)}\in\mathbb R^n$. In round 1, we give $\textbf{p}^{(1)}$ uniform weights; that is, $\textbf{p}^{(1)} = (1/n, 1/n, \ldots, 1/n)$. 
+
+    \pause
+    Now, in round $t$ of AdaBoost:
+    \begin{enumerate}
+        \item Use your learner to minimize weighted loss $\mathcal L_{\mathcal S}^{01}(f,\textbf{p}^{(t)})$, getting $f_t$.
+        \pause
+        \item Compute the weighted empirical loss $\varepsilon_t = \mathcal L_{\mathcal S}(f_t, \textbf{p}^{(t)})$. 
+        \pause
+        \item Define $w_t = \ln\left(\frac{1}{\varepsilon_t} - 1\right)$.
+        \pause
+        \item Find $\textbf{p}^{(t+1)} = (p_1^{(t+1)}, \ldots, p_n^{(t+1)})$ by setting 
+            \[p_i^{(t+1)} = \frac{p_i^{(t)}e^{-w_ty_if_t(\x_i)}}{\sum_{j=1}^n p_j^{(t)}e^{-w_ty_jf_t(\x_j)}}.\]
+    \end{enumerate}
+
+    \pause
+    Once done with $T$ rounds, the boosted model is the one given by linear combination above.
+
+\end{frame}
+
+
+
+\end{document}

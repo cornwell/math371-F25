@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Intro to NumPy}{3}{0}{1}
+\beamer@sectionintoc {2}{NumPy arrays}{8}{0}{2}
+\beamer@sectionintoc {3}{Linear algebra}{23}{0}{3}
+\beamer@sectionintoc {4}{Broadcasting and efficient operations}{37}{0}{4}

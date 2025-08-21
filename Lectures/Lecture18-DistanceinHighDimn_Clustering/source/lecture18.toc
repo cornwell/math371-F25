@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{The Curse of Dimensionality}{3}{0}{1}
+\beamer@sectionintoc {2}{Clustering Methods}{33}{0}{2}

@@ -1,0 +1,37 @@
+\frametitle{DBSCAN Clustering}
+    DBSCAN (Density-Based Spatial Clustering for Applications with Noise) does not require you to choose a number of clusters at the start.
+
+    \pause
+    There are two important hyperparameters that you choose:
+    \begin{itemize}
+        \item $\varepsilon$ (\ttt{eps} in scikit-learn, a certain radius in the procedure); and
+        \pause
+        \item \ttt{minPts} (\lstinline[language=Python,basicstyle=\ttfamily]{min_samples} in scikit-learn).
+    \end{itemize}
+
+    \begin{minipage}{\textwidth}
+    \begin{wrapfigure}{r}{0.35\textwidth}
+        \vspace{-\baselineskip}
+        \begin{tikzpicture}[>=stealth,scale=0.8]
+            \draw[gray] (0,0) circle (40pt);
+            \draw[gray] (1.85,0.18) circle (40pt);
+            \draw[cerulean] (0,0) -- (0.2,0.7) -- (-0.4,0.69) -- (-0.41,-0.3) -- (0,0) -- (0.24,-0.7) -- (-0.41,-0.3) -- (0.2,0.7);
+            \draw[cerulean] (0,0) -- (-0.4,0.69);
+            \draw[cerulean] (0,0) -- (-1.53,0.25);
+            \draw[cerulean, ->] (-1.53,0.25) -- (-2.06,0.31);
+            \draw[cerulean] (0,0) -- (0.65,0.26) -- (1,0.8);
+            \draw[cerulean, ->] (1,0.8) -- (1.85,0.19);
+            \draw[cerulean, ->] (0.65,0.26) -- (1.85,0.17);
+            \foreach \p in {(0,0), (0.2,0.7), (0.24,-0.7), (-0.4,0.69), (-0.41,-0.3), (0.65,0.26), (1,0.8), (1.85,0.18), (-1.53,0.25), (-2.06,0.31)}
+                \filldraw \p circle (1pt);
+        \end{tikzpicture}
+        \caption{Points reachable from core point, \ttt{minPts}$=4$}
+    \end{wrapfigure}
+
+    \pause
+    \vspace{\baselineskip}
+    Describing how clusters are formed requires some terminology.
+
+    \pause
+    As with $k$-means, the distance function (metric) that is used is a central part of the process. Unlike the centroids used in $k$-means, though, a different metric would not require a change to the procedure (other than different distance computations).
+    \end{minipage}

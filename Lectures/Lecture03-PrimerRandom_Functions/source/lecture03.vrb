@@ -1,0 +1,28 @@
+\frametitle{Regression line on data in plane}
+For the data set provided, \ttt{summer.csv}, assign it as a dataframe, like with variable \ct{df} on last slide.
+
+\pause
+Make two NumPy arrays called \ttt{so2} and \ttt{pm10} from columns 'SO2' and 'PM10'. These will be $x$-coordinates and $y$-coordinates. To plot the points in the plane, use the scatter function in \ttt{pyplot}.
+
+\pause
+\begin{codeblock}
+
+\begin{python}
+plt.scatter(so2, pm10)
+plt.show()
+\end{python}
+
+\end{codeblock}
+
+\pause
+Getting the ``best fit'' regression line\footnote{Considering $x$ as the independent variable and $y$ as the \emph{response} variable.} is straightforward in NumPy.
+
+\begin{codeblock}
+
+\begin{python}
+# returns slope and intercept of best fit line
+np.polyfit(so2, pm10, 1)
+\end{python}
+
+\end{codeblock}
+
