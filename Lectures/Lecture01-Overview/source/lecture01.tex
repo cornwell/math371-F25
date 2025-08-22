@@ -1,0 +1,438 @@
+\documentclass{beamer}
+
+\usepackage{helvet}
+\usepackage{hyperref, graphicx}
+\usepackage{amsthm, amsfonts}
+\usepackage{etoolbox}
+%\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{ulem}
+
+\usetheme[progressbar=frametitle, numbering=none]{metropolis}
+\usecolortheme[snowy]{owl}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[ ]
+{
+\begin{frame}{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{11} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal - use in headings
+
+% Custom colors
+\usepackage{color}
+\definecolor{TUGray}{RGB}{101,101,137}
+\definecolor{TUBlack}{RGB}{30,0,0}
+\definecolor{mygreen}{RGB}{45,111,63}
+\definecolor{keywords}{RGB}{205,114,0}
+\definecolor{comments}{RGB}{181,51,139}
+\definecolor{strings}{RGB}{58,144,81}
+\definecolor{numeric}{RGB}{66,110,176}
+\definecolor{linos}{rgb}{0.4,0.4,0.4}
+\definecolor{links}{rgb}{0,0.4,0.75}
+
+\definecolor{bggray}{RGB}{232, 233, 235}
+
+\setbeamercolor{alerted text}{fg=mygreen}
+\setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
+
+\setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
+
+\hypersetup{colorlinks, linkcolor=links, urlcolor=links}
+
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,scaled=.85]{FiraSans}
+\usepackage{newtxsf}
+
+\usepackage{listings}
+
+\newtoggle{InString}{}% Keep track of if we are within a string
+\togglefalse{InString}% Assume not initally in string
+
+\newcommand\digitstyle{\color{numeric}}
+\makeatletter
+\newcommand{\ProcessDigit}[1]
+{%
+  \ifnum\lst@mode=\lst@Pmode\relax%
+   {\digitstyle #1}%
+  \else
+    #1%
+  \fi
+}
+\makeatother
+
+\lstset{literate=%
+    {0}{{{\ProcessDigit{0}}}}1
+    {1}{{{\ProcessDigit{1}}}}1
+    {2}{{{\ProcessDigit{2}}}}1
+    {3}{{{\ProcessDigit{3}}}}1
+    {4}{{{\ProcessDigit{4}}}}1
+    {5}{{{\ProcessDigit{5}}}}1
+    {6}{{{\ProcessDigit{6}}}}1
+    {7}{{{\ProcessDigit{7}}}}1
+    {8}{{{\ProcessDigit{8}}}}1
+    {9}{{{\ProcessDigit{9}}}}1
+	{<=}{{\(\leq\)}}1
+	{>=}{{\(\geq\)}}1,
+	% morestring=[b]",
+    % morestring=[b]',
+    % morecomment=[l]{//},
+}
+
+\lstdefinelanguage{Pseudo}{
+    morekeywords={return, while, if, for, input},
+    morecomment=[l]{\#},
+}
+
+% Pseudocode style
+\newcommand\pseudostyle{\lstset{
+language=Pseudo,
+basicstyle=\fontfamily{ccr}\scriptsize,
+commentstyle=\it\scriptsize\color{linos},
+keywordstyle=\it\bfseries\scriptsize,
+mathescape=true,
+literate=
+    {=}{$\leftarrow{}$}{1}
+    {==}{$={}$}{1}
+    {<=}{{\(\leq\)}}1
+	{>=}{{\(\geq\)}}1,
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=12pt,
+belowskip=0pt,
+frame=tB,
+keepspaces=true
+}}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttfamily\tiny,
+numbers=left,
+numberstyle=\tiny\color{linos},
+morekeywords={self, np},              % Add keywords here
+keywordstyle=\tiny\color{keywords},
+commentstyle=\it\tiny\color{comments},    % Custom highlighting style
+stringstyle=\tiny\color{strings},
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=0pt,
+belowskip=0pt,
+escapeinside={(*@}{@*)},
+frame=l,                         % Any extra options here
+showstringspaces=false,
+keepspaces=true
+}}
+
+% Pseudocode environment
+\lstnewenvironment{pseudo}[1][]
+{
+    \pseudostyle
+    \lstset{
+        #1
+    }
+}
+{}
+
+% Python environment 
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{
+	#1
+	}
+}
+{}
+
+% wrap the Python environment
+\newenvironment{codeblock}
+    {\hfill\begin{beamerboxesrounded}[lower=codecol, width=0.8\textwidth]
+    \medskip
+
+    }
+    { 
+    \end{beamerboxesrounded}\hfill
+    }
+
+\theoremstyle{example}
+\newtheorem{question}{Question}
+
+\newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
+\newcommand{\ttt}[1]{{\small\texttt{#1}}}
+\newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
+
+\author{Chris Cornwell}
+\date{Mar 13, 2025}
+\title{Overview of Machine Learning \newline 
+    \footnotesize{with focus on Supervised Learning}}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Machine Learning}
+
+%%%%
+\begin{frame}
+\frametitle{What is Machine Learning?}
+    % Mitchell '98 ``Well posed learning problem''
+    Definition by Tom Mitchell:\newline 
+    \begin{quote}
+        A ``computer program'' is said to \textbf{learn} from experience $E$, with respect to some task $T$ and performance measure $P$ if: its performance on $T$, as measured by $P$, improves with experience $E$.
+    \end{quote}
+    \pause
+    \begin{itemize}
+        \item The definition is intentionally general. Often, could think of $E$ as ``training'' (updates to how program runs), based on observed data.
+        \pause
+        \item ``computer program,'' for us, means a function implemented on a computer that produces output from given input. The output is how the program achieves the task $T$. 
+        \pause
+        \item The procedures discussed in class {--} linear regression and the Perceptron algorithm for half-space model {--} fit into this paradigm\ldots \textit{kind of}.
+    \end{itemize}
+
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{What is Machine Learning?}
+    Definition by Tom Mitchell:\newline 
+    \begin{quote}
+        A computer program is said to \textbf{learn} from experience $E$, with respect to some task $T$ and performance measure $P$ if: its performance on $T$, as measured by $P$, improves with experience $E$.
+    \end{quote}
+    
+    {\color{mygreen}Examples:}
+    \begin{enumerate}
+        \item Linear regression.
+        \begin{itemize}
+            \item Output of $\hat{y}$ on input $x$ (potentially multiple variables).
+            \pause
+            \item $T$: fit observed points $\{(x_i,y_i)\}_{i=1}^n$ well with predictions $\{(x_i,\hat{y}_i)\}$, where $\hat{y}_i=mx_i+b$ for some $m,b$ (an expectation of $(x,\hat{y})$ being good fit on \textit{unobserved} data. 
+            \pause
+            \item $E$: ?? \newline 
+                    The data are used to get $m$ and $b$, but you don't really ``improve'' with repeated use of data. \newline 
+                    \pause
+                    \emph{Closed form} for best choice of $m, b$, computing $(A^TA)^{-1}A^T{\bf y}$.
+            \pause
+            \item $P$: Mean squared error.
+        \end{itemize}
+        Having closed form, result of simplicity of the form of $\hat{y}_i$.
+    \end{enumerate}
+
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{What is Machine Learning?}
+    Definition by Tom Mitchell:\newline 
+    \begin{quote}
+        A computer program is said to \textbf{learn} from experience $E$, with respect to some task $T$ and performance measure $P$ if: its performance on $T$, as measured by $P$, improves with experience $E$.
+    \end{quote}
+    
+    {\color{mygreen}Examples:}
+    \begin{enumerate}
+        \setcounter{enumi}{1}
+        \item The Perceptron algorithm.
+        \begin{itemize}
+            \item Output of label $\pm 1$ on input ${\bf x}\in \mathbb R^d$ (or something \textit{turned into} ${\bf x}\in\mathbb R^d$).
+            \pause
+            \item $T$: predict labels correctly, using $W = ({\bf w}, b)\in\mathbb R^{d+1}$ to decide label, $y = \textrm{sign}({\bf w}\cdot{\bf x} + b)$ \newline 
+            \ldots hopefully works on \textit{unobserved} data.
+            \pause
+            \item $E$: looking through observed data $X_i = ({\bf x}_i,1)$, label $y_i$, and updating $W^{(t+1)} = W^{(t)} + y_iX_i$ when $i$ found with $W^{(t)}\cdot(y_iX_i)\le 0$.
+            \pause
+            \item $P$: ?? \newline 
+                    Whether its labels on all observed data are correct. But, only two results: \textit{True} or \textit{False}. \newline 
+                    \pause
+                    If data is linearly separable, enough of experience $E$ improves this measure (changing to \textit{True}). Only happens if linearly separable.
+        \end{itemize}
+    \end{enumerate}
+
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{What are the general types of \emph{tasks} in machine learning?}
+Supervised learning: the program learns from sample data that has labels. Goal: determine underlying function from sample data.\newline
+\pause
+{\color{mygreen}Examples.}
+    \begin{itemize}
+        \item Housing price prediction
+        \item Whether emails are phishing or not phishing.
+        \item Determine if a satellite image of ocean has floating trash.
+        \item Try to auto-complete a sentence being typed.
+    \end{itemize}
+\pause
+Unsupervised learning: there is sample data, but the data does not have any labels. Goal: discover something (a pattern, grouping, or some insight) about the data.\newline
+\pause
+{\color{mygreen}Examples.}
+    \begin{itemize}
+        \item Market segmentation.
+        \item News feed (grouping similar news articles).
+        \item Separate audio sources in a mixed signal.
+        \item Organize computing clusters.
+    \end{itemize}
+
+\end{frame}
+
+\section{Supervised learning}
+
+%%%%
+\begin{frame}
+\frametitle{The goal of supervised learning}
+Have an ``input space'' (which often is $\mathbb R^{d}$, or a subset of it, but could be a different space); and have an output space, or label space, $Y$. 
+
+\pause
+\begin{itemize}
+    \item Given a sample $\mathcal S = \{({\bf x}_i, y_i)\}_{i=1}^n$, with ${\bf x}_i\in\mathbb R^d$ and $y_i\in Y$, drawn from an (unknown) joint probability distribution $P_{X,Y}:\mathbb R^{d}\times Y \to [0, \infty)$. 
+    \pause
+    \item Goal: to learn, from $\mathcal S$, a function $f^*:\mathbb R^d\to Y$ that ``fits'' (\textit{approximates well}) the distribution $P_{X,Y}$. 
+    \pause
+    \item You might not be able to have points on the graph of $f^*$ be typically ``very close'' to samples from $P_{X,Y}$. However, ideally, for an ${\bf x}\in\mathbb R^d$ corresponding $y$-value on graph is near the expected value given ${\bf x}$.
+\end{itemize}
+
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{How to achieve the goal}
+Most often, we choose a \textit{parameterized class} of functions\footnote{Sometimes called a \textit{hypothesis class}.}, and we get $f^*$ from that class. 
+\pause
+\begin{itemize}
+    \item That is, there is a space of parameters $\Omega$; an $\omega\in\Omega$ determines a function $f_{\omega}:\mathbb R^d \to Y$, and the parameterized class is the set of all such functions $f_\omega$. % Model selection
+    \pause
+    \item To learn a function that fits well, you look for good parameters.
+\end{itemize}
+
+\pause
+How do we find good parameters?
+
+Select a performance measure: \textbf{(empirical) loss function} $\mathcal L_{\mathcal S}:\Omega \to \mathbb R$. In the empirical loss function, we use $\mathcal S$ in its definition.
+\pause
+\begin{itemize}
+    \pause
+    \item Then, $\mathcal L_{\mathcal S}$ is used to determine how to make changes to parameters, $\omega$, in order to decrease the value of $\mathcal L_{\mathcal S}$.
+    \pause
+    \item In an ideal situation, you converge to some $\omega^*$, a minimizer of $\mathcal L_{\mathcal S}$, and set $f^* = f_{\omega^*}$.
+\end{itemize}
+
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{For linear regression}
+    Have sample data $\mathcal S$, with data points $x_i$ in $\mathbb R$ (so, $d=1$). The parameter space $\Omega = \mathbb R^2 = \{(m,b)\ |\ m\in\mathbb R, b\in\mathbb R\}$. For each $\omega = (m,b)$, we have
+        \[f_{\omega}(x) = mx + b.\]
+    \pause
+    Loss function: the MSE. That is, set 
+        \[\mathcal L_{\mathcal S}(m,b) = \frac1{n}\sum_{i=1}^n (mx_i + b - y_i)^2.\]
+\end{frame}
+
+\section{First look at Gradient Descent}
+
+%%%%
+\begin{frame}
+\frametitle{Gradient descent with simple linear regression}
+For $\omega = (m, b)$, have $f_{\omega}(x) = mx + b$. Given sample data $\mathcal S=\{({\bf x}_i, y_i)\}_{i=1}^n$, note that the empirical loss function $\mathcal L_{\mathcal S}$ is a function of $m$ and $b$ (while $\mathcal S$ is \textit{used} in its definition, the points ${\bf x}_i$ are not inputs to $\mathcal L_{\mathcal S}$).
+\pause 
+
+Recall the definition $\mathcal L_{\mathcal S}(m,b) = \frac1{n}\sum_{i=1}^n (mx_i + b - y_i)^2$.
+\begin{itemize}
+    \item The \textbf{gradient} of $\mathcal L_{\mathcal S}$ is the vector of partial derivatives: $\nabla\mathcal L_{\mathcal S} = \left( \frac{d}{dm}\mathcal L_{\mathcal S}, \frac{d}{db}\mathcal L_{\mathcal S} \right)$.
+    \pause
+    \item Get partial derivatives using the Chain rule: 
+            \[\frac{d}{dm}\mathcal L_{\mathcal S} = \frac{2}{n}\sum_{i=1}^n(mx_i + b - y_i)x_i;\]
+        and 
+            \[\frac{d}{db}\mathcal L_{\mathcal S} = \frac{2}{n}\sum_{i=1}^n(mx_i + b - y_i).\]
+\end{itemize}
+
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Aside: Recovering the normal equations}
+    By utilizing the fact that a minimum of $\mathcal L_{\mathcal S}$ only occurs when $\frac{d}{dm}\mathcal L_{\mathcal S} = 0$ and $\frac{d}{db}\mathcal L_{\mathcal S} = 0$,
+    we can recover the normal equations.
+    
+    \pause
+    To simplify it (and still be able to generalize), say that we have $n=3$ (in other words, $\mathcal S$ has just three points). Then, setting ${\bf x} = (x_1,x_2,x_3)$ and ${\bf y} = (y_1,y_2,y_3)$, and $\bar{x}$ equal to the average of $x_1,x_2,x_3$,
+    \pause
+    {\small
+        \begin{align*}
+            \frac{d}{dm}\mathcal L_{\mathcal S}     &= \frac{2}{3}\left((mx_1^2 + bx_1 - x_1y_1) + (mx_2^2 + bx_2 - x_2y_2) + (mx_3^2 + bx_3 - x_3y_3) \right) \\ 
+                                                    &= \frac{2}{3}\left(m(x_1^2+x_2^2+x_3^2) + b(x_1+x_2+x_3) - (x_1y_1+x_2y_2+x_3y_3) \right) \\ 
+                                                    &= \frac{2}{3}\left(m{\bf x}\cdot{\bf x} + b(3\bar{x}) - {\bf x}\cdot{\bf y}\right).
+        \end{align*}
+    }
+    
+    \pause
+    And so, setting $\frac{d}{dm}\mathcal L_{\mathcal S} = 0$ amounts to the equation $m({\bf x}\cdot{\bf x}) + b(3\bar{x}) = {\bf x}\cdot{\bf y}$. 
+
+    \pause
+    A similar computation will show that setting $\frac{d}{db}\mathcal L_{\mathcal S} = 0$ will give the equation $m(3\bar{x}) + b(3) = 3\bar{y}$. (With $\bar{y}$ being the average of $y_1,y_2,y_3$). 
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Aside: Recovering the normal equations}
+    The computation above generalizes to imply that $\nabla\mathcal L_{\mathcal S} = (\frac{d}{dm}\mathcal L_{\mathcal S}, \frac{d}{db}\mathcal L_{\mathcal S}) = (0,0)$ requires the equations 
+        \begin{align*}
+            m({\bf x}\cdot{\bf x}) + b(n\bar{x})    &= {\bf x}\cdot{\bf y} \\ 
+            m(n\bar{x}) + b(n)                      &= n\bar{y}.
+        \end{align*}
+    
+    \pause 
+    If you recall the entries in $A^TA$ and $A^T{\bf y}$ (where $A$ is the matrix built in the simple linear regression procedure), these are precisely the normal equations.
+
+    Solving for $m$ and $b$ gives us $m = \frac{{\bf x}\cdot{\bf y} - n\bar{x}\bar{y}}{{\bf x}\cdot{\bf x} - n\bar{x}^2} = \frac{\sum_{i=1}^n(x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n(x_i - \bar{x})^2}$, and $b = \bar{y} - m\bar{x}$.
+
+    \pause 
+    \begin{itemize}
+        \item We are able to nicely represent the minimizer of $\mathcal L_{\mathcal S}$ precisely because of the linear nature of the class of functions $f_{\omega}(x) = mx+b$.
+    \end{itemize}
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Returning to Gradient Descent}
+    In anticipation that, in other settings, we not be able to nicely represent a minimizer of $\mathcal L_{\mathcal S}$, we consider another optimization approach. 
+
+    \pause
+    \begin{itemize}
+        \item Say that the (current) value of $\omega$ is $(m_0, b_0)$. Then, recalling from Calculus III, the direction of \textit{steepest descent}, that will produce the most rapid decrease in the value of $\mathcal L_{\mathcal S}$, is the direction of $-\nabla\mathcal L_{\mathcal S}(m_0,b_0)$.
+        \item This indicates that we might be able to get closer to a minimizer by subtracting the gradient from $(m_0,b_0)$ or, to make our step ``small'' perhaps, subtracting a small multiple of the gradient.
+    \end{itemize}
+
+    \pause
+    \textbf{Gradient descent:} Choosing a constant $\eta > 0$ and given some current value of $\omega_i = (m_i,b_i)$, we attempt to get closer to the minimizer, $\omega^*$, of the loss function by the update 
+        \[\omega_{i+1} = \omega_i - \eta\ast\nabla\mathcal L_{\mathcal S}(m_i,b_i).\]
+    The constant $\eta$ is called the \textbf{learning rate}.
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Sources}
+    The content of these slides has been combined from two references. 
+
+    \begin{enumerate}
+        \item Notes taken from Machine Learning course, taught by Andrew Ng, Stanford U.
+        \item Notes from a lecture series on Deep Learning at Harvard, taught by Eli Grigsby.
+    \end{enumerate}
+
+    \vfill
+\end{frame}
+
+{\setbeamercolor{palette primary}{fg=mygreen, bg=bggray}
+\begin{frame}[standout]
+    Questions?
+\end{frame}
+}
+\end{document}
