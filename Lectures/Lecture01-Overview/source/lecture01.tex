@@ -5,9 +5,12 @@
 \usepackage{amsthm, amsfonts}
 \usepackage{etoolbox}
 %\usepackage{multicol}
-\usepackage{tikz}
+%\usepackage{tikz}
+\usepackage{caption}
 \usepackage{ulem}
 
+%% Define the layout of slides, numbering, and color theme
+%% Also, make links in TOC appear at start of each section 
 \usetheme[progressbar=frametitle, numbering=none]{metropolis}
 \usecolortheme[snowy]{owl}
 \setbeamertemplate{navigation symbols}{}
@@ -18,11 +21,11 @@
 \end{frame}
 }
 
-% Default fixed font does not support bold face
+%% Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{11} % for bold
 \DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal - use in headings
 
-% Custom colors
+%% Custom colors
 \usepackage{color}
 \definecolor{TUGray}{RGB}{101,101,137}
 \definecolor{TUBlack}{RGB}{30,0,0}
@@ -41,17 +44,24 @@
 
 \setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
 
+%% Coloring of links
 \hypersetup{colorlinks, linkcolor=links, urlcolor=links}
 
+%% Custom multi-line commenting out
+\newcommand{\comment}[1]{}
+
+%% Fonts
 \usepackage[T1]{fontenc}
 \usepackage[sfdefault,scaled=.85]{FiraSans}
 \usepackage{newtxsf}
 
+%% Package for displaying lines of code, or pseudocode
 \usepackage{listings}
 
 \newtoggle{InString}{}% Keep track of if we are within a string
 \togglefalse{InString}% Assume not initally in string
 
+%% Some line parsing in listings code blocks, to perform highlighting (digits,keywords, comments, etc)
 \newcommand\digitstyle{\color{numeric}}
 \makeatletter
 \newcommand{\ProcessDigit}[1]
@@ -82,12 +92,13 @@
     % morecomment=[l]{//},
 }
 
+%% Defining keywords and comment formatting for a pseudocode block
 \lstdefinelanguage{Pseudo}{
     morekeywords={return, while, if, for, input},
     morecomment=[l]{\#},
 }
 
-% Pseudocode style
+%% Pseudocode style
 \newcommand\pseudostyle{\lstset{
 language=Pseudo,
 basicstyle=\fontfamily{ccr}\scriptsize,
@@ -107,7 +118,7 @@ frame=tB,
 keepspaces=true
 }}
 
-% Python style for highlighting
+%% Python style
 \newcommand\pythonstyle{\lstset{
 language=Python,
 basicstyle=\ttfamily\tiny,
@@ -127,7 +138,7 @@ showstringspaces=false,
 keepspaces=true
 }}
 
-% Pseudocode environment
+%% Pseudocode environment
 \lstnewenvironment{pseudo}[1][]
 {
     \pseudostyle
@@ -137,7 +148,7 @@ keepspaces=true
 }
 {}
 
-% Python environment 
+%% Python environment 
 \lstnewenvironment{python}[1][]
 {
 	\pythonstyle
@@ -147,7 +158,7 @@ keepspaces=true
 }
 {}
 
-% wrap the Python environment
+%% wrap the Python environment
 \newenvironment{codeblock}
     {\hfill\begin{beamerboxesrounded}[lower=codecol, width=0.8\textwidth]
     \medskip
@@ -157,18 +168,24 @@ keepspaces=true
     \end{beamerboxesrounded}\hfill
     }
 
+%% A couple of block enviroments to make statement stand out
 \theoremstyle{example}
 \newtheorem{question}{Question}
 
+%% Some shortcut macros for computer-type font
 \newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
 \newcommand{\ttt}[1]{{\small\texttt{#1}}}
 \newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\cl}[1]{\mathcal{#1}}
 
+%% Header information
 \author{Chris Cornwell}
 \date{Mar 13, 2025}
 \title{Overview of Machine Learning \newline 
     \footnotesize{with focus on Supervised Learning}}
 
+%% Start of slides
 \begin{document}
 
 \begin{frame}
@@ -182,108 +199,146 @@ keepspaces=true
 
 \section{Machine Learning}
 
+%% Broad discussion of machine learning
 %%%%
 \begin{frame}
 \frametitle{What is Machine Learning?}
-    % Mitchell '98 ``Well posed learning problem''
-    Definition by Tom Mitchell:\newline 
+    \begin{itemize}
+        \item Concerned with designing, understanding algorithms which allow computer program to ``learn.''
+        \pause
+        \item Not as new as it seems, but rapid growth in last 2 decades. 
+        \begin{itemize}
+            \item field of study since 1950's; 
+            \item related to much older statistical modeling.
+        \end{itemize}
+        \pause
+        \item Can be single machine learning model to perform a task (e.g., finding person in an image, speech-to-text, sentiment analysis)
+        \pause
+        \item Or, many separate models combined together $\leftarrow$ makes AI function (e.g., self-driving cars, LLM's or chatbots).
+    \end{itemize}
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{What is Machine Learning?}
+    % Mitchell '98 ``Well posed learning problem'' - Mitchell is (old) researcher in machine learning, prof at Carnegie Melon
+    \textit{Very} general, academic definition by Tom Mitchell:\newline 
     \begin{quote}
-        A ``computer program'' is said to \textbf{learn} from experience $E$, with respect to some task $T$ and performance measure $P$ if: its performance on $T$, as measured by $P$, improves with experience $E$.
+        A ``computer program'' is said to \textbf{learn} from experience $E$, with respect to some task $T$ and performance measure $M$ if: its performance on $T$, as measured by $M$, improves with experience $E$.
     \end{quote}
     \pause
     \begin{itemize}
-        \item The definition is intentionally general. Often, could think of $E$ as ``training'' (updates to how program runs), based on observed data.
+        \item Often, the experience $E$ is called ``training'' (updates to how program runs); based on observed data.
         \pause
-        \item ``computer program,'' for us, means a function implemented on a computer that produces output from given input. The output is how the program achieves the task $T$. 
+        \item ``computer program,'' for us (``learning algorithm''), will determine a function that produces output from given input (the data). The output is how the program achieves the task $T$. 
         \pause
-        \item The procedures discussed in class {--} linear regression and the Perceptron algorithm for half-space model {--} fit into this paradigm\ldots \textit{kind of}.
+        \item In class, we will discuss algorithms made for \textit{regression} tasks, and others for \textit{classification} tasks, that fit this paradigm.
+        \pause 
+        \item Performance measure $M$: for us, called a \textit{cost function} or \textit{loss function}.
     \end{itemize}
 
 \end{frame}
 
 %%%%
 \begin{frame}
-\frametitle{What is Machine Learning?}
-    Definition by Tom Mitchell:\newline 
-    \begin{quote}
-        A computer program is said to \textbf{learn} from experience $E$, with respect to some task $T$ and performance measure $P$ if: its performance on $T$, as measured by $P$, improves with experience $E$.
-    \end{quote}
-    
-    {\color{mygreen}Examples:}
-    \begin{enumerate}
-        \item Linear regression.
-        \begin{itemize}
-            \item Output of $\hat{y}$ on input $x$ (potentially multiple variables).
-            \pause
-            \item $T$: fit observed points $\{(x_i,y_i)\}_{i=1}^n$ well with predictions $\{(x_i,\hat{y}_i)\}$, where $\hat{y}_i=mx_i+b$ for some $m,b$ (an expectation of $(x,\hat{y})$ being good fit on \textit{unobserved} data. 
-            \pause
-            \item $E$: ?? \newline 
-                    The data are used to get $m$ and $b$, but you don't really ``improve'' with repeated use of data. \newline 
-                    \pause
-                    \emph{Closed form} for best choice of $m, b$, computing $(A^TA)^{-1}A^T{\bf y}$.
-            \pause
-            \item $P$: Mean squared error.
-        \end{itemize}
-        Having closed form, result of simplicity of the form of $\hat{y}_i$.
-    \end{enumerate}
+\frametitle{General categories of tasks in machine learning?}
 
-\end{frame}
-
-%%%%
-\begin{frame}
-\frametitle{What is Machine Learning?}
-    Definition by Tom Mitchell:\newline 
-    \begin{quote}
-        A computer program is said to \textbf{learn} from experience $E$, with respect to some task $T$ and performance measure $P$ if: its performance on $T$, as measured by $P$, improves with experience $E$.
-    \end{quote}
-    
-    {\color{mygreen}Examples:}
-    \begin{enumerate}
-        \setcounter{enumi}{1}
-        \item The Perceptron algorithm.
-        \begin{itemize}
-            \item Output of label $\pm 1$ on input ${\bf x}\in \mathbb R^d$ (or something \textit{turned into} ${\bf x}\in\mathbb R^d$).
-            \pause
-            \item $T$: predict labels correctly, using $W = ({\bf w}, b)\in\mathbb R^{d+1}$ to decide label, $y = \textrm{sign}({\bf w}\cdot{\bf x} + b)$ \newline 
-            \ldots hopefully works on \textit{unobserved} data.
-            \pause
-            \item $E$: looking through observed data $X_i = ({\bf x}_i,1)$, label $y_i$, and updating $W^{(t+1)} = W^{(t)} + y_iX_i$ when $i$ found with $W^{(t)}\cdot(y_iX_i)\le 0$.
-            \pause
-            \item $P$: ?? \newline 
-                    Whether its labels on all observed data are correct. But, only two results: \textit{True} or \textit{False}. \newline 
-                    \pause
-                    If data is linearly separable, enough of experience $E$ improves this measure (changing to \textit{True}). Only happens if linearly separable.
-        \end{itemize}
-    \end{enumerate}
-
-\end{frame}
-
-%%%%
-\begin{frame}
-\frametitle{What are the general types of \emph{tasks} in machine learning?}
-Supervised learning: the program learns from sample data that has labels. Goal: determine underlying function from sample data.\newline
+\textbf{Supervised learning:} algorithm uses sample (input) data that have output ``labels.'' Goal: determine a \emph{good} underlying function from sample data.
 \pause
-{\color{mygreen}Examples.}
     \begin{itemize}
         \item Housing price prediction
+        \pause
         \item Whether emails are phishing or not phishing.
-        \item Determine if a satellite image of ocean has floating trash.
-        \item Try to auto-complete a sentence being typed.
+        \pause
+        \item Detect space debris, or trash on ocean surface.
+        \item Auto-completion of typed sentence.
     \end{itemize}
 \pause
-Unsupervised learning: there is sample data, but the data does not have any labels. Goal: discover something (a pattern, grouping, or some insight) about the data.\newline
+\textbf{Unsupervised learning:} algorithm uses sample data, but it is unlabeled. Goal: discover something (a pattern, grouping, or some insight) about the data based on its coordinates (features).
 \pause
-{\color{mygreen}Examples.}
     \begin{itemize}
         \item Market segmentation.
+        \pause
         \item News feed (grouping similar news articles).
+        \pause
         \item Separate audio sources in a mixed signal.
-        \item Organize computing clusters.
     \end{itemize}
 
 \end{frame}
 
 \section{Supervised learning}
+
+%%%%
+\begin{frame}
+\frametitle{The goal of Supervised learning}
+\begin{itemize}
+    \item (Supervised $\iff$ labels) 
+    \item The sample data has labels {--} called \textbf{training data}. The goal is to ``learn'' a function from the training data that will do well labeling new data, not seen during learning process. 
+    \item ``Doing well'' is measured by a loss function ($M$ from Mitchell's description). 
+    \item \invisible<1>{The learning algorithm starts with \emph{some} function; it doesn't do labeling well, but the algorithm uses the loss function to alter that function to something better. ($\leftarrow$ ``learning'')}
+\end{itemize}
+\end{frame}
+
+%%%%
+\begin{frame}[standout]
+    Example Images
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{Example 1 - Supervised learning, Section 1.1 of textbook}
+\textbf{Cat or Dog?}
+
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{../../Images/Fig1-1.png}
+\caption*{Figure 1.1 from textbook}
+\end{figure}
+
+\begin{itemize}
+    \item Training data. The images, each with label \ct{'cat'} or \ct{'dog'}.
+    \item Computer sees each image, pixels in 2D array with RGB value (a vector in $\bb R^3$) at each pixel.
+    \item \textbf{Designing features.} ``Cartoon image'' of ML model's function: computes $N$ \textbf{features} from each image $\leadsto$ vectors (points) in $\bb R^N$ $\leadsto$ points with one label separated from those with other label (by graph of linear function).
+\end{itemize}
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Designing features, to easily separate data}
+    Compute $N$ \textbf{features} from each image $\leadsto$ vectors (points) in $\bb R^N$ $\leadsto$ points with one label separated from those with other label (by graph of linear function).
+
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{../../Images/Fig1-3.png}
+    \caption*{Figure 1.3 from textbook}
+    \end{figure}
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{Example 2 - Supervised learning, Section 1.2 of textbook}
+\textbf{Predict share price}
+
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{../../Images/Fig1-7a.png}
+\caption*{Figure 1.7, upper-left from textbook}
+\end{figure}
+
+\begin{itemize}
+    \item Training data. Revenues of ten corporations, each with label, the share price.
+    \item Each revenue is simple number in $\bb R$. One ``independent variable,'' call it $x$.
+    \item \textbf{Designing features.} In this example, use feature (revenue) already at hand. Not always what you want to do when there are multiple independent variables (we'll see examples later, where you design features).
+\end{itemize}
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Example 2 - Predict response variable, share price}
+    Revenue value: $x$.  Find a function $f(x) = \hat{m}x + \hat{b}$, so that if $y$ is share price for $x$ and we set $\hat{y} = f(x)$ then $y$ and $\hat{y}$ are close, on average. (Linear Regression)
+
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{../../Images/Fig1-7b.png}
+    \caption*{Figure 1.7, upper-right from textbook}
+    \end{figure}
+\end{frame}
 
 %%%%
 \begin{frame}
