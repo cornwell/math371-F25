@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  23 AUG 2025 10:15
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  24 AUG 2025 18:13
  restricted system commands enabled.
 **lecture01
 (./lecture01.tex
@@ -2160,55 +2160,55 @@ Package: listings 2024/05/25 1.10b (Carsten Heinz)
 (./lecture01.aux)
 \openout1 = lecture01.aux
 
-LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 189.
+LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 190.
 LaTeX Font Info:    Trying to load font information for OML+ntxsfmi on input li
-ne 189.
+ne 190.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtxsf/omlntxsfmi.fd
 File: omlntxsfmi.fd 2014/11/16 Fontinst v1.933 font definitions for OML/ntxsfmi
 .
 )
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 189.
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 189.
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 189.
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 190.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-89.
+90.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 189.
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 189.
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 190.
 LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 
-189.
+190.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 189.
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 189.
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 190.
 LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line
- 189.
+ 190.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 189.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 189.
-LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -2270,69 +2270,69 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring ON on input line 189.
+Package hyperref Info: Link coloring ON on input line 190.
  (./lecture01.out) (./lecture01.out)
 \@outlinefile=\write5
 
 \openout5 = lecture01.out
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/FiraSans(0)/m/n --> OT1/cmss/m/n on input line 189.
+(Font)                  OT1/FiraSans(0)/m/n --> OT1/cmss/m/n on input line 190.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/FiraSans(0)/b/n --> OT1/cmss/b/n on input line 189.
+(Font)                  OT1/FiraSans(0)/b/n --> OT1/cmss/b/n on input line 190.
 
 \symnumbers=\mathgroup10
 \sympureletters=\mathgroup11
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmr/m/n on input line 189.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 189.
+(Font)                  OT1/cmss/m/n --> TU/lmr/m/n on input line 190.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/FiraSans(0)/b/n --> TU/FiraSans(0)/b/n on input lin
-e 189.
+e 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
 (Font)                  OT1/FiraSans(0)/b/n --> TU/FiraSans(0)/b/n on input lin
-e 189.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 189.
+e 190.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/FiraSans(0)/m/n --> TU/FiraSans(0)/m/n on input lin
-e 189.
+e 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/FiraSans(0)/b/n --> TU/FiraSans(0)/m/n on input lin
-e 189.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 189.
+e 190.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/FiraSans(0)/m/it --> TU/FiraSans(0)/m/it on input l
-ine 189.
+ine 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/FiraSans(0)/b/it --> TU/FiraSans(0)/m/it on input l
-ine 189.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 189.
+ine 190.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/FiraMono(0)/m/n --> TU/FiraMono(0)/m/n on input lin
-e 189.
+e 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/FiraMono(0)/b/n --> TU/FiraMono(0)/m/n on input lin
-e 189.
+e 190.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
 (Font)                  TU/FiraSans(0)/m/n --> TU/FiraSans(0)/b/n on input line
- 189.
+ 190.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  TU/FiraSans(0)/m/it --> TU/FiraSans(0)/b/it on input li
-ne 189.
+ne 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> TU/lmr/b/n on input line 189.
+(Font)                  OT1/cmss/b/n --> TU/lmr/b/n on input line 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
 (Font)                  TU/FiraSans(0)/b/n --> TU/FiraSans(0)/b/n on input line
- 189.
+ 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  TU/FiraSans(0)/m/n --> TU/FiraSans(0)/b/n on input line
- 189.
+ 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  TU/FiraSans(0)/m/it --> TU/FiraSans(0)/b/it on input li
-ne 189.
+ne 190.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/FiraMono(0)/m/n --> TU/FiraMono(0)/b/n on input line
- 189.
+ 190.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/translator/translator-b
 asic-dictionary-English.dict
@@ -2358,41 +2358,41 @@ Dictionary: translator-numbers-dictionary, Language: English
 heorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Command `\dddot' is already robust on input line 189.
-LaTeX Info: Command `\ddddot' is already robust on input line 189.
+LaTeX Info: Command `\dddot' is already robust on input line 190.
+LaTeX Info: Command `\ddddot' is already robust on input line 190.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count386
  (./lecture01.nav)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.10004pt on input line 189.
+(Font)              scaled to size 5.10004pt on input line 190.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 6.80005pt on input line 189.
+(Font)              scaled to size 6.80005pt on input line 190.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 12.24008pt on input line 193.
+(Font)              scaled to size 12.24008pt on input line 194.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 12.24008pt on input line 193.
+(Font)              scaled to size 12.24008pt on input line 194.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 7.65005pt on input line 193.
+(Font)              scaled to size 7.65005pt on input line 194.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 8.50006pt on input line 193.
+(Font)              scaled to size 8.50006pt on input line 194.
 
-Overfull \vbox (39.45392pt too high) detected at line 193
+Overfull \vbox (39.45392pt too high) detected at line 194
  []
 
 
 
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 3.40002pt on input line 193.
+(Font)              scaled to size 3.40002pt on input line 194.
 [1
 
 {C:/Users/gener/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 (./lecture01.toc)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 10.20007pt on input line 198.
+(Font)              scaled to size 10.20007pt on input line 199.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 10.20007pt on input line 198.
+(Font)              scaled to size 10.20007pt on input line 199.
 
 
 [2
@@ -2402,43 +2402,43 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 [3
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 219
+LaTeX Font Info:    Trying to load font information for U+msa on input line 220
 .
  (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 219
+LaTeX Font Info:    Trying to load font information for U+msb on input line 220
 .
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsfmia on input lin
-e 219.
+e 220.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtxsf/untxsfmia.fd
 File: untxsfmia.fd 2014/11/16 Fontinst v1.933 font definitions for U/ntxsfmia.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
-219.
+220.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
-219.
+220.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.18503pt on input line 219.
+(Font)              scaled to size 5.18503pt on input line 220.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 9.30756pt on input line 219.
+(Font)              scaled to size 9.30756pt on input line 220.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.80005pt on input line 219.
+(Font)              scaled to size 6.80005pt on input line 220.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 5.18503pt on input line 219.
+(Font)              scaled to size 5.18503pt on input line 220.
 
 
 [4
@@ -2457,9 +2457,9 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/it' will be
-(Font)              scaled to size 9.30756pt on input line 240.
+(Font)              scaled to size 9.30756pt on input line 242.
 
-Overfull \vbox (10.88412pt too high) detected at line 240
+Overfull \vbox (14.52405pt too high) detected at line 242
  []
 
 
@@ -2467,7 +2467,7 @@ Overfull \vbox (10.88412pt too high) detected at line 240
 [8
 
 ]
-Overfull \vbox (10.88412pt too high) detected at line 240
+Overfull \vbox (14.52405pt too high) detected at line 242
  []
 
 
@@ -2475,7 +2475,7 @@ Overfull \vbox (10.88412pt too high) detected at line 240
 [9
 
 ]
-Overfull \vbox (10.88412pt too high) detected at line 240
+Overfull \vbox (14.52405pt too high) detected at line 242
  []
 
 
@@ -2483,7 +2483,7 @@ Overfull \vbox (10.88412pt too high) detected at line 240
 [10
 
 ]
-Overfull \vbox (10.88412pt too high) detected at line 240
+Overfull \vbox (14.52405pt too high) detected at line 242
  []
 
 
@@ -2491,7 +2491,7 @@ Overfull \vbox (10.88412pt too high) detected at line 240
 [11
 
 ]
-Overfull \vbox (10.88412pt too high) detected at line 240
+Overfull \vbox (14.52405pt too high) detected at line 242
  []
 
 
@@ -2500,68 +2500,36 @@ Overfull \vbox (10.88412pt too high) detected at line 240
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 9.30756pt on input line 267.
-
-Overfull \vbox (4.58127pt too high) detected at line 267
- []
-
+(Font)              scaled to size 9.30756pt on input line 269.
 
 
 [13
 
 ]
-Overfull \vbox (4.58127pt too high) detected at line 267
- []
-
-
 
 [14
 
 ]
-Overfull \vbox (4.58127pt too high) detected at line 267
- []
-
-
 
 [15
 
 ]
-Overfull \vbox (4.58127pt too high) detected at line 267
- []
-
-
 
 [16
 
 ]
-Overfull \vbox (4.58127pt too high) detected at line 267
- []
-
-
 
 [17
 
 ]
-Overfull \vbox (4.58127pt too high) detected at line 267
- []
-
-
 
 [18
 
 ]
-Overfull \vbox (4.58127pt too high) detected at line 267
- []
-
-
 
 [19
 
 ]
-Overfull \vbox (4.58127pt too high) detected at line 267
- []
-
-
 
 [20
 
@@ -2578,16 +2546,16 @@ Overfull \vbox (4.58127pt too high) detected at line 267
 [23
 
 ]
-<../../Images/Fig1-1.png, id=160, 1320.43312pt x 566.86781pt>
+<../../Images/Fig1-1.png, id=152, 1320.43312pt x 566.86781pt>
 File: ../../Images/Fig1-1.png Graphic file (type png)
 <use ../../Images/Fig1-1.png>
-Package luatex.def Info: ../../Images/Fig1-1.png  used on input line 302.
-(luatex.def)             Requested size: 122.91406pt x 52.76314pt.
+Package luatex.def Info: ../../Images/Fig1-1.png  used on input line 305.
+(luatex.def)             Requested size: 138.2795pt x 59.36285pt.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/05/25 1.10b listings language file
 )
-Overfull \vbox (7.39598pt too high) detected at line 302
+Overfull \vbox (13.9957pt too high) detected at line 305
  []
 
 
@@ -2595,13 +2563,13 @@ Overfull \vbox (7.39598pt too high) detected at line 302
 [24
 
 <../../Images/Fig1-1.png>]
-<../../Images/Fig1-3.png, id=169, 1237.62375pt x 770.88pt>
+<../../Images/Fig1-3.png, id=162, 1237.62375pt x 770.88pt>
 File: ../../Images/Fig1-3.png Graphic file (type png)
 <use ../../Images/Fig1-3.png>
-Package luatex.def Info: ../../Images/Fig1-3.png  used on input line 313.
+Package luatex.def Info: ../../Images/Fig1-3.png  used on input line 316.
 (luatex.def)             Requested size: 245.83282pt x 153.11462pt.
 
-Overfull \vbox (24.51367pt too high) detected at line 313
+Overfull \vbox (24.51367pt too high) detected at line 316
  []
 
 
@@ -2609,13 +2577,13 @@ Overfull \vbox (24.51367pt too high) detected at line 313
 [25
 
 <../../Images/Fig1-3.png>]
-<../../Images/Fig1-7a.png, id=176, 643.6547pt x 356.83313pt>
+<../../Images/Fig1-7a.png, id=169, 643.6547pt x 356.83313pt>
 File: ../../Images/Fig1-7a.png Graphic file (type png)
 <use ../../Images/Fig1-7a.png>
-Package luatex.def Info: ../../Images/Fig1-7a.png  used on input line 330.
+Package luatex.def Info: ../../Images/Fig1-7a.png  used on input line 333.
 (luatex.def)             Requested size: 122.91406pt x 68.14201pt.
 
-Overfull \vbox (37.78186pt too high) detected at line 330
+Overfull \vbox (7.13493pt too high) detected at line 333
  []
 
 
@@ -2623,13 +2591,13 @@ Overfull \vbox (37.78186pt too high) detected at line 330
 [26
 
 <../../Images/Fig1-7a.png>]
-<../../Images/Fig1-7b.png, id=183, 632.3625pt x 349.305pt>
+<../../Images/Fig1-7b.png, id=176, 632.3625pt x 349.305pt>
 File: ../../Images/Fig1-7b.png Graphic file (type png)
 <use ../../Images/Fig1-7b.png>
-Package luatex.def Info: ../../Images/Fig1-7b.png  used on input line 341.
+Package luatex.def Info: ../../Images/Fig1-7b.png  used on input line 344.
 (luatex.def)             Requested size: 245.83282pt x 135.79134pt.
 
-Overfull \vbox (7.8233pt too high) detected at line 341
+Overfull \vbox (7.8233pt too high) detected at line 344
  []
 
 
@@ -2637,15 +2605,37 @@ Overfull \vbox (7.8233pt too high) detected at line 341
 [27
 
 <../../Images/Fig1-7b.png>]
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 7.65005pt on input line 360.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 360.
+
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 6.20503pt on input line 360.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 4.67503pt on input line 360.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 7.65005pt on input line 360.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 6.20503pt on input line 360.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 4.67503pt on input line 360.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 6.80005pt on input line 357.
+(Font)              scaled to size 6.80005pt on input line 360.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 5.18503pt on input line 357.
+(Font)              scaled to size 5.18503pt on input line 360.
 
 
 [28
 
 ]
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 6.20503pt on input line 360.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 4.67503pt on input line 360.
+
 
 [29
 
@@ -2658,239 +2648,32 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 [31
 
 ]
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 7.65005pt on input line 382.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 382.
-
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 6.20503pt on input line 382.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 4.67503pt on input line 382.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 6.20503pt on input line 382.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 4.67503pt on input line 382.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 7.65005pt on input line 382.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.20503pt on input line 382.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 4.67503pt on input line 382.
-
-Overfull \vbox (17.75626pt too high) detected at line 382
- []
-
-
 
 [32
 
 ]
-Overfull \vbox (17.75626pt too high) detected at line 382
- []
-
-
 
 [33
 
 ]
-Overfull \vbox (17.75626pt too high) detected at line 382
- []
-
-
 
 [34
 
 ]
-Overfull \vbox (17.75626pt too high) detected at line 382
- []
-
-
 
 [35
 
 ]
-Overfull \vbox (17.75626pt too high) detected at line 382
- []
-
-
 
 [36
 
 ]
-Overfull \vbox (17.75626pt too high) detected at line 382
- []
-
-
 
 [37
 
 ]
-Overfull \vbox (17.75626pt too high) detected at line 382
- []
-
-
 
 [38
-
-]
-
-[39
-
-]
-
-[40
-
-] (./lecture01.toc)
-
-[41
-
-]
-Overfull \vbox (3.9165pt too high) detected at line 412
- []
-
-
-
-[42
-
-]
-Overfull \vbox (3.9165pt too high) detected at line 412
- []
-
-
-
-[43
-
-]
-Overfull \vbox (3.9165pt too high) detected at line 412
- []
-
-
-
-[44
-
-]
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 8.50006pt on input line 436.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 8.50006pt on input line 436.
-
-Overfull \vbox (9.6803pt too high) detected at line 436
- []
-
-
-
-[45
-
-]
-Overfull \vbox (9.6803pt too high) detected at line 436
- []
-
-
-
-[46
-
-]
-Overfull \vbox (9.6803pt too high) detected at line 436
- []
-
-
-
-[47
-
-]
-Overfull \vbox (9.6803pt too high) detected at line 436
- []
-
-
-
-[48
-
-]
-Overfull \vbox (9.6803pt too high) detected at line 436
- []
-
-
-
-[49
-
-]
-Overfull \vbox (1.1105pt too high) detected at line 456
- []
-
-
-
-[50
-
-]
-Overfull \vbox (1.1105pt too high) detected at line 456
- []
-
-
-
-[51
-
-]
-Overfull \vbox (1.1105pt too high) detected at line 456
- []
-
-
-
-[52
-
-]
-Overfull \hbox (19.1667pt too wide) in paragraph at lines 473--473
-[][]  
- []
-
-
-Overfull \vbox (24.10698pt too high) detected at line 473
- []
-
-
-
-[53
-
-]
-Overfull \hbox (19.1667pt too wide) in paragraph at lines 473--473
-[][]  
- []
-
-
-Overfull \vbox (24.10698pt too high) detected at line 473
- []
-
-
-
-[54
-
-]
-Overfull \hbox (19.1667pt too wide) in paragraph at lines 473--473
-[][]  
- []
-
-
-Overfull \vbox (24.10698pt too high) detected at line 473
- []
-
-
-
-[55
-
-]
-Overfull \hbox (38.33897pt too wide) in paragraph at lines 486--486
-[][]  
- []
-
-
-
-[56
-
-]
-
-[57
 
 ]
 \tf@nav=\write6
@@ -2916,36 +2699,36 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `lecture01.out' has not changed.
-(rerunfilecheck)             Checksum: 74103E69851F36185ABBAB4B7DBD50C9;472.
+(rerunfilecheck)             Checksum: E48F9F22EC98C3981C915FFC33A569B3;267.
 )
 
 Here is how much of LuaTeX's memory you used:
- 33428 strings out of 475915
+ 33324 strings out of 475915
  125031,1977958 words of node,token memory allocated
- 1072 words of node memory still in use:
-   14 hlist, 6 vlist, 2 rule, 1 disc, 1 local_par, 15 glue, 6 kern, 8 penalty, 1
-2 glyph, 39 attribute, 72 glue_spec, 39 attribute_list, 4 write, 5 pdf_colorstac
+ 1007 words of node memory still in use:
+   13 hlist, 6 vlist, 2 rule, 1 disc, 1 local_par, 15 glue, 6 kern, 8 penalty, 1
+2 glyph, 25 attribute, 72 glue_spec, 25 attribute_list, 4 write, 5 pdf_colorstac
 k nodes
-   avail lists: 2:982,3:385,4:273,5:562,6:40,7:3039,8:44,9:795,10:21,11:185
- 54825 multiletter control sequences out of 65536+600000
- 248 fonts using 47966119 bytes
- 128i,13n,139p,1911b,874s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public/fira/FiraSan
-s-BoldItalic.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/pu
-blic/fira/FiraSans-Italic.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/font
-s/opentype/public/fira/FiraSans-Regular.otf><C:/Users/gener/AppData/Local/Progra
-ms/MiKTeX/fonts/opentype/public/fira/FiraSans-Bold.otf><C:/Users/gener/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/gener/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/rtxmi.pfb><C:/Users/gene
-r/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Users/gen
-er/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsyc.pfb><C:/Users/
-gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb><C:/Users
-/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtxsf/zsfmi-reg.pfb><C
-:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtxsf/zsfmia-re
-g.pfb>
-Output written on lecture01.pdf (57 pages, 2573676 bytes).
+   avail lists: 2:934,3:370,4:287,5:577,6:37,7:3045,8:14,9:357,10:21,11:197
+ 54783 multiletter control sequences out of 65536+600000
+ 228 fonts using 46206191 bytes
+ 128i,13n,139p,1911b,971s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public/fira/firamon
+o-regular.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/publi
+c/fira/FiraSans-BoldItalic.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fon
+ts/opentype/public/fira/FiraSans-Italic.otf><C:/Users/gener/AppData/Local/Progra
+ms/MiKTeX/fonts/opentype/public/fira/FiraSans-Regular.otf><C:/Users/gener/AppDat
+a/Local/Programs/MiKTeX/fonts/opentype/public/fira/FiraSans-Bold.otf><C:/Users/g
+ener/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:
+/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/rtxmi.pfb>
+<C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsyc.p
+fb><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.
+pfb><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtxsf/zsf
+mi-reg.pfb><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newt
+xsf/zsfmia-reg.pfb>
+Output written on lecture01.pdf (38 pages, 2508031 bytes).
 
-PDF statistics: 404 PDF objects out of 1000 (max. 8388607)
- 118 named destinations out of 1000 (max. 131072)
- 40 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 298 PDF objects out of 1000 (max. 8388607)
+ 79 named destinations out of 1000 (max. 131072)
+ 32 words of extra memory for PDF output out of 10000 (max. 100000000)
 

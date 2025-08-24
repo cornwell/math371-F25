@@ -1,1 +1,0 @@
-\beamer@sectionintoc {1}{Gradient Descent in Logistic model}{2}{0}{1}

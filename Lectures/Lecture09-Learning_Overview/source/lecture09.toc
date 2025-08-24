@@ -1,3 +1,0 @@
-\beamer@sectionintoc {1}{Machine Learning}{3}{0}{1}
-\beamer@sectionintoc {2}{Supervised learning}{22}{0}{2}
-\beamer@sectionintoc {3}{First look at Gradient Descent}{36}{0}{3}

@@ -28,7 +28,7 @@
 %% Custom colors
 \usepackage{color}
 \definecolor{TUGray}{RGB}{101,101,137}
-\definecolor{TUBlack}{RGB}{30,0,0}
+\definecolor{TUBlack}{RGB}{0,0,10}
 \definecolor{mygreen}{RGB}{45,111,63}
 \definecolor{keywords}{RGB}{205,114,0}
 \definecolor{comments}{RGB}{181,51,139}
@@ -174,6 +174,7 @@ keepspaces=true
 
 %% Some shortcut macros for computer-type font
 \newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
+\newcommand{\st}[1]{\lstinline[language=Python,basicstyle=\ttfamily,stringstyle=\small\color{strings}]!#1!}
 \newcommand{\ttt}[1]{{\small\texttt{#1}}}
 \newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
 \newcommand{\bb}[1]{\mathbb{#1}}
@@ -181,7 +182,7 @@ keepspaces=true
 
 %% Header information
 \author{Chris Cornwell}
-\date{Mar 13, 2025}
+\date{Aug 26, 2025}
 \title{Overview of Machine Learning \newline 
     \footnotesize{with focus on Supervised Learning}}
 
@@ -212,9 +213,9 @@ keepspaces=true
             \item related to much older statistical modeling.
         \end{itemize}
         \pause
-        \item Can be single machine learning model to perform a task (e.g., finding person in an image, speech-to-text, sentiment analysis)
+        \item Can be single ML model performing task (e.g., finding person in an image, speech-to-text, sentiment analysis)
         \pause
-        \item Or, many separate models combined together $\leftarrow$ makes AI function (e.g., self-driving cars, LLM's or chatbots).
+        \item Or, many separate models combined together $\leftarrow$ what makes AI work (e.g., self-driving cars, LLM's or chatbots).
     \end{itemize}
 \end{frame}
 
@@ -226,11 +227,12 @@ keepspaces=true
     \begin{quote}
         A ``computer program'' is said to \textbf{learn} from experience $E$, with respect to some task $T$ and performance measure $M$ if: its performance on $T$, as measured by $M$, improves with experience $E$.
     \end{quote}
+    \vspace*{-12pt}
     \pause
     \begin{itemize}
         \item Often, the experience $E$ is called ``training'' (updates to how program runs); based on observed data.
         \pause
-        \item ``computer program,'' for us (``learning algorithm''), will determine a function that produces output from given input (the data). The output is how the program achieves the task $T$. 
+        \item ``computer program,'' for us ``learning algorithm'', determines a function that produces output from given input (the data). After training, the resulting input-output function represents achieving the task $T$. 
         \pause
         \item In class, we will discuss algorithms made for \textit{regression} tasks, and others for \textit{classification} tasks, that fit this paradigm.
         \pause 
@@ -241,17 +243,17 @@ keepspaces=true
 
 %%%%
 \begin{frame}
-\frametitle{General categories of tasks in machine learning?}
+\frametitle{Two general categories in machine learning}
 
 \textbf{Supervised learning:} algorithm uses sample (input) data that have output ``labels.'' Goal: determine a \emph{good} underlying function from sample data.
 \pause
     \begin{itemize}
         \item Housing price prediction
         \pause
-        \item Whether emails are phishing or not phishing.
+        \item Whether emails are junk or not.
         \pause
         \item Detect space debris, or trash on ocean surface.
-        \item Auto-completion of typed sentence.
+        %\item Auto-completion of typed sentence.
     \end{itemize}
 \pause
 \textbf{Unsupervised learning:} algorithm uses sample data, but it is unlabeled. Goal: discover something (a pattern, grouping, or some insight) about the data based on its coordinates (features).
@@ -271,9 +273,10 @@ keepspaces=true
 %%%%
 \begin{frame}
 \frametitle{The goal of Supervised learning}
+In Section 1.2, the textbook uses the term ``Predictive learning'' to mean same as Supervised learning. 
 \begin{itemize}
     \item (Supervised $\iff$ labels) 
-    \item The sample data has labels {--} called \textbf{training data}. The goal is to ``learn'' a function from the training data that will do well labeling new data, not seen during learning process. 
+    \item The labeled sample data is called \textbf{training data}. The goal is to ``learn'' a function from the training data that will do well labeling new data, not seen during learning process. 
     \item ``Doing well'' is measured by a loss function ($M$ from Mitchell's description). 
     \item \invisible<1>{The learning algorithm starts with \emph{some} function; it doesn't do labeling well, but the algorithm uses the loss function to alter that function to something better. ($\leftarrow$ ``learning'')}
 \end{itemize}
@@ -290,12 +293,12 @@ keepspaces=true
 \textbf{Cat or Dog?}
 
 \begin{figure}
-\includegraphics[width=0.4\textwidth]{../../Images/Fig1-1.png}
+\includegraphics[width=0.45\textwidth]{../../Images/Fig1-1.png}
 \caption*{Figure 1.1 from textbook}
 \end{figure}
 
 \begin{itemize}
-    \item Training data. The images, each with label \ct{'cat'} or \ct{'dog'}.
+    \item Training data. The images, each with label \st{'cat'} or \st{'dog'}.
     \item Computer sees each image, pixels in 2D array with RGB value (a vector in $\bb R^3$) at each pixel.
     \item \textbf{Designing features.} ``Cartoon image'' of ML model's function: computes $N$ \textbf{features} from each image $\leadsto$ vectors (points) in $\bb R^N$ $\leadsto$ points with one label separated from those with other label (by graph of linear function).
 \end{itemize}
@@ -323,9 +326,9 @@ keepspaces=true
 \end{figure}
 
 \begin{itemize}
-    \item Training data. Revenues of ten corporations, each with label, the share price.
-    \item Each revenue is simple number in $\bb R$. One ``independent variable,'' call it $x$.
-    \item \textbf{Designing features.} In this example, use feature (revenue) already at hand. Not always what you want to do when there are multiple independent variables (we'll see examples later, where you design features).
+    \item From training data, pick one feature: revenue. Label: the share price.
+    \item Each revenue, a number in $\bb R$. One ``independent variable,'' call it $x$.
+    \item \textbf{Designing features.} Here, have used a feature already at hand. Not always best idea when there are multiple independent variables (we'll see examples later, where you design features).
 \end{itemize}
 \end{frame}
 
@@ -342,45 +345,43 @@ keepspaces=true
 
 %%%%
 \begin{frame}
-\frametitle{The goal of supervised learning}
-Have an ``input space'' (which often is $\mathbb R^{d}$, or a subset of it, but could be a different space); and have an output space, or label space, $Y$. 
+\frametitle{Supervised learning, very generally}
+Have an ``input space'' (often is $\mathbb R^{N}$, for some $N$, or subset of it\footnote{The domain (input space) \textit{could} be some different space.}).  Have an output space, or label space, $Y$. ($Y$ is a finite list of labels for classification; it is $\bb R$ or an interval in $\bb R$ for regression.) 
 
 \pause
 \begin{itemize}
-    \item Given a sample $\mathcal S = \{({\bf x}_i, y_i)\}_{i=1}^n$, with ${\bf x}_i\in\mathbb R^d$ and $y_i\in Y$, drawn from an (unknown) joint probability distribution $P_{X,Y}:\mathbb R^{d}\times Y \to [0, \infty)$. 
+    \item Given a sample $\mathcal S = \{({\bf x}_i, y_i)\}_{i=1}^P$, with ${\bf x}_i\in\mathbb R^N$ and $y_i\in Y$, drawn from an (unknown) joint probability distribution $\rho_{X,Y}:\mathbb R^{N}\times Y \to [0, \infty)$. 
     \pause
-    \item Goal: to learn, from $\mathcal S$, a function $f^*:\mathbb R^d\to Y$ that ``fits'' (\textit{approximates well}) the distribution $P_{X,Y}$. 
+    \item Goal: to learn, from $\mathcal S$, a function $f^*:\mathbb R^N\to Y$ that ``fits'' (\textit{approximates well}) the distribution $\rho_{X,Y}$. 
     \pause
-    \item You might not be able to have points on the graph of $f^*$ be typically ``very close'' to samples from $P_{X,Y}$. However, ideally, for an ${\bf x}\in\mathbb R^d$ corresponding $y$-value on graph is near the expected value given ${\bf x}$.
+    \item Might not be possible for points on graph of $f^*$ to be typically ``close'' to samples from $\rho_{X,Y}$. However, for an ${\bf x}\in\mathbb R^N$, the corresponding $f^*(\bf x)$ should be near expected value of $y$, given ${\bf x}$.
 \end{itemize}
 
 \end{frame}
 
 %%%%
 \begin{frame}
-\frametitle{How to achieve the goal}
+\frametitle{Achieving the general goal}
 Most often, we choose a \textit{parameterized class} of functions\footnote{Sometimes called a \textit{hypothesis class}.}, and we get $f^*$ from that class. 
 \pause
 \begin{itemize}
-    \item That is, there is a space of parameters $\Omega$; an $\omega\in\Omega$ determines a function $f_{\omega}:\mathbb R^d \to Y$, and the parameterized class is the set of all such functions $f_\omega$. % Model selection
+    \item Have space of parameters $\Omega$; an $\omega\in\Omega$ determines a function $f_{\omega}:\mathbb R^N \to Y$. The parameterized class is the set of all such $f_\omega$. % Model selection
     \pause
-    \item To learn a function that fits well, you look for good parameters.
+    \item Change parameters to find a function that fits well.
 \end{itemize}
 
 \pause
-How do we find good parameters?
-
-Select a performance measure: \textbf{(empirical) loss function} $\mathcal L_{\mathcal S}:\Omega \to \mathbb R$. In the empirical loss function, we use $\mathcal S$ in its definition.
-\pause
+How to change parameters?  Select a performance measure: \textbf{(empirical) loss function} $\mathcal L_{\mathcal S}:\Omega \to \mathbb R$. %In the empirical loss function, we use $\mathcal S$ in its definition.
 \begin{itemize}
     \pause
-    \item Then, $\mathcal L_{\mathcal S}$ is used to determine how to make changes to parameters, $\omega$, in order to decrease the value of $\mathcal L_{\mathcal S}$.
+    \item Want to make value of $\mathcal L_{\mathcal S}$ small; use the function itself to do this.
     \pause
-    \item In an ideal situation, you converge to some $\omega^*$, a minimizer of $\mathcal L_{\mathcal S}$, and set $f^* = f_{\omega^*}$.
+    \item Ideally, converge to some $\omega^*$, a minimizer of $\mathcal L_{\mathcal S}$, and set $f^* = f_{\omega^*}$.
 \end{itemize}
 
 \end{frame}
 
+\comment{
 %%%%
 \begin{frame}
     \frametitle{For linear regression}
@@ -484,6 +485,7 @@ Recall the definition $\mathcal L_{\mathcal S}(m,b) = \frac1{n}\sum_{i=1}^n (mx_
 
     \vfill
 \end{frame}
+}
 
 {\setbeamercolor{palette primary}{fg=mygreen, bg=bggray}
 \begin{frame}[standout]

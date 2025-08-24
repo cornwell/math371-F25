@@ -1,1 +1,0 @@
-\beamer@sectionintoc {1}{Gradient Descent}{2}{0}{1}

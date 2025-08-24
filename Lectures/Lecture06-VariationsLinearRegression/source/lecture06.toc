@@ -1,2 +1,0 @@
-\beamer@sectionintoc {1}{Multiple variables}{3}{0}{1}
-\beamer@sectionintoc {2}{Polynomial fitting}{31}{0}{2}
