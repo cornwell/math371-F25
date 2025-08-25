@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  24 AUG 2025 18:13
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  25 AUG 2025 18:54
  restricted system commands enabled.
 **lecture01
 (./lecture01.tex
@@ -2402,64 +2402,88 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 [3
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 220
+LaTeX Font Info:    Trying to load font information for U+msa on input line 229
 .
  (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 220
+LaTeX Font Info:    Trying to load font information for U+msb on input line 229
 .
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsfmia on input lin
-e 220.
+e 229.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtxsf/untxsfmia.fd
 File: untxsfmia.fd 2014/11/16 Fontinst v1.933 font definitions for U/ntxsfmia.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
-220.
+229.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
-220.
+229.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.18503pt on input line 220.
+(Font)              scaled to size 5.18503pt on input line 229.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 9.30756pt on input line 220.
+(Font)              scaled to size 9.30756pt on input line 229.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.80005pt on input line 220.
+(Font)              scaled to size 6.80005pt on input line 229.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 5.18503pt on input line 220.
+(Font)              scaled to size 5.18503pt on input line 229.
+<../../Images/decision_boundary1.png, id=45, 386.44376pt x 251.94125pt>
+File: ../../Images/decision_boundary1.png Graphic file (type png)
+<use ../../Images/decision_boundary1.png>
+Package luatex.def Info: ../../Images/decision_boundary1.png  used on input lin
+e 229.
+(luatex.def)             Requested size: 92.1879pt x 60.10191pt.
 
 
 [4
 
-]
+<../../Images/decision_boundary1.png>]
+File: ../../Images/decision_boundary1.png Graphic file (type png)
+<use ../../Images/decision_boundary1.png>
+Package luatex.def Info: ../../Images/decision_boundary1.png  used on input lin
+e 229.
+(luatex.def)             Requested size: 92.1879pt x 60.10191pt.
+
 
 [5
 
 ]
+File: ../../Images/decision_boundary1.png Graphic file (type png)
+<use ../../Images/decision_boundary1.png>
+Package luatex.def Info: ../../Images/decision_boundary1.png  used on input lin
+e 229.
+(luatex.def)             Requested size: 92.1879pt x 60.10191pt.
+
 
 [6
 
 ]
+File: ../../Images/decision_boundary1.png Graphic file (type png)
+<use ../../Images/decision_boundary1.png>
+Package luatex.def Info: ../../Images/decision_boundary1.png  used on input lin
+e 229.
+(luatex.def)             Requested size: 92.1879pt x 60.10191pt.
+
 
 [7
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/it' will be
-(Font)              scaled to size 9.30756pt on input line 242.
+(Font)              scaled to size 9.30756pt on input line 251.
 
-Overfull \vbox (14.52405pt too high) detected at line 242
+Overfull \vbox (14.52405pt too high) detected at line 251
  []
 
 
@@ -2467,7 +2491,7 @@ Overfull \vbox (14.52405pt too high) detected at line 242
 [8
 
 ]
-Overfull \vbox (14.52405pt too high) detected at line 242
+Overfull \vbox (14.52405pt too high) detected at line 251
  []
 
 
@@ -2475,7 +2499,7 @@ Overfull \vbox (14.52405pt too high) detected at line 242
 [9
 
 ]
-Overfull \vbox (14.52405pt too high) detected at line 242
+Overfull \vbox (14.52405pt too high) detected at line 251
  []
 
 
@@ -2483,7 +2507,7 @@ Overfull \vbox (14.52405pt too high) detected at line 242
 [10
 
 ]
-Overfull \vbox (14.52405pt too high) detected at line 242
+Overfull \vbox (14.52405pt too high) detected at line 251
  []
 
 
@@ -2491,7 +2515,7 @@ Overfull \vbox (14.52405pt too high) detected at line 242
 [11
 
 ]
-Overfull \vbox (14.52405pt too high) detected at line 242
+Overfull \vbox (14.52405pt too high) detected at line 251
  []
 
 
@@ -2500,7 +2524,7 @@ Overfull \vbox (14.52405pt too high) detected at line 242
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 9.30756pt on input line 269.
+(Font)              scaled to size 9.30756pt on input line 278.
 
 
 [13
@@ -2546,116 +2570,143 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 [23
 
 ]
-<../../Images/Fig1-1.png, id=152, 1320.43312pt x 566.86781pt>
+
+[24
+
+]
+
+[25
+
+]
+<../../Images/Fig1-1.png, id=164, 1320.43312pt x 566.86781pt>
 File: ../../Images/Fig1-1.png Graphic file (type png)
 <use ../../Images/Fig1-1.png>
-Package luatex.def Info: ../../Images/Fig1-1.png  used on input line 305.
+Package luatex.def Info: ../../Images/Fig1-1.png  used on input line 318.
 (luatex.def)             Requested size: 138.2795pt x 59.36285pt.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/05/25 1.10b listings language file
 )
-Overfull \vbox (13.9957pt too high) detected at line 305
- []
-
-
-
-[24
-
-<../../Images/Fig1-1.png>]
-<../../Images/Fig1-3.png, id=162, 1237.62375pt x 770.88pt>
-File: ../../Images/Fig1-3.png Graphic file (type png)
-<use ../../Images/Fig1-3.png>
-Package luatex.def Info: ../../Images/Fig1-3.png  used on input line 316.
-(luatex.def)             Requested size: 245.83282pt x 153.11462pt.
-
-Overfull \vbox (24.51367pt too high) detected at line 316
- []
-
-
-
-[25
-
-<../../Images/Fig1-3.png>]
-<../../Images/Fig1-7a.png, id=169, 643.6547pt x 356.83313pt>
-File: ../../Images/Fig1-7a.png Graphic file (type png)
-<use ../../Images/Fig1-7a.png>
-Package luatex.def Info: ../../Images/Fig1-7a.png  used on input line 333.
-(luatex.def)             Requested size: 122.91406pt x 68.14201pt.
-
-Overfull \vbox (7.13493pt too high) detected at line 333
+Overfull \vbox (13.9957pt too high) detected at line 318
  []
 
 
 
 [26
 
-<../../Images/Fig1-7a.png>]
-<../../Images/Fig1-7b.png, id=176, 632.3625pt x 349.305pt>
-File: ../../Images/Fig1-7b.png Graphic file (type png)
-<use ../../Images/Fig1-7b.png>
-Package luatex.def Info: ../../Images/Fig1-7b.png  used on input line 344.
-(luatex.def)             Requested size: 245.83282pt x 135.79134pt.
+<../../Images/Fig1-1.png>]
+File: ../../Images/Fig1-1.png Graphic file (type png)
+<use ../../Images/Fig1-1.png>
+Package luatex.def Info: ../../Images/Fig1-1.png  used on input line 318.
+(luatex.def)             Requested size: 138.2795pt x 59.36285pt.
 
-Overfull \vbox (7.8233pt too high) detected at line 344
+Overfull \vbox (13.9957pt too high) detected at line 318
  []
 
 
 
 [27
 
-<../../Images/Fig1-7b.png>]
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 7.65005pt on input line 360.
+]
+File: ../../Images/Fig1-1.png Graphic file (type png)
+<use ../../Images/Fig1-1.png>
+Package luatex.def Info: ../../Images/Fig1-1.png  used on input line 318.
+(luatex.def)             Requested size: 138.2795pt x 59.36285pt.
 
+Overfull \vbox (13.9957pt too high) detected at line 318
+ []
 
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 360.
-
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 6.20503pt on input line 360.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 4.67503pt on input line 360.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 7.65005pt on input line 360.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.20503pt on input line 360.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 4.67503pt on input line 360.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 6.80005pt on input line 360.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 5.18503pt on input line 360.
 
 
 [28
 
 ]
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 6.20503pt on input line 360.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 4.67503pt on input line 360.
+<../../Images/Fig1-3.png, id=184, 1237.62375pt x 770.88pt>
+File: ../../Images/Fig1-3.png Graphic file (type png)
+<use ../../Images/Fig1-3.png>
+Package luatex.def Info: ../../Images/Fig1-3.png  used on input line 329.
+(luatex.def)             Requested size: 245.83282pt x 153.11462pt.
+
+Overfull \vbox (24.51367pt too high) detected at line 329
+ []
+
 
 
 [29
 
-]
+<../../Images/Fig1-3.png>]
+File: ../../Images/Fig1-3.png Graphic file (type png)
+<use ../../Images/Fig1-3.png>
+Package luatex.def Info: ../../Images/Fig1-3.png  used on input line 346.
+(luatex.def)             Requested size: 245.83282pt x 153.11462pt.
+
+Overfull \vbox (31.75093pt too high) detected at line 346
+ []
+
+
 
 [30
 
 ]
+<../../Images/Fig1-7a.png, id=196, 643.6547pt x 356.83313pt>
+File: ../../Images/Fig1-7a.png Graphic file (type png)
+<use ../../Images/Fig1-7a.png>
+Package luatex.def Info: ../../Images/Fig1-7a.png  used on input line 363.
+(luatex.def)             Requested size: 122.91406pt x 68.14201pt.
+
+Overfull \vbox (7.13493pt too high) detected at line 363
+ []
+
+
 
 [31
 
-]
+<../../Images/Fig1-7a.png>]
+<../../Images/Fig1-7b.png, id=204, 632.3625pt x 349.305pt>
+File: ../../Images/Fig1-7b.png Graphic file (type png)
+<use ../../Images/Fig1-7b.png>
+Package luatex.def Info: ../../Images/Fig1-7b.png  used on input line 374.
+(luatex.def)             Requested size: 245.83282pt x 135.79134pt.
+
+Overfull \vbox (7.8233pt too high) detected at line 374
+ []
+
+
 
 [32
 
-]
+<../../Images/Fig1-7b.png>]
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 7.65005pt on input line 390.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 390.
+
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 6.20503pt on input line 390.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 4.67503pt on input line 390.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 7.65005pt on input line 390.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 6.20503pt on input line 390.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 4.67503pt on input line 390.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 6.80005pt on input line 390.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 5.18503pt on input line 390.
+
 
 [33
 
 ]
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 6.20503pt on input line 390.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 4.67503pt on input line 390.
+
 
 [34
 
@@ -2674,6 +2725,26 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 ]
 
 [38
+
+]
+
+[39
+
+]
+
+[40
+
+]
+
+[41
+
+]
+
+[42
+
+]
+
+[43
 
 ]
 \tf@nav=\write6
@@ -2703,14 +2774,14 @@ Package rerunfilecheck Info: File `lecture01.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 33324 strings out of 475915
+ 33413 strings out of 475915
  125031,1977958 words of node,token memory allocated
  1007 words of node memory still in use:
    13 hlist, 6 vlist, 2 rule, 1 disc, 1 local_par, 15 glue, 6 kern, 8 penalty, 1
 2 glyph, 25 attribute, 72 glue_spec, 25 attribute_list, 4 write, 5 pdf_colorstac
 k nodes
-   avail lists: 2:934,3:370,4:287,5:577,6:37,7:3045,8:14,9:357,10:21,11:197
- 54783 multiletter control sequences out of 65536+600000
+   avail lists: 2:934,3:391,4:287,5:589,6:37,7:3045,8:14,9:357,10:21,11:197
+ 54841 multiletter control sequences out of 65536+600000
  228 fonts using 46206191 bytes
  128i,13n,139p,1911b,971s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public/fira/firamon
@@ -2726,9 +2797,9 @@ fb><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.
 pfb><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtxsf/zsf
 mi-reg.pfb><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newt
 xsf/zsfmia-reg.pfb>
-Output written on lecture01.pdf (38 pages, 2508031 bytes).
+Output written on lecture01.pdf (43 pages, 2536891 bytes).
 
-PDF statistics: 298 PDF objects out of 1000 (max. 8388607)
- 79 named destinations out of 1000 (max. 131072)
+PDF statistics: 326 PDF objects out of 1000 (max. 8388607)
+ 89 named destinations out of 1000 (max. 131072)
  32 words of extra memory for PDF output out of 10000 (max. 100000000)
 
