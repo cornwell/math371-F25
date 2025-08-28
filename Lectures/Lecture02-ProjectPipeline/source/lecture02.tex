@@ -229,13 +229,15 @@ keepspaces=true
         \begin{itemize}
             \item Example: From a given image, determine if it is an image of a dog or not.
         \end{itemize}
+        \pause
         \item[\gnum{1}] Collect data.
         \begin{itemize}
             \item Example: Put together a large collection of images, some having dogs in them, others having a different animal, or no animal. Have a label (your output, ``$y$'') for each image. Split into training set and test set.
         \end{itemize}
+        \pause
         \item[\gnum{2}] Design the features in the data.
         \begin{itemize}
-            \item Not one thing that you always do here. Sometimes use experience/knowledge of what the data represents, sometimes use another learning algorithm to \emph{learn} good features.
+            \item Not one thing that you always do here. Sometimes use experience/knowledge of what the data represents, sometimes use another learning algorithm to \textit{learn} good features.
         \end{itemize}
     \end{enumerate}
 \end{frame}
@@ -244,7 +246,7 @@ keepspaces=true
 \begin{frame}
 \frametitle{Discussion on the ML Project Pipeline}
     \begin{enumerate}
-        \item[\gnum{3}] Training of the model.
+        \item[\gnum{3}] Training of the model.%Where we will spend a lot of time; lots of developed mathematics and algorithms.
         \begin{itemize}
             \item Model is determined by set of parameters. In training, you alter the parameters iteratively {--} ``tune'' them {--} using optimization techniques (on the loss function).
         \end{itemize}
@@ -256,20 +258,26 @@ keepspaces=true
 \end{frame}
 
 %%%%
+\begin{frame}[standout]
+    Poll question
+\end{frame}
+
+%%%%
 \begin{frame}
 \frametitle{Difficulty in Defining the Problem}
-    While you often have a clearly defined problem when first learning ML (here are images of handwritten numbers; determine which number is written), this is not typical of real settings.  
-    
-    \begin{codeblock}
-        \textcolor{mygreen}{Example.} You have a database of many Tweets (from X / Twitter) about news events and you are interested in using machine learning to determine when a Tweet about news is misinformation versus when it is not.
+    Examples worked with when first learning ML have a easily defined problem (\textit{e.g.}, here are images of handwritten numbers; determine which number is written); defining problem harder in real practice.  
+    \pause
 
-        What will your predictive model do? Is it a simple classification problem? If so, what are the classes? If not, what alternative is there?
+    \begin{codeblock}
+        \textcolor{mygreen}{Example.} Have database of Tweets (from X / Twitter) about news events; interested in using machine learning to determine which are giving misinformation.
+
+        Is it a simple classification problem, {\small\st{'misinformation'}} vs. {\small\st{'not'}}? If not, what alternative is there?
     \end{codeblock}
 
     Sometimes the issue is in the data. 
     
     \begin{codeblock}
-        \textcolor{mygreen}{Example.} A company wants to try to make a predictive model, using courses taken, types of work experience, other personal information, etc to predict how good a job candidate would be in a software developer role. ... %% or, the crime data
+        \textcolor{mygreen}{Example.} Attempting to use crime data in Baltimore to model how crimes occur by location (\textit{e.g.}, reoccurrence of crime at same location shortly after).
     \end{codeblock}
 
 \end{frame}
@@ -277,16 +285,46 @@ keepspaces=true
 %%%%
 \begin{frame}
 \frametitle{Difficulty in Designing Features}
+Very often, data is gathered in format or coordinates that make it hard to achieve ML task or, at least, do not help.
 
-Talk about domain knowledge, like it discusses in the textbook. Do some filter examples of images.
+Will discuss some techniques that identify coordinates that ``do not help'' (Feature selection).
+
 \pause
+Domain knowledge is important for designing (computing) better features from given data.
+
+\pause
+\begin{codeblock}
+        \textcolor{mygreen}{Example.} In textbook, reconstructed Galileo experiment for objects falling. 
+
+        \begin{center}Force of gravity is constant ($g$) 
+            
+            $\Downarrow$ 
+            
+        height change is $\frac{g}{2}t^2$ (from Calculus)
+        \end{center}
+\end{codeblock}
 
 \end{frame}
 
 %%%%
+\begin{frame}[standout]
+    Poll question
+\end{frame}
+
+%%%%
 \begin{frame}
-\frametitle{Training the model}
-Where we will spend a lot of time; lots of developed mathematics and algorithms.
+\frametitle{Difficulty in Designing Features}
+Some studies on brain function suggest that visually recognizing something is correlated with identifying edges in an image.
+
+Computer vision learning algorithms are built to compute such edge features from input image.
+
+\pause
+\begin{center}
+    \begin{tikzpicture}[>=stealth]
+        \draw (0,0) node {\includegraphics[width=\textwidth]{../../Images/filter-dogimage.png}};
+        \draw[->,thick] (-0.4,0) -- (0.4,0);
+    \end{tikzpicture}
+\end{center}
 \end{frame}
 
 {\setbeamercolor{palette primary}{fg=mygreen, bg=bggray}
