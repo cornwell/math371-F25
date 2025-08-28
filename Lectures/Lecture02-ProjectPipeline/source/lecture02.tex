@@ -193,12 +193,7 @@ keepspaces=true
 \titlepage
 \end{frame}
 
-\begin{frame}
-\frametitle{Outline}
-\tableofcontents
-\end{frame}
-
-\section{The Pipeline}
+%\section{The Pipeline}
 
 %% ML Pipeline
 %%%%
@@ -250,6 +245,7 @@ keepspaces=true
         \begin{itemize}
             \item Model is determined by set of parameters. In training, you alter the parameters iteratively {--} ``tune'' them {--} using optimization techniques (on the loss function).
         \end{itemize}
+        \pause
         \item[\gnum{4}] Test the model.
         \begin{itemize}
             \item Evaluate the trained model's performance on test data, measured by the same loss function.
@@ -274,6 +270,7 @@ keepspaces=true
         Is it a simple classification problem, {\small\st{'misinformation'}} vs. {\small\st{'not'}}? If not, what alternative is there?
     \end{codeblock}
 
+    \pause
     Sometimes the issue is in the data. 
     
     \begin{codeblock}

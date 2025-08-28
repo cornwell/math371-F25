@@ -1,6 +1,0 @@
-\beamer@sectionintoc {1}{Comparisons}{3}{0}{1}
-\beamer@sectionintoc {2}{Control Flow}{9}{0}{2}
-\beamer@subsectionintoc {2}{1}{if-else statements}{13}{0}{2}
-\beamer@subsectionintoc {2}{2}{for loops}{19}{0}{2}
-\beamer@subsectionintoc {2}{3}{while loops}{28}{0}{2}
-\beamer@sectionintoc {3}{List comprehensions}{30}{0}{3}
