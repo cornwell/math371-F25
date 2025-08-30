@@ -5,7 +5,10 @@
 \usepackage{amsthm}
 \usepackage{etoolbox}
 
-\usetheme{default}
+%% Define the layout of slides, numbering, and color theme
+%% Also, make links in TOC appear at start of each section 
+\usetheme[progressbar=frametitle, numbering=none]{metropolis}
+\usecolortheme[snowy]{owl}
 \setbeamertemplate{navigation symbols}{}
 \AtBeginSection[ ]
 {
@@ -32,7 +35,7 @@
 
 \definecolor{bggray}{RGB}{232, 233, 235}
 
-\usecolortheme[named=mygreen]{structure}
+\setbeamercolor{alerted text}{fg=mygreen}
 \setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
 
 \setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
@@ -122,11 +125,15 @@ keepspaces=true
 \newtheorem{question}{Question}
 
 \newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
+\newcommand{\st}[1]{\lstinline[language=Python,basicstyle=\ttfamily,stringstyle=\small\color{strings}]!#1!}
 \newcommand{\ttt}[1]{{\small\texttt{#1}}}
 \newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\cl}[1]{\mathcal{#1}}
+\newcommand{\comment}[1]{}
 
 \author{Chris Cornwell}
-\date{August 28, 2025}
+\date{September 2, 2025}
 \title{Introduction to Python}
 
 \begin{document}
@@ -152,6 +159,7 @@ keepspaces=true
 \begin{codeblock}
 
 \begin{python}
+# The lines below assign three variables: x, y, and name_full
 x = 5.11
 y = 5
 name_full = 'Chris Cornwell'
@@ -159,11 +167,9 @@ name_full = 'Chris Cornwell'
 
 \end{codeblock}
 
-$\qquad\uparrow$ this code assigns three variables, \ttt{x}, \ttt{y}, and \ttt{name}\ct{_}\ttt{full}
-
 %\pause
 \begin{itemize}
-	\item To ``comment out'' a line, begin line with \#. Good for notes to yourself, or others reading the code.
+	\item ``Commenting out'', done by starting line with \#.
 \end{itemize}
 
 \begin{codeblock}
@@ -227,19 +233,16 @@ Unlike in other programming languages, don't need to declare the types of the va
 \begin{frame}[fragile]
 \frametitle{Numerical types}
 
-The four main operations\footnote{Representing addition, subtraction, multiplication, and division.} \ttt{+, -, *,} and \ttt{/} work as you would expect on numerical types {\ttb int} and {\ttb float}. Unlike when writing math, you cannot leave out \ttt{*} when multiplying.
-
-%\pause
-\begin{question} Why would it be a \emph{bad} idea to have Python interpret something like \ttt{ab} as being ``\ttt{a} times \ttt{b}''?
-\end{question}
+The four main operations\footnote{Representing addition, subtraction, multiplication, and division.} \ttt{+, -, *,} and \ttt{/} work as you would expect on numerical types {\ttb int} and {\ttb float}.
 
 %\pause
 
-{\bf \color{mygreen} Assigning after an operation.} {\bf Very} often want to change a variable by some amount (e.g., increase it by \ttt{1}); to keep new value, \emph{reassign} after the operation.
+{\bf \color{mygreen} Assigning after an operation.} {\bf Very} often want to change a variable by some amount (\textit{e.g.}, increase it by 1), and keep the new value.
 
 \begin{codeblock}
 
 \begin{python}
+# Compute y+1, then assign that to y
 y = y + 1
 # A convenient shorthand for line above is
 y += 1
@@ -248,9 +251,10 @@ y += 1
 \end{codeblock}
 
 %\pause
-This is \emph{not} a mathematical equation, but an assignment. The shorthand works for other operations.
+\emph{Not} a mathematical equation above; rather, an assignment. The shorthand works for other operations (like \ttt{-}, \ttt{*}, etc).
 \end{frame}
 
+\comment{
 %%%%
 \begin{frame}[fragile]
 \frametitle{Logical types and {\ttm None}}
@@ -276,6 +280,7 @@ $\qquad \uparrow$ the line above will return \ct{0}.
 %\pause
 The \emph{null} type in Python is \ttt{None}. We'll talk about using it in later lectures.
 \end{frame}
+}
 
 \section{Lists}
 
@@ -342,6 +347,7 @@ print( 4 in my_list )
 
 \end{frame}
 
+\comment{
 %%%%
 \begin{frame}
 \frametitle{Strings and other sequential types}
@@ -360,31 +366,16 @@ print( 4 in my_list )
 	\item \emph{Thinking} of a string as a list of single characters, operations on strings work like they do on lists (e.g., \ttt{+} will concatenate and \ttt{len()} gives the number of characters, etc. 
 \end{itemize}
 \end{frame}
+}
 
 %%%%
 \begin{frame}[fragile]
 \frametitle{{\ttm f}-strings}
 
-To produce an output string that uses values of some variables in memory: two methods (\emph{there are others I won't mention}).
+To produce an output string that uses values of some variables in memory, the best approach is to use what are called \ttt{f}-strings: placing a variable between \st{'\{\}'} will print out its value.
 
 %\pause
 Say a variable \ttt{i} is in memory, with \ttt{i = }\ct{2}.
-
-%\pause
-\begin{codeblock}
-
-\begin{python}
-# the next line will print out 'The value of i is 2 .'
-print('The value of i is', i, '.')
-\end{python}
-
-\end{codeblock}
-
-\begin{itemize}
-	\item Works, but has some downsides. 
-	%\pause
-	\item Better: use so-called \ttt{f}-strings, allowing variable(s) directly inside the string, surrounded by braces \ttt{\{ \}}.
-\end{itemize}
 
 \begin{codeblock}
 
@@ -395,11 +386,15 @@ print(f'The value of i is {i}.')
 
 \end{codeblock}
 
-%\pause
-\emph{Escape characters} can be handled inside strings also: e.g., \verb|'\t'| will produce a tab; \verb|'\n'| produces a newline.
+\begin{itemize}
+	\item It doesn't have to be the variable only. Could put something like \st{'\{3*i\}'} and Python will compute the value and print that.
+	%\pause
+	\item \emph{Escape characters} can be handled inside strings also: e.g., \verb|'\t'| will produce a tab; \verb|'\n'| produces a newline.
+\end{itemize}
 
 \end{frame}
 
+\comment{
 %%%%
 \begin{frame}[fragile]
 \frametitle{Two more container types}
@@ -428,6 +423,7 @@ neighbor_pet = {'name':'Checkers', 'age':2, 'type':'dog'}
 %\pause
 Good idea to work with dictionaries for certain kinds of data. Later in the semester, will work with something very similar to a dictionary {--} a DataFrame.
 \end{frame}
+}
 
 \section{Intro to Python functions}
 
@@ -463,6 +459,7 @@ print( (round(a+8), round(a+8, 2)) )
 
 \end{frame}
 
+\comment{
 %%%%
 \begin{frame}
 \frametitle{Changing one type to another}
@@ -518,6 +515,7 @@ my_list[::-1]
 \end{codeblock}
 
 \end{frame}
+}
 
 %%%%
 \begin{frame}
