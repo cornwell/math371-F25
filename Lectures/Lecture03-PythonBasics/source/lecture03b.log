@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  1 SEP 2025 09:05
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  1 SEP 2025 11:34
  restricted system commands enabled.
-**lecture03
-(./lecture03.tex
+**lecture03b
+(./lecture03b.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
 Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
@@ -2120,8 +2120,8 @@ File: listings.cfg 2024/05/25 1.10b listings configuration
 ))
 Package: listings 2024/05/25 1.10b (Carsten Heinz)
 \c@question=\count376
-(./lecture03.aux)
-\openout1 = lecture03.aux
+(./lecture03b.aux)
+\openout1 = lecture03b.aux
 
 LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 138.
 LaTeX Font Info:    Trying to load font information for OML+ntxsfmi on input li
@@ -2234,10 +2234,10 @@ fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring ON on input line 138.
- (./lecture03.out) (./lecture03.out)
+ (./lecture03b.out) (./lecture03b.out)
 \@outlinefile=\write5
 
-\openout5 = lecture03.out
+\openout5 = lecture03b.out
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/FiraSans(0)/m/n --> OT1/cmss/m/n on input line 138.
 
@@ -2324,7 +2324,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 LaTeX Info: Command `\dddot' is already robust on input line 138.
 LaTeX Info: Command `\ddddot' is already robust on input line 138.
 \c@lstlisting=\count383
- (./lecture03.nav)
+ (./lecture03b.nav)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
 (Font)              scaled to size 5.10004pt on input line 138.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
@@ -2346,7 +2346,7 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
 [1
 
 {C:/Users/gener/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(./lecture03.toc)
+(./lecture03b.toc)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
 (Font)              scaled to size 10.20007pt on input line 147.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
@@ -2355,72 +2355,127 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 
 [2
 
-] (./lecture03.toc)
+] (./lecture03b.toc)
 
 [3
 
 ]
-\openout4 = lecture03.vrb
- (./lecture03.vrb
+\openout4 = lecture03b.vrb
+ (./lecture03b.vrb
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/05/25 1.10b listings language file
 )
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 5.10004pt on input line 9.
+(Font)              scaled to size 9.30756pt on input line 20.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 7.65005pt on input line 25.
 )
+Overfull \vbox (5.35631pt too high) detected at line 183
+ []
+
+
 
 [4
 
-] (./lecture03.vrb)
+] (./lecture03b.vrb)
+Overfull \vbox (5.35631pt too high) detected at line 183
+ []
+
+
 
 [5
 
-] (./lecture03.vrb)
+] (./lecture03b.vrb)
+Overfull \vbox (5.35631pt too high) detected at line 183
+ []
+
+
 
 [6
 
+] (./lecture03b.vrb)
+Overfull \vbox (5.35631pt too high) detected at line 183
+ []
+
+
+
+[7
+
+] (./lecture03b.toc)
+
+[8
+
 ]
-\openout4 = lecture03.vrb
- (./lecture03.vrb
+\openout4 = lecture03b.vrb
+ (./lecture03b.vrb
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 9.30756pt on input line 3.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
+(Font)              scaled to size 5.10004pt on input line 17.
+)
+
+[9
+
+] (./lecture03b.vrb)
+
+[10
+
+] (./lecture03b.vrb)
+
+[11
+
+]
+\openout4 = lecture03b.vrb
+ (./lecture03b.vrb
+LaTeX Font Info:    Trying to load font information for U+msa on input line 16.
+
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
+
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsfmia on input lin
-e 3.
+e 16.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtxsf/untxsfmia.fd
 File: untxsfmia.fd 2014/11/16 Fontinst v1.933 font definitions for U/ntxsfmia.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
-3.
+16.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
-3.
+16.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.18503pt on input line 3.
+(Font)              scaled to size 5.18503pt on input line 16.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.80005pt on input line 3.
+(Font)              scaled to size 6.80005pt on input line 16.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 5.18503pt on input line 3.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 7.65005pt on input line 3.
+(Font)              scaled to size 5.18503pt on input line 16.
+)
 
+[12
+
+] (./lecture03b.vrb)
+
+[13
+
+] (./lecture03b.vrb)
+
+[14
+
+]
+\openout4 = lecture03b.vrb
+ (./lecture03b.vrb
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <5.5> not available
 (Font)              size <5> substituted on input line 3.
@@ -2435,148 +2490,109 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
 (Font)              scaled to size 6.20503pt on input line 3.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
 (Font)              scaled to size 4.67503pt on input line 3.
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 10.
+
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
+(Font)              scaled to size 5.27003pt on input line 10.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 5.27003pt on input line 10.
 )
-
-[7
-
-] (./lecture03.vrb)
-
-[8
-
-] (./lecture03.vrb)
-
-[9
-
-] (./lecture03.vrb)
-
-[10
-
-] (./lecture03.toc)
-
-[11
-
-]
-\openout4 = lecture03.vrb
- (./lecture03.vrb
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 9.30756pt on input line 7.
-)
-
-[12
-
-] (./lecture03.vrb)
-
-[13
-
-] (./lecture03.vrb)
-
-[14
-
-] (./lecture03.vrb)
 
 [15
 
-] (./lecture03.vrb)
+] (./lecture03b.vrb
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 10.
+
+)
 
 [16
 
-] (./lecture03.toc)
+] (./lecture03b.vrb
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 10.
+
+)
 
 [17
 
 ]
-\openout4 = lecture03.vrb
- (./lecture03.vrb)
-Overfull \vbox (5.56593pt too high) detected at line 320
- []
-
-
 
 [18
 
-] (./lecture03.vrb)
-Overfull \vbox (5.56593pt too high) detected at line 320
- []
-
-
+]
 
 [19
 
-] (./lecture03.vrb)
-Overfull \vbox (5.56593pt too high) detected at line 320
- []
-
-
+]
 
 [20
 
-] (./lecture03.vrb)
-Overfull \vbox (5.56593pt too high) detected at line 320
- []
-
-
+]
 
 [21
 
 ]
-\openout4 = lecture03.vrb
- (./lecture03.vrb)
 
 [22
 
-] (./lecture03.vrb)
+] (./lecture03b.toc)
 
 [23
 
-] (./lecture03.vrb)
+]
+\openout4 = lecture03b.vrb
+ (./lecture03b.vrb
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 9.30756pt on input line 7.
+)
 
 [24
 
-]
-\openout4 = lecture03.vrb
- (./lecture03.vrb)
+] (./lecture03b.vrb)
 
 [25
 
-] (./lecture03.vrb)
+] (./lecture03b.vrb)
 
 [26
 
-] (./lecture03.vrb)
+] (./lecture03b.vrb)
 
 [27
 
-] (./lecture03.toc)
+]
 
 [28
 
 ]
-\openout4 = lecture03.vrb
- (./lecture03.vrb)
 
 [29
 
-] (./lecture03.vrb)
+]
 
 [30
 
-] (./lecture03.vrb)
+]
+\openout4 = lecture03b.vrb
+ (./lecture03b.vrb)
 
 [31
 
-] (./lecture03.vrb)
+] (./lecture03b.vrb)
 
 [32
 
-] (./lecture03.vrb)
+] (./lecture03b.vrb)
 
 [33
 
-]
+] (./lecture03b.vrb)
 
 [34
 
-]
+] (./lecture03b.vrb)
 
 [35
 
@@ -2593,16 +2609,68 @@ Overfull \vbox (5.56593pt too high) detected at line 320
 [38
 
 ]
+
+[39
+
+]
+\openout4 = lecture03b.vrb
+ (./lecture03b.vrb)
+Overfull \vbox (20.0304pt too high) detected at line 421
+ []
+
+
+
+[40
+
+] (./lecture03b.vrb)
+Overfull \vbox (20.0304pt too high) detected at line 421
+ []
+
+
+
+[41
+
+] (./lecture03b.vrb)
+Overfull \vbox (20.0304pt too high) detected at line 421
+ []
+
+
+
+[42
+
+] (./lecture03b.vrb)
+Overfull \vbox (20.0304pt too high) detected at line 421
+ []
+
+
+
+[43
+
+]
+\openout4 = lecture03b.vrb
+ (./lecture03b.vrb)
+
+[44
+
+] (./lecture03b.vrb)
+
+[45
+
+] (./lecture03b.vrb)
+
+[46
+
+]
 \tf@nav=\write6
 
-\openout6 = lecture03.nav
+\openout6 = lecture03b.nav
 \tf@toc=\write7
 
-\openout7 = lecture03.toc
+\openout7 = lecture03b.toc
 \tf@snm=\write8
 
-\openout8 = lecture03.snm
- (./lecture03.aux)
+\openout8 = lecture03b.snm
+ (./lecture03b.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -2615,34 +2683,35 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `lecture03.out' has not changed.
-(rerunfilecheck)             Checksum: B41A4DB986396280CA20354AB26F4BD9;586.
+Package rerunfilecheck Info: File `lecture03b.out' has not changed.
+(rerunfilecheck)             Checksum: 7A30D8D38143097F5FFB9B99E0EF066E;654.
 )
 
 Here is how much of LuaTeX's memory you used:
- 32002 strings out of 475915
+ 32099 strings out of 475915
  125031,1977958 words of node,token memory allocated
- 10397 words of node memory still in use:
-   128 hlist, 9 vlist, 6 rule, 33 disc, 10 local_par, 239 glue, 89 kern, 39 pena
-lty, 598 glyph, 320 attribute, 70 glue_spec, 320 attribute_list, 4 write, 60 pdf
-_literal, 1 pdf_start_link, 1 pdf_end_link, 5 pdf_action, 84 pdf_colorstack node
-s
-   avail lists: 1:1,2:1731,3:347,4:566,5:774,6:35,7:2264,8:2,9:1188,10:17,11:114
-
- 53332 multiletter control sequences out of 65536+600000
- 225 fonts using 44569247 bytes
- 128i,13n,139p,1911b,1178s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 13794 words of node memory still in use:
+   299 hlist, 11 vlist, 49 rule, 26 disc, 12 local_par, 463 glue, 133 kern, 27 p
+enalty, 480 glyph, 449 attribute, 70 glue_spec, 449 attribute_list, 4 write, 72 
+pdf_literal, 3 pdf_action, 100 pdf_colorstack nodes
+   avail lists: 2:1451,3:327,4:514,5:715,6:41,7:3236,8:8,9:1234,10:18,11:142
+ 53388 multiletter control sequences out of 65536+600000
+ 246 fonts using 46743527 bytes
+ 128i,13n,139p,1912b,1077s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public/fira/firamon
 o-medium.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public
 /fira/FiraSans-Italic.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/op
 entype/public/fira/firamono-regular.otf><C:/Users/gener/AppData/Local/Programs/M
 iKTeX/fonts/opentype/public/fira/FiraSans-Regular.otf><C:/Users/gener/AppData/Lo
 cal/Programs/MiKTeX/fonts/opentype/public/fira/FiraSans-Bold.otf><C:/Users/gener
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb><C:/Users/ge
-ner/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on lecture03.pdf (38 pages, 144297 bytes).
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/rtxmi.pfb><C:/Users/ge
+ner/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/t1xbtt.pfb><C:/User
+s/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb><C:/U
+sers/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/
+Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
+Output written on lecture03b.pdf (46 pages, 170127 bytes).
 
-PDF statistics: 321 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 131072)
+PDF statistics: 356 PDF objects out of 1000 (max. 8388607)
+ 97 named destinations out of 1000 (max. 131072)
  48 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -2,18 +2,18 @@
 
 Similar to most programming languages, Python uses \emph{functions}, each of which takes some number of \emph{arguments} (sometimes an argument is optional).
 
-%\pause
+\pause
 \begin{itemize}
 	\item Common function, already encountered: \ttt{print()}.
-	%\pause
-	\item Absolute value: \ttt{abs()}. Takes a numeric argument {--} either {\ttb int} or {\ttb float} type.
-	%\pause
-	\item Round to nearest integer: \ttt{round()}. Takes argument that is {\ttb float} (if an {\ttb int}, will return the same thing).
+	\pause
+	\item Absolute value: \ttt{abs()}. Takes a numeric argument {--} either \ct{int} or \ct{float} type.
+	\pause
+	\item Round to nearest integer: \ttt{round()}. Takes argument that is \ct{float}. (If passed an \ct{int} argument, will simply return it.)
 	\begin{itemize}
 		\item Optional 2nd argument, the number of decimal digits.
 	\end{itemize}
 \end{itemize}
-%\pause
+\pause
 In Python, run the following to see how \ttt{round()} works.
 
 \begin{codeblock}

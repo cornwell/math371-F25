@@ -24,7 +24,7 @@
 % Custom colors
 \usepackage{color}
 \definecolor{TUGray}{RGB}{101,101,137}
-\definecolor{TUBlack}{RGB}{30,0,0}
+\definecolor{TUBlack}{RGB}{0,0,10}
 \definecolor{mygreen}{RGB}{45,111,63}
 \definecolor{keywords}{RGB}{205,114,0}
 \definecolor{comments}{RGB}{181,51,139}
@@ -124,8 +124,7 @@ keepspaces=true
 \theoremstyle{example}
 \newtheorem{question}{Question}
 
-\newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
-\newcommand{\st}[1]{\lstinline[language=Python,basicstyle=\ttfamily,stringstyle=\small\color{strings}]!#1!}
+\newcommand{\ct}[1]{\lstinline[language=Python,basicstyle=\ttfamily\footnotesize,stringstyle=\small\color{strings}]!#1!}
 \newcommand{\ttt}[1]{{\small\texttt{#1}}}
 \newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
 \newcommand{\bb}[1]{\mathbb{#1}}
@@ -167,22 +166,10 @@ name_full = 'Chris Cornwell'
 
 \end{codeblock}
 
-%\pause
+\pause
 \begin{itemize}
 	\item ``Commenting out'', done by starting line with \#.
-\end{itemize}
-
-\begin{codeblock}
-
-\begin{python}
-# Make an ordered pair; output would be (10.11, 4)
-(x + y, y - 1)
-\end{python}
-
-\end{codeblock}
-
-%\pause
-\begin{itemize}
+    \pause
 	\item Possible to assign more than one variable in one line.
 \end{itemize}
 
@@ -214,16 +201,19 @@ name_full = 'Chris Cornwell'
 \end{codeblock}
 
 \begin{itemize}
-	\item[] $\uparrow$ the types of the assigned vars are {\ttb float}, {\ttb int}, and {\ttb str} respectively.
+	\item[] $\uparrow$ the types of the assigned vars are \ct{float}, \ct{int}, and \ct{str} respectively.
 \end{itemize}
 
-%\pause
+\pause
 Unlike in other programming languages, don't need to declare the types of the variables. Python \emph{interprets} it. (The type might even \emph{change} at a later point.)
 
+\pause
+\vspace*{-8pt}
 \begin{itemize}
-	\item type {\ttb int}: like an integer.
-	\item type {\ttb float}: like a real number in decimal form \ldots \emph{kind of}.
-	\item type {\ttb str}: a ``string,'' or sequence of \emph{characters} (that can be typed from keyboard). Will return to this again.
+	\item type \ct{int}: like an integer.
+	\item type \ct{float}: like a real number in decimal form \ldots \emph{kind of}.
+	\pause
+	\item type \ct{str}: a ``string,'' or sequence of \emph{characters} (that can be typed from keyboard). %Will return to this again.
 \end{itemize}
 \end{frame}
 
@@ -233,11 +223,11 @@ Unlike in other programming languages, don't need to declare the types of the va
 \begin{frame}[fragile]
 \frametitle{Numerical types}
 
-The four main operations\footnote{Representing addition, subtraction, multiplication, and division.} \ttt{+, -, *,} and \ttt{/} work as you would expect on numerical types {\ttb int} and {\ttb float}.
+The four main operations\footnote{Representing addition, subtraction, multiplication, and division.} \ttt{+, -, *,} and \ttt{/} work as you would expect on numerical types \ct{int} and \ct{float}.
 
-%\pause
-
-{\bf \color{mygreen} Assigning after an operation.} {\bf Very} often want to change a variable by some amount (\textit{e.g.}, increase it by 1), and keep the new value.
+\pause
+\vspace*{-6pt}
+{\bf \color{mygreen} Assigning after an operation.} Often want to change a variable by some amount (\textit{e.g.}, increase it by 1), and keep the new value.
 
 \begin{codeblock}
 
@@ -250,8 +240,15 @@ y += 1
 
 \end{codeblock}
 
-%\pause
-\emph{Not} a mathematical equation above; rather, an assignment. The shorthand works for other operations (like \ttt{-}, \ttt{*}, etc).
+\pause
+Equation above is an assignment, not mathematical. The shorthand works for other operations (like \ttt{-}, \ttt{*}, etc).
+
+\pause
+\vspace*{-6pt}
+\textbf{Other operations.} \newline
+\ct{**}, raises to a power; so, \ct{y**2} has value $y^2$. \newline 
+\pause
+\ct{\%} (called ``mod''), finds the remainder; so, \ct{5\%3} is \ct{2} and \ct{6\%3} is \ct{0}.
 \end{frame}
 
 \comment{
@@ -288,11 +285,11 @@ The \emph{null} type in Python is \ttt{None}. We'll talk about using it in later
 \begin{frame}[fragile]
 \frametitle{Basics of lists}
 
-{\ttb list} is a \emph{sequential} data type in Python {--} it holds a sequence of ``items.'' 
+\ct{list} is a \emph{sequential} data type in Python {--} it holds a sequence of ``items.'' 
 \begin{itemize}
-	\item[] Each item could be an {\ttb int}, each could be a {\ttb list}, or possibly some with one type, some with another. 
-	%\pause
-	\item[] Example below: a list with {\ttb int} and {\ttb str} type items.
+	\item Each item could be an \ct{int}, each could be a \ct{list}; possibly, can have some with one type, some with another. 
+	\pause
+	\item Example below: a list with \ct{int} and \ct{str} type items (and an empty list).
 \end{itemize}
 
 \begin{codeblock}
@@ -304,11 +301,11 @@ empty_list = []
 
 \end{codeblock}
 
-%\pause
+\pause
 Referring to a list item by index: \\ 
-\ttt{my}\ct{_}\lsitem{list}{0} is \ct{2} above, \ttt{my}\ct{_}\lsitem{list}{1} is \ct{3}, and so on.
+\ct{my_list[0]} is \ct{2} above, \ct{my_list[1]} is \ct{3}, and so on.
 
-%\pause
+\pause
 The \ttt{+} operation is defined on lists. It results in the \emph{concatenation} of the lists {--} putting them together, end to end.
 
 \begin{codeblock}
@@ -330,10 +327,10 @@ my_list + [11, 13]
 	\item Multiplication by an integer: adds that many copies of the list together. For example, \ct{[1,2]*3} will result in \ct{[1,2,1,2,1,2]}, since 
 	\begin{center}\ct{[1,2] + [1,2] + [1,2] = [1,2,1,2,1,2]}.
 	\end{center}
-	%\pause
+	\pause
 	\item Length of a list: use the function \ttt{len()}, with your list as input, to get the number of items in your list.
-	%\pause
-	\item Checking if an item is in a list: use the \emph{keyword} \ttt{in} to check this. For example, if \ttt{my}\ct{_}\ttt{list} is \ct{[2, 3, 5, 'p']} then the first line below would result in \ttt{True}, the second would be \ttt{False}.
+	\pause
+	\item Checking if an item is in a list: use the \emph{keyword} \ct{in} to check this. For example, if \ct{my_list} is \ct{[2, 3, 5, 'p']} then the first line below would result in \ct{True}, the second would be \ct{False}.
 \end{itemize}
 
 \begin{codeblock}
@@ -372,10 +369,10 @@ print( 4 in my_list )
 \begin{frame}[fragile]
 \frametitle{{\ttm f}-strings}
 
-To produce an output string that uses values of some variables in memory, the best approach is to use what are called \ttt{f}-strings: placing a variable between \st{'\{\}'} will print out its value.
+To produce an output string that uses values of some variables in memory, the best approach is to use what are called \ttt{f}-strings: in the string, a variable between \ct{'\{\}'} will print out its value.
 
-%\pause
-Say a variable \ttt{i} is in memory, with \ttt{i = }\ct{2}.
+\pause
+Say a variable \ct{i} is in memory, with \ct{i = 2}.
 
 \begin{codeblock}
 
@@ -386,10 +383,12 @@ print(f'The value of i is {i}.')
 
 \end{codeblock}
 
+\pause
 \begin{itemize}
-	\item It doesn't have to be the variable only. Could put something like \st{'\{3*i\}'} and Python will compute the value and print that.
+	\item It doesn't have to be the variable only. Could put something like \ct{'\{3*i\}'} and Python will compute the value and print that.
 	%\pause
-	\item \emph{Escape characters} can be handled inside strings also: e.g., \verb|'\t'| will produce a tab; \verb|'\n'| produces a newline.
+	\item \emph{Escape characters} can be handled inside strings also: e.g., \ct{'\\t'} will produce a tab; \ct{'\\n'} produces a newline.
+	%\verb|'\t'| will produce a tab; \verb|'\n'| produces a newline.
 \end{itemize}
 
 \end{frame}
@@ -433,18 +432,18 @@ Good idea to work with dictionaries for certain kinds of data. Later in the seme
 
 Similar to most programming languages, Python uses \emph{functions}, each of which takes some number of \emph{arguments} (sometimes an argument is optional).
 
-%\pause
+\pause
 \begin{itemize}
 	\item Common function, already encountered: \ttt{print()}.
-	%\pause
-	\item Absolute value: \ttt{abs()}. Takes a numeric argument {--} either {\ttb int} or {\ttb float} type.
-	%\pause
-	\item Round to nearest integer: \ttt{round()}. Takes argument that is {\ttb float} (if an {\ttb int}, will return the same thing).
+	\pause
+	\item Absolute value: \ttt{abs()}. Takes a numeric argument {--} either \ct{int} or \ct{float} type.
+	\pause
+	\item Round to nearest integer: \ttt{round()}. Takes argument that is \ct{float}. (If passed an \ct{int} argument, will simply return it.)
 	\begin{itemize}
 		\item Optional 2nd argument, the number of decimal digits.
 	\end{itemize}
 \end{itemize}
-%\pause
+\pause
 In Python, run the following to see how \ttt{round()} works.
 
 \begin{codeblock}
@@ -522,24 +521,24 @@ my_list[::-1]
 \frametitle{Basic list methods}
 
 Methods are functions that you call on an instance of a class. There are several methods for lists. Here are two.
-%\pause
+\pause
 \begin{itemize}
-	\item \ttt{append()}: the command \ttt{my}\ct{_}\ttt{list.append(x)}puts \ttt{x} at the end of \ttt{my}\ct{_}\ttt{list}. 
+	\item \ttt{append()}: the command \ct{my_list.append(x)} puts \ct{x} at the end of \ct{my_list}. 
 	\begin{itemize}
-		\item Changes \ttt{my}\ct{_}\ttt{list} ``in place.''
-		%\pause
-		\item Is equivalent to \ttt{my}\ct{_}\ttt{list += [x]}.
+		\item Changes \ct{my_list} ``in place.''
+		\pause
+		\item Is equivalent to \ct{my_list += [x]}.
 	\end{itemize}
-	%\pause
-	\item \ttt{remove()}: the command \ttt{my}\ct{_}\ttt{list.remove(x)} takes out the \emph{first} item in \ttt{my}\ct{_}\ttt{list} that is equal to \ttt{x}.	
+	\pause
+	\item \ttt{remove()}: the command \ct{my_list.remove(x)} takes out the \emph{first} item in \ct{my_list} that is equal to \ct{x}.	
 	\begin{itemize}
-		\item Changes \ttt{my}\ct{_}\ttt{list} in place, making it shorter.
-		%\pause
-		\item \ttt{my}\ct{_}\ttt{list.pop(i)} does something similar with item at index \ttt{i}, but also returns (has as output) that item.
+		\item Changes \ct{my_list} in place, making it shorter.
+		\pause
+		\item \ct{my_list.pop(i)} does something similar with item at index \ct{i}, but also returns (has as output) that item.
 	\end{itemize}
 \end{itemize}
 
-More information on working with lists, tuples, sets, and dictionaries: \href{https://docs.python.org/3/tutorial/datastructures.html}{Tutorial from the Python documentation}.
+More information on working with lists and other basic classes, like strings, tuples, sets, and dictionaries: \href{https://docs.python.org/3/tutorial/datastructures.html}{Tutorial from the Python documentation}.
 
 \end{frame}
 

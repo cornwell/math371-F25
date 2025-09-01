@@ -1,4 +1,4 @@
 \beamer@sectionintoc {1}{Variables and Types}{3}{0}{1}
-\beamer@sectionintoc {2}{Operations on different types}{6}{0}{2}
-\beamer@sectionintoc {3}{Lists}{8}{0}{3}
-\beamer@sectionintoc {4}{Intro to Python functions}{12}{0}{4}
+\beamer@sectionintoc {2}{Operations on different types}{11}{0}{2}
+\beamer@sectionintoc {3}{Lists}{17}{0}{3}
+\beamer@sectionintoc {4}{Intro to Python functions}{28}{0}{4}

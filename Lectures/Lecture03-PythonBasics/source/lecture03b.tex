@@ -5,7 +5,10 @@
 \usepackage{amsthm}
 \usepackage{etoolbox}
 
-\usetheme{default}
+%% Define the layout of slides, numbering, and color theme
+%% Also, make links in TOC appear at start of each section 
+\usetheme[progressbar=frametitle, numbering=none]{metropolis}
+\usecolortheme[snowy]{owl}
 \setbeamertemplate{navigation symbols}{}
 \AtBeginSection[ ]
 {
@@ -21,7 +24,7 @@
 % Custom colors
 \usepackage{color}
 \definecolor{TUGray}{RGB}{101,101,137}
-\definecolor{TUBlack}{RGB}{30,0,0}
+\definecolor{TUBlack}{RGB}{0,0,10}
 \definecolor{mygreen}{RGB}{45,111,63}
 \definecolor{keywords}{RGB}{205,114,0}
 \definecolor{comments}{RGB}{181,51,139}
@@ -32,7 +35,7 @@
 
 \definecolor{bggray}{RGB}{232, 233, 235}
 
-\usecolortheme[named=mygreen]{structure}
+\setbeamercolor{alerted text}{fg=mygreen}
 \setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
 
 \setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
@@ -121,13 +124,16 @@ keepspaces=true
 \theoremstyle{example}
 \newtheorem{question}{Question}
 
-\newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
+\newcommand{\ct}[1]{\lstinline[language=Python,basicstyle=\ttfamily\footnotesize,stringstyle=\small\color{strings}]!#1!}
 \newcommand{\ttt}[1]{{\small\texttt{#1}}}
 \newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\cl}[1]{\mathcal{#1}}
+\newcommand{\comment}[1]{}
 
 \author{Chris Cornwell}
-\date{Jan 2, 2025}
-\title{Comparisons and Control Flow}
+\date{September 4, 2025}
+\title{Using the NumPy Package}
 
 \begin{document}
 
@@ -140,173 +146,53 @@ keepspaces=true
 \tableofcontents
 \end{frame}
 
-\section{Comparisons}
-
-%%%%
-\begin{frame}
-\frametitle{Comparisons}
-We often need to compare variables, or compare a variable to some value {--} a ``literal.'' 
-
-\pause
-The comparison operations are in the table below.
-\begin{center}
-	\ttt{
-	\begin{tabular}{|p{0.05\linewidth}|p{0.05\linewidth}|p{0.05\linewidth}|p{0.05\linewidth}|p{0.05\linewidth}|p{0.05\linewidth}|p{0.05\linewidth}|p{0.12\linewidth}|}
-		\hline
-		== & != & < & <= & > & >= & is & is not \\
-		\hline
-	\end{tabular}
-	}
-\end{center}
-\begin{itemize}
-	\item[] \ttt{==} and \ttt{!=}, for \emph{equals} and \emph{is not equal}.
-	\item[] \ttt{<=}, for \emph{less than or equal to} (and similarly with \ttt{>=} and greater than).
-\end{itemize}
-
-\pause
-\begin{itemize}
-	\item Error occurs if a comparison doesn't make sense for that type. 
-	\item Don't use \ttt{is} or \ttt{is not} with literals {--} meaning, they compare values of two variables but not, for example, if variable \ttt{x} equals \ttt{5}. Use either \ttt{==} or \ttt{!=} for that.
-\end{itemize}
-
-\end{frame}
+\section{Intro to NumPy}
 
 %%%%
 \begin{frame}[fragile]
-\frametitle{Comparisons, examples}
-Below, an example that returns True, but produces a syntax warning.
-\vspace*{12pt}
+\frametitle{Getting started with NumPy}
+Not built-in {--} must import NumPy into Python session. We will also want to track runtime, so we import the package \ct{time}.
 
+\pause 
 \begin{codeblock}
 
 \begin{python}
-v, w = 10, 5
-x = w+5
-# A warning from next line; read warning message
-print(x is 10)
+    import numpy as np
+    import time
 \end{python}
 
 \end{codeblock}
 
-\vfill
-\pause
-With the same variable assignments as above, the following prints \ttt{True} twice.
-\vspace*{12pt}
-
-\begin{codeblock}
-
-\begin{python}
-print(v is x)
-x == 10
-\end{python}
-
-\end{codeblock}
-	
-\end{frame}
-
-\section{Control Flow}
-
-%%%%
-\begin{frame}
-\frametitle{Control Statements}
-So far, all code has had simple structure {--} a few lines of code each get executed once in order, top to bottom. Need a less simple structure to do interesting things. 
 \begin{itemize}
-    \item[] Achieve this with \textbf{control flow} statements.
+    \item[] Create a shortcut, \ct{np}, for NumPy. This is a common convention.
 \end{itemize}
 
 \pause
-Right now, we'll look at the following.
 \begin{itemize}
-	\item \ttt{if-else} statements.
-    \pause
-	\item Loops: \ttt{for} loops.
-	\item Loops: \ttt{while} loops.
+	\item Depending on how you are interacting with Python, may have to \emph{install} the \ct{numpy} package before the first use. Open a command terminal (\ct{Ctrl+`}, in VSCode on Windows) and type the appropriate command below:
 \end{itemize}
+\vspace*{-8pt}
+\begin{itemize}
+	\item[] \ct{py -m pip install numpy} (Windows)
+	\item[] \ct{python}{\footnotesize\texttt{3}}\ct{ -m pip install numpy} (macOS)
+    \item[] \ct{sudo pip install numpy} (Linux based)
+\end{itemize}
+\pause
+When installing other packages, replace \ct{numpy} with the package name.
+
 \end{frame}
 
-\subsection{if-else statements}
+\section{NumPy arrays}
+
 %%%%
 \begin{frame}[fragile]
-\frametitle{{\ttm if-else} statements}
-
-When you want part of code to execute only when a condition is satisfied, use an \ttt{if-else} statement. 
-
-\pause
-A basic example below (\ct{v=10} and \ct{w=5} as in slide from Comparisons).
-
-\begin{codeblock}
-
-\begin{python}
-# basic if - else statement structure
-Class = "MATH 371"
-if len(Class) > v:
-    y = w-5
-    print("This sure is a long Class!")
-else:
-    y = w+10
-    print("This Class just flies by!")
-\end{python}
-
-\end{codeblock}
+\frametitle{Basic NumPy arrays}
+The main type of object in NumPy is the \ct{ndarray} (n-dimensional array), which is constructed from a list using the command 
+\begin{center}\ct{np.array(the_list)}.\end{center}
 
 \vspace*{12pt}
-
-Notice the indentation of the lines between \ttt{if} and \ttt{else}, and those after \ttt{else}, which determines the code that runs on the condition. 
 \pause
-\begin{itemize}
-	\item[] Lines 7 and 8 will only be executed if \ttt{len(Class)} is less than \ct{11}. If a line after line 8 is \emph{not} indented, it will be executed no matter what.
-\end{itemize}
-
-\end{frame}
-
-%%%%
-\begin{frame}[fragile]
-\frametitle{{\ttm elif} and {\ttm pass}}
-
-What if we have more than just two cases? That is, when the \ttt{if} condition fails we want to check another condition before deciding what to do.
-
-\pause
-\begin{itemize}
-	\item[] Put an \ttt{elif} block between the \ttt{if} and \ttt{else}. (This is short for ``else, if\ldots''.)
-\end{itemize}
-
-\begin{codeblock}
-
-\begin{python}
-if y < w:
-    print(f'y is less than w: {y} < {w}.')
-elif y < 2*v:
-    print(f'y >= w and less than 2v: {w} <= {y} < {2*v}.')
-else:
-    print(f'y >= 2v: {y} >= {2*v}.')
-\end{python}
-
-\end{codeblock}
-
-\vfill
-\pause
-If we only care to do something in one of the cases, put \ttt{pass} in the block for the other case.
-
-\begin{codeblock}
-
-\begin{python}
-if condition_to_be_checked:
-    # some code here that does something
-else:
-    pass
-\end{python}
-
-\end{codeblock}
-\end{frame}
-
-\subsection{for loops}
-%%%%
-\begin{frame}[fragile]
-\frametitle{Loops: {\ttm for} loop construction}
-
-Use a \emph{loop} to construct, or compute, something through various iterations {--} the lines in a block of code execute over and over again until, at some point, it finishes.
-
-The block of code that repeats should be indented, as with \ttt{if-else} statements. The next line not indented is outside that loop.
+If items in \ct{the_list} are of numeric type, then think of the resulting \ct{ndarray} as like a vector. Operations on NumPy arrays work like vectors in linear algebra.
 
 \pause
 Example:
@@ -314,182 +200,250 @@ Example:
 \begin{codeblock}
 
 \begin{python}
-# for loop that adds integers 1 through 5
-the_sum = 0
-for i in [1,2,3,4,5]:
-    the_sum += i
-print(the_sum)
+v = np.array([-1, 1, 1])
+w = np.array([0.5, 0, 1.1])
+# print the (vector) sum: [-0.5  1.   2.1]
+print(v + w)
+# prints [1.0, 0.0, 2.2]
+print(2*w)
 \end{python}
 
 \end{codeblock}
-
-\pause
-To avoid writing out the list of values for \ttt{i}, the following does the same as previous.
-
-\begin{codeblock}
-
-\begin{python}
-the_sum = 0
-for i in range(1,6):
-    the_sum += i
-print(the_sum)
-\end{python}
-	
-\end{codeblock}
-\begin{itemize}
-    \item[] The next slide is about the \ttt{range()} function.
-\end{itemize}
-\end{frame}
-
-%%%%
-\begin{frame}[fragile]
-\frametitle{More about {\ttm range()} constructor}
-{\ttb range} is a type; it is similar to a list of ints. The function \ttt{range()} creates a range object (an instance of it). 
-
-This function uses three arguments {--} \ttt{start}, \ttt{stop}, and \ttt{step}. %; however, \ttt{start} and \ttt{step} have a \emph{default value}, of \ct{0} and \ct{1}, if they are not provided. 
-As a list, \ttt{range(start, stop, step)} will contain integers between \ttt{start} and \ttt{stop-1}, with a gap of \ttt{step} between consecutive items. 
-
-\pause
-For example, if \ttt{step = 1}, the range is 
-\[ [\ttt{start}, \ttt{start+1},\ttt{start+2},\ldots,\ttt{stop-1}]. \]
-
-\pause
-More generally, its largest item equals \ttt{start + k*step}, with \ttt{k} as large as possible to remain less than \ttt{stop}. For example, \ttt{range(}\ct{2, 30, 4}\ttt{)} is \ct{[2,6,10,14,18,22,26]} as a list.
-
-\pause
-Given only two inputs, \ttt{range()} uses them as \ttt{start} and \ttt{stop}, setting \ttt{step=1}. A single input is interpreted as \ttt{stop}, setting \ttt{start=0}, \ttt{step=1}.\footnote{The behavior that has \ttt{start=0} and \ttt{step=1} here, we say these arguments have \emph{default} values of \ttt{0} and \ttt{1}.} So, \ttt{range(6)} is \ct{[0,1,2,3,4,5]}.
-\end{frame}
-
-%%%%
-\begin{frame}[fragile]
-\frametitle{Other sequence types and for loops}
-\textbf{A great thing:} you are not \emph{required} to use some range object in a \ttt{for} loop. You can replace it with anything of sequential type. 
-\begin{itemize}
-	\item When it makes sense, can make code better for reading!
-\end{itemize}
 
 \vfill
-\pause
-Example: say that in the variable \ttt{Class}, assigned to be \ttt{"MATH 371"} before, we're inserting a period \ttt{"."} after each letter (but, not after a space). A for loop to do it is below.
-\vspace*{12pt}
-
-\begin{codeblock}
-
-\begin{python}
-new_Class_string = ""
-for c in Class:
-    if c == " ":
-        new_Class_string += c
-    else:
-        new_Class_string += c + "."
-print(new_Class_string)
-\end{python}
-
-\end{codeblock}
 \end{frame}
 
-\subsection{while loops}
 %%%%
 \begin{frame}[fragile]
-\frametitle{Loops: {\ttm while} loop construction}
-
-Rather than repeating a block of code for items in a specified sequence, we can simply repeat it until a condition is satisfied {--} a \ttt{while} loop.
+\frametitle{More than {\ttm 1d}}
+A NumPy array from a list containing numeric types makes a vector {--} also known as a 1-\emph{dimensional array} (Python language), or a \emph{tensor of order} 1 (mathematics). 
 
 \pause
-\vspace*{12pt}
-Above the code block to be repeated, put: \ttt{while <condition>}, where \ttt{<condition>} should evaluate to either \ttt{True} or \ttt{False}.
-
-Example:
-\vspace*{12pt}
+A 2-dimensional array, or tensor of order 2, is like a matrix. You construct it with \ct{np.array()} from a list of lists {--} each of the same length.
 
 \begin{codeblock}
 
-\begin{python}
-# Fibonacci numbers less than 10000
-fibo_list = [1,1]
-while fibo_list[-2] + fibo_list[-1] < 10000:
-    fibo_list += [ fibo_list[-2] + fibo_list[-1] ]
-print(fibo_list)
+\begin{python}[numbers=none]
+A = np.array([[1, 2, 3], [4, 5, 6]])
 \end{python}
 
 \end{codeblock}
 
+\begin{itemize}
+    \item[] Each ``inside list'' is a row. The array \ttt{A} is a $2\times 3$ matrix.
+\end{itemize}
+
+\pause
+Every array in NumPy has an attribute \ct{shape}. 
+\begin{itemize}
+    \item Previous slide: \ct{v = np.array([-1,1,1])} has \ct{v.shape = (3,)}. 
+    \item The matrix here: \ct{A.shape} is equal to \ct{(2, 3)}.
+\end{itemize}
 \end{frame}
 
-\section{List comprehensions}
 %%%%
 \begin{frame}[fragile]
-\frametitle{Ways of constructing lists}
+\frametitle{Operations on arrays}
 
-To generate or construct a list with a loop, a common way involves two parts.
+Multiplying two arrays: most recent version of Python uses the \ct{@} symbol.\footnote{In older versions, matrix multiplication is \ct{np.matmul()} and dot product is \ct{np.dot()}.} 
+
+When the arrays are both matrices, it computes their matrix product; when one is a vector, it computes the matrix-vector product; when both are vectors, it computes the dot product.
+
+%You can also use the function \ttt{np.dot()} for these computations. However, the \ttt{@} symbol is needed to compute products of higher order tensors.\footnote{\ttt{np.dot()} on higher tensors would compute simply the matrix product in the last two dimensions.}
+
+\pause
+For example, say that \ct{A} is the matrix ${\scriptsize \begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6\end{bmatrix}}$ from before, \ct{v} is the vector $(-1, 1, 1)$, and let \ct{B} and \ct{u} be the matrix and vector defined in the code below.
+
+\begin{codeblock}
+
+\begin{python}
+B = np.array([[1, 0], [1, -1], [1, 1]])
+u = np.array([1, 1, 0])
+(A @ B, A @ v, v @ u)
+\end{python}
+
+\end{codeblock}
+
+\pause
+\vspace*{-6pt}
+Output:\ \ct{( array([[6, 1], [15, 1]]), array([4, 7]), 0 )}.
+
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{Indexing and slicing arrays}
+Items in 1d array are accessed the same way as in a list
+\vspace*{-8pt}
+\begin{itemize}
+    \item[] e.g., \ct{v[0]} is first item in \ct{v}, at index 0.  
+\end{itemize}
+
+\vspace*{-6pt}
+For a 2d array, say the matrix \ct{A}, we can access the item in the row \ct{i} and column \ct{j} by \ct{A[i, j]}. \newline
+\pause
+``Slicing'' operation for arrays (also works with lists). Examples:
 \begin{enumerate}
-	\item Make an empty list.
-	\item Go through a loop, adding items to the list in each (or some) of the iterations.
+    \item Typing \ct{A[: , 0]} will give first column of the matrix.\footnote{The colon here says to take all indices in that position.}
+    \pause 
+    \item By typing \ct{M[:3, -3:]}, can get top-right $3\times 3$ submatrix of \ct{M}.\footnote{First position: ``get first 3 indices''; Second position: ``last 3 indices''.}
 \end{enumerate}
 
 \pause
-Example: have a function, \ttt{item()}, that determines the \ttt{n}$^{th}$ item in the list. You want list to contain the first 50 items. The code could look like below. 
+\vspace*{-6pt}
+With arrays (not lists), can even use non-consecutive indices; \textit{e.g.}, \ct{A[: ,[0,2]]} gets two columns of \ct{A} that are not adjacent. \newline 
+\pause
+If \ct{A} is a 2d array, its transpose is \ct{A.T}. %(providing another alternative for accessing a column).
+\vfill
+\end{frame}
 
-\begin{codeblock}
+\section{Linear algebra with NumPy}
 
-\begin{python}
-some_list = []
-for n in range(50):
-    # figure out the item with function item(n)
-    some_list += [item(n)]
-\end{python}
+%%%%
+\begin{frame}[fragile]
+\frametitle{Constructing special matrices}
 
-\end{codeblock}
+Some types of matrices are used a lot; would be cumbersome to always contruct row lists ourselves (\textit{e.g.}, in $100\times100$ matrix).
 
 \pause
-In Python, the same list can be created in one line of code. You do so by typing the following.
-
-\begin{codeblock}
-
-\begin{python}[numbers=none]
-some_list = [item(n) for n in range(50)]
-\end{python}
-
-\end{codeblock}
+\begin{itemize}
+    \item[] \textbf{Zero matrix:} The command \ct{np.zeros((m, n))} constructs an $m\times n$ matrix with all entries equal to zero.
+    \pause
+    \item[] \textbf{Diagonal matrix:} If \ct{d} is a 1D array of length $n$, the command \ct{np.diag(d)} constructs an $n\times n$ diagonal matrix with \ct{d} as its diagonal entries.
+    \pause
+    \item[] \textbf{Identity matrix:} The command \ct{np.identity(n)} constructs the $n\times n$ identity matrix (and \ct{np.eye(n)} does also).
+\end{itemize}
 
 \end{frame}
 
 %%%%
+\begin{frame}
+\frametitle{Using NumPy for linear algebra}
+In addition to the product operations on arrays, NumPy has a library with many functions for linear algebra {--} called \ct{linalg}. 
+
+\pause
+\begin{itemize}
+	\item For example, for the determinant of a square matrix \ct{M}, you type 
+        \begin{center}
+            np.linalg.det(M)
+        \end{center}
+    \pause
+    \item Many other linear algebra functions in this package (see \href{https://numpy.org/doc/stable/reference/routines.linalg.html}{the docs here}). \newline 
+Some are only implemented with square matrices (and perhaps only invertible ones), even though it would make sense to implement them in more general settings {--} for example, \ct{np.linalg.solve(A,b)} only solves the system of equations \ct{Ax=b} if \ct{A} is a square matrix.
+\end{itemize}
+
+\end{frame}
+
+\subsection{Broadcasting and efficient operations}
+
+%%%%
 \begin{frame}[fragile]
-\frametitle{Ways of constructing lists, continued}
-In the previous slide, the variable \ttt{some}\ct{_}\ttt{list} is assigned by a \emph{list comprehension}.
+\frametitle{Broadcasting, universal functions}
+If you're given a 1d array and want to get the array of square roots\ldots 
+\vspace*{-6pt}
+\begin{itemize}
+    \pause
+    \item First thought: go through each entry in array, taking square root (and re-assigning as you go). In Python, this is not efficient.
+\end{itemize}
+
+\vspace*{-6pt}
+\pause
+Efficient way in NumPy is called \emph{broadcasting}. If \ct{v} is the \underline{array}, type 
 
 \begin{codeblock}
 
 \begin{python}[numbers=none]
-some_list = [item(n) for n in range(50)]
+sqrt_v = np.sqrt(v)
+\end{python}
+
+\end{codeblock}
+
+\vspace*{-4pt}
+The function \ct{np.sqrt()} takes the square root of each entry in \ct{v}; you don't need to write a \ct{for} loop.\footnote{Technically, there is a \ct{for} loop in the background, but it happens in C and works much faster.}
+
+\pause
+\vspace*{-6pt}
+Functions that work on arrays this way are quite common in NumPy. They are called {\ttb ufuncs} (universal functions). \pause Other examples of ufuncs: 
+    \vspace*{-6pt}
+    \begin{itemize}
+        \item[] \ct{np.abs()}, \ct{np.sum()}, \ct{np.maximum()}, \ct{np.minimum()}, \ct{np.exp()}, \ct{np.log()}.
+    \end{itemize}
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{More on broadcasting}
+Many basic operations with NumPy arrays also use broadcasting. Here are a few examples with an array \ct{v}.
+\begin{enumerate}
+    \item To add a number, say \ct{1.2}, to every array entry: type \ct{v+1.2}.
+    \item To multiply every entry by \ct{1.2}: type \ct{1.2*v}.
+    \pause
+    \item To square every entry: type \ct{v**2}.
+    \item To multiply \ct{v} by another array \ct{w}, entry-wise\footnote{In mathematics, this product on vectors is called the Hadamard product.}: type \ct{v*w}.
+\end{enumerate}
+
+\pause
+Everything mentioned here works just as well on matrices (2d arrays), and generally on any \ttt{n}d array (higher order tensors).
+
+\pause
+\vspace*{-6pt}
+\textbf{Exercise.} Use broadcasting to create a $100\times 100$ matrix with all non-diagonal entries equal to $-1$ and diagonal entries equal to $\sqrt{2} - 1$.
+\end{frame}
+
+%%%%
+\begin{frame}[fragile]
+\frametitle{Experiment with runtime for universal function}
+To check the efficiency of broadcasting, use the \ct{time} package. Beforehand, make sure that you imported both \ct{numpy} and \ct{time} (see slide in first section).
+
+\pause
+Something simple: from a large identity matrix, we will get the exponential of the matrix (apply the function $e^x$ to every entry).
+
+\pause
+First, we use a \ct{for} loop. Run the code below in your Jupyter notebook.
+
+\begin{codeblock}
+
+\begin{python}
+id_matrix = np.eye(1000)
+exp_matrix = np.zeros((1000, 1000))
+start = time.time()
+for i in range(1000):
+    for j in range(1000):
+        exp_matrix[i,j] = np.exp(id_matrix[i,j])
+end = time.time()
+print(f"Seconds taken: {end-start}.")
 \end{python}
 
 \end{codeblock}
 
 \pause
-In list comprehensions: can add a condition to check. For example, if you only want to include \ttt{item(n)} if it is even, then you can write the following.
+The output gives the number of seconds to run the computation. The exact time will vary based on your computer. Mine took around 0.55 seconds.
+\end{frame}
 
-\begin{codeblock}
-
-\begin{python}[numbers=none]
-some_list = [item(n) for n in range(50) if item(n) % 2 == 0]
-\end{python}
-
-\end{codeblock}
+%%%%
+\begin{frame}[fragile]
+\frametitle{Experiment with runtime for universal function}
+Now, we will use broadcasting to compute the exponential of the identity matrix.
 
 \pause
-\vfill
-A more complicated example: get those $x$ between 1 and 100 at which the function $1000\frac{x}{(x^3+1)}$ has value between 0.5 and 2.
+Run the following code in your Jupyter notebook.
 
 \begin{codeblock}
 
-\begin{python}[numbers=none]
-[x for x in range(1,101) if 0.5 < 1000*x/(x**3+1) < 2]
+\begin{python}
+id_matrix = np.eye(1000)
+exp_matrix = np.zeros((1000, 1000))
+start = time.time()
+exp_matrix = np.exp(id_matrix)
+end = time.time()
+print(f"Seconds taken: {end-start}.")
 \end{python}
 
 \end{codeblock}
 
+\vspace*{12pt}
+\pause
+Again, the output is the number of seconds of runtime. For this approach with \ct{np.exp()}, my computer took around 0.0045 seconds. That is over 100 times faster than using the loop!
 \end{frame}
 
 \end{document}
