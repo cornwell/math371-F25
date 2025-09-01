@@ -1,3 +1,0 @@
-\beamer@sectionintoc {1}{Random functions in NumPy}{3}{0}{1}
-\beamer@sectionintoc {2}{Defining custom functions}{28}{0}{2}
-\beamer@sectionintoc {3}{Importing data}{36}{0}{3}
