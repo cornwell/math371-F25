@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Overview of linear regression}{3}{0}{1}
+\beamer@sectionintoc {2}{The procedure}{6}{0}{2}
+\beamer@sectionintoc {3}{Implementing the procedure}{24}{0}{3}
+\beamer@sectionintoc {4}{Examples}{27}{0}{4}
