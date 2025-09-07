@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  3 SEP 2025 19:19
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  7 SEP 2025 10:15
  restricted system commands enabled.
 **lecture04
 (./lecture04.tex
@@ -2810,7 +2810,7 @@ Here is how much of LuaTeX's memory you used:
 16 penalty, 321 glyph, 144 attribute, 73 glue_spec, 144 attribute_list, 4 write,
  28 pdf_literal, 30 pdf_colorstack, 1 pdf_setmatrix, 1 pdf_save, 1 pdf_restore n
 odes
-   avail lists: 2:1571,3:268,4:350,5:386,6:48,7:2757,8:23,9:1279,10:18,11:54
+   avail lists: 2:1555,3:268,4:350,5:386,6:48,7:2751,8:23,9:1267,10:18,11:54
  53594 multiletter control sequences out of 65536+600000
  274 fonts using 51641183 bytes
  128i,13n,139p,1911b,1036s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2828,7 +2828,7 @@ tx/txexs.pfb><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/tx
 fonts/txsyc.pfb><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /newtx/txsys.pfb><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/newtxsf/zsfmia-reg.pfb>
-Output written on lecture04.pdf (34 pages, 321090 bytes).
+Output written on lecture04.pdf (34 pages, 321076 bytes).
 
 PDF statistics: 319 PDF objects out of 1000 (max. 8388607)
  74 named destinations out of 1000 (max. 131072)

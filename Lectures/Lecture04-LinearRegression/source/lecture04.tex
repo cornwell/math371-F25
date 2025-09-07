@@ -346,7 +346,7 @@ Procedure to carry out the steps:
 Given $(x_1,y_1), (x_2,y_2), \ldots, (x_P, y_P)$, as a NumPy array (call it \ct{D}, with shape \ct{(P,2)}): 
 
 \begin{pseudo}
-A = [ [x1, 1], ..., [xP, 1] ] # 2-column matrix
+A = [ [1, x1], ..., [1, xP] ] # 2-column matrix
 y = y-coordinate array
 # next, get 2x2 matrix and 2-vector
 Compute A.T times A; compute A.T times y
