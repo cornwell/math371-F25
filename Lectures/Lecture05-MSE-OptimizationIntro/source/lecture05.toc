@@ -1,1 +1,2 @@
-\beamer@sectionintoc {1}{Measuring the fitness of linear models}{3}{0}{1}
+\beamer@sectionintoc {1}{Generalizing Linear regression to multiple variables}{3}{0}{1}
+\beamer@sectionintoc {2}{Measuring the fitness of linear models}{6}{0}{2}

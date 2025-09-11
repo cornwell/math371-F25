@@ -164,8 +164,8 @@ keepspaces=true
 \newcommand{\comment}[1]{}
 
 \author{Chris Cornwell}
-\date{September 11, 2025}
-\title{Linear regression through Optimization}
+\date{September 11 and 16, 2025}
+\title{Optimization from Calculus}
 
 \begin{document}
 
@@ -178,59 +178,41 @@ keepspaces=true
 \tableofcontents
 \end{frame}
 
-\section{Generalizing Linear regression to multiple variables}
+\section{Approximations from derivatives}
 
-\begin{frame}{Extending the linear regression procedure}
-    If you have data $({\bf x}_1,y_1), ({\bf x}_2,y_2), \ldots, ({\bf x}_P, y_P)$ where, for some $N>1$ the input ${\bf x}_p$ is a vector in $\bb R^N$, can you still do linear regression?
+\begin{frame}{Linear approximations}
+    Say that $g:\bb R\to\bb R$ is a twice differentiable function (at least).  Write $w$ for input to $g$, so $g(w)$.
 
-    For each $p$ with $1\le p\le P$, say that ${\bf x}_p = {\scriptsize \begin{bmatrix}x_{1,p}\\ x_{2,p}\\ \vdots\\ x_{N,p}\end{bmatrix}}$ and define a $P\times(N+1)$ matrix $A$ so that the $p^{th}$ row is $[1, x_{1,p}, x_{2,p}, \ldots, x_{N,p}]$. In other words, if we define $\tilde{\bf x}_p$ to be the vector in $\bb R^{N+1}$ which has $1$ as its first component and ${\bf x}_p$ as the remaining $N$ components, then 
-        \[A = \begin{bmatrix} \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} & \tilde{\bf x}_1^T & \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} \\ \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} & \tilde{\bf x}_2^T & \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} \\ & \vdots & \\ \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} & \tilde{\bf x}_P^T & \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} \end{bmatrix}.\]
+    The linear approximation to $g(w)$, at a point $(v, g(v))$ on its graph, is the function whose graph is the tangent line:
+        \[h(w) = g(v) + g'(v)(w - v).\]
+    This is also called the first order Taylor series approximation (or Taylor polynomial) of $g$. It approximates values of $g$ for inputs near $v$.
+
+    %\centering
+    %\includegraphics
 \end{frame}
 
-\begin{frame}{Extending the linear regression procedure}
-    With the matrix $A$ from the previous slide, a solution $\tilde{\bf w}^\star = [b^\star, w_1^\star, \ldots, w_N^\star]^T$ to the normal equations $A^TA\tilde{\bf w} = A^T{\bf y}$ provides the coefficients for a linear regression model for this data.
+\begin{frame}{Second order (quadratic) approximations}
+    To approximate $g$ better near $v$ (and in a larger interval around $v$), we can use the second order Taylor polynomial {--} which incorporates both first and second derivative information.  This is the function:
 
-    That is, the (affine) linear function $f_{\tilde{\bf w}^\star}({\bf x}) = b^\star + w_1^\star x_1 + \ldots + w_N^\star x_N = b\star + {\bf x}^T{\bf w}^\star$ is the best fit linear function to model the given data.
+    \[h(w) = g(v) + g'(v)(w - v) + \frac12g''(v)(w - v)^2.\]
+
+    Note: if $g'(v) = 0$ and $g''(v) > 0$, then $h(w) \ge g(v)$. So (where the approximation is quite good, sufficiently near $v$), values of the original function $g(w)$ should be larger or equal to $g(v)$ (A local minimum).
+
+    The opposite is true if $g'(v) = 0$ and $g''(v) < 0$.
 \end{frame}
 
-\section{Measuring the fitness of linear models}
-
-\begin{frame}
-    \frametitle{Least Squares loss function}
-    On given data $({\bf x}_1, y_1), ({\bf x}_2, y_2), \ldots, ({\bf x}_P, y_P)$, the measure that is commonly used for how well a linear regression model, $f_{b,{\bf w}}({\bf x}) = b + {\bf x}^T{\bf w}$, fits the data is the Least Squares loss (cost) function. 
-    \vspace*{-8pt}
-    \begin{itemize}
-        \item \textit{This is $P$ times the Mean Squared Error.}
-    \end{itemize}
-
-    Following notation from textbook, this loss function is 
-        \[g(b, {\bf w}) = \sum_{p=1}^P\left(f_{b,{\bf w}}({\bf x}_p) - y_p\right)^2.\]
-    
-    %\centering 
-    % \includegraphics[width=0.4\textwidth]{lsr-error-lines.png}
+\begin{frame}{Extending approximations to multiple variables}
+    We may extend the first and second order approximations to the setting of multiple variables. This requires the use of the gradient where, if ${\bf w} = [w_1\ w_2\ \ldots\ w_N]^T$, then 
+        \[\nabla g = [\frac{\partial g}{\partial w_1}\ \frac{\partial g}{\partial w_2}\ \ldots\ \frac{\partial g}{\partial w_N}]^T.\]
+    The linear approximation is $h({\bf w}) = g({\bf v}) + \nabla g({\bf v})^T({\bf w} - {\bf v})$. (Note that this \emph{is} a linear function; its graph is a translate of the subspace of $\bb R^{N+1}$ that is normal to $[-\nabla g({\bf v})^T,\ 1]^T$, the translation is by a vector whose dot product with $[-\nabla g({\bf v})^T,\ 1]^T$ is equal to $g({\bf v}) - \nabla g({\bf v})^T{\bf v}$.)
 \end{frame}
 
-\begin{frame}
-    \frametitle{Meaning of Least Squares loss}
-    For $1\le p\le P$, since $f_{b,{\bf w}}({\bf x}_p) = \hat{y}_p$, the quantity $|f_{b,{\bf w}}({\bf x}_p) - y_p|$ is the vertical distance from $(x_p, y_p)$ to the point predicted by the linear model, $(x_p, \hat{y}_p)$. 
+\section{Stationary points}
 
-    Additionally, the length of the vector ${\bf y} - \hat{\bf y}$ (which is the distance from ${\bf y}$ to the point determined by $\tilde{\bf w}$, in the column space of our feature matrix) is equal to 
-        \[\sqrt{(\hat{y}_1 - y_1)^2 + (\hat{y}_2 - y_2)^2 + \ldots + (\hat{y}_P - y_P)^2} = \sqrt{g(b, {\bf w})}.\]
-
-    We see that minimizing $g(b, {\bf w})$ is the same as minimizing that distance, which will give us the $\hat{\bf y}$ in the column space that makes ${\bf y} - \hat{\bf y}$ be orthogonal to the column space.
+\begin{frame}{Stationary points versus (local) minimal}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Minimizing the Least Squares loss}
-    The data $\{({\bf x}_p, y_p)\}_{p=1}^P$ is fixed. How do we solve the problem 
-                \[\underset{\text{minimize}}{b,{\bf w}} g(b, {\bf w})?\]
-    We can use methods from calculus, specifically the first order condition {--} that we want all partial derivatives equal to zero. 
-    \begin{itemize}
-        \item Note, what are the variables of the function $g$?  They are the parameters $b,w_1,w_2,\ldots,w_N$.
-    \end{itemize}
-    \vfill
-    \pause
-    Next: a review of calculus minimization techniques.
+\begin{frame}{First order condition}
 \end{frame}
 
 \end{document}

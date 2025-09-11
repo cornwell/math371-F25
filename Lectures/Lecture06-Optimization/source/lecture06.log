@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  10 SEP 2025 21:07
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  10 SEP 2025 21:17
  restricted system commands enabled.
-**lecture05
-(./lecture05.tex
+**lecture06
+(./lecture06.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
 Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
@@ -2190,8 +2190,8 @@ File: listings.cfg 2024/05/25 1.10b listings configuration
 ))
 Package: listings 2024/05/25 1.10b (Carsten Heinz)
 \c@question=\count386
-(./lecture05.aux)
-\openout1 = lecture05.aux
+(./lecture06.aux)
+\openout1 = lecture06.aux
 
 LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 170.
 LaTeX Font Info:    Trying to load font information for OML+ntxsfmi on input li
@@ -2304,10 +2304,10 @@ fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring ON on input line 170.
- (./lecture05.out) (./lecture05.out)
+ (./lecture06.out) (./lecture06.out)
 \@outlinefile=\write5
 
-\openout5 = lecture05.out
+\openout5 = lecture06.out
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/FiraSans(0)/m/n --> OT1/cmss/m/n on input line 170.
 
@@ -2394,7 +2394,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 LaTeX Info: Command `\dddot' is already robust on input line 170.
 LaTeX Info: Command `\ddddot' is already robust on input line 170.
 \c@lstlisting=\count393
- (./lecture05.nav)
+ (./lecture06.nav)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
 (Font)              scaled to size 5.10004pt on input line 170.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
@@ -2416,7 +2416,7 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
 [1
 
 {C:/Users/gener/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(./lecture05.toc)
+(./lecture06.toc)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
 (Font)              scaled to size 10.20007pt on input line 179.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
@@ -2425,153 +2425,109 @@ LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
 
 [2
 
-] (./lecture05.toc)
-
-[3
-
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 188
+LaTeX Font Info:    Trying to load font information for U+msa on input line 190
 .
  (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 188
+LaTeX Font Info:    Trying to load font information for U+msb on input line 190
 .
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsfmia on input lin
-e 188.
+e 190.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtxsf/untxsfmia.fd
 File: untxsfmia.fd 2014/11/16 Fontinst v1.933 font definitions for U/ntxsfmia.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
-188.
+190.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
-188.
+190.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.18503pt on input line 188.
+(Font)              scaled to size 5.18503pt on input line 190.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 9.30756pt on input line 188.
+(Font)              scaled to size 9.30756pt on input line 190.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.80005pt on input line 188.
+(Font)              scaled to size 6.80005pt on input line 190.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 5.18503pt on input line 188.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 9.30756pt on input line 188.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 6.80005pt on input line 188.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 5.18503pt on input line 188.
+(Font)              scaled to size 5.18503pt on input line 190.
 
 
-LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 188.
+[3
 
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 188.
-
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 5.27003pt on input line 188.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 4.67503pt on input line 188.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.27003pt on input line 188.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 4.67503pt on input line 188.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 5.27003pt on input line 188.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 4.67503pt on input line 188.
-
+]
 
 [4
 
 ]
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 9.30756pt on input line 206.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 6.80005pt on input line 206.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 5.18503pt on input line 206.
+
 
 [5
-
-] (./lecture05.toc)
-
-[6
-
-]
-
-[7
-
-]
-
-[8
-
-]
-
-[9
-
-]
-
-[10
 
 ]
 \tf@nav=\write6
 
-\openout6 = lecture05.nav
+\openout6 = lecture06.nav
 \tf@toc=\write7
 
-\openout7 = lecture05.toc
+\openout7 = lecture06.toc
 \tf@snm=\write8
 
-\openout8 = lecture05.snm
- (./lecture05.aux)
+\openout8 = lecture06.snm
+ (./lecture06.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
  ***********
 
 
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.5pt have occurred.
-
-
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `lecture05.out' has not changed.
-(rerunfilecheck)             Checksum: E200481C79F4CCB1E512038980B7D6BD;566.
+Package rerunfilecheck Info: File `lecture06.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 )
 
 Here is how much of LuaTeX's memory you used:
- 31617 strings out of 475915
+ 31453 strings out of 475915
  125031,1977958 words of node,token memory allocated
- 6263 words of node memory still in use:
-   52 hlist, 11 vlist, 6 rule, 28 disc, 6 local_par, 6 math, 136 glue, 89 kern, 
-21 penalty, 359 glyph, 147 attribute, 73 glue_spec, 147 attribute_list, 4 write,
- 36 pdf_literal, 36 pdf_colorstack nodes
-   avail lists: 1:1,2:467,3:129,4:190,5:277,6:26,7:2010,8:32,9:684,10:19,11:59
- 53182 multiletter control sequences out of 65536+600000
- 200 fonts using 42465127 bytes
- 128i,14n,139p,1911b,818s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 7524 words of node memory still in use:
+   74 hlist, 12 vlist, 9 rule, 37 disc, 4 local_par, 11 math, 158 glue, 106 kern
+, 23 penalty, 463 glyph, 142 attribute, 73 glue_spec, 142 attribute_list, 4 writ
+e, 28 pdf_literal, 30 pdf_colorstack nodes
+   avail lists: 1:1,2:245,3:123,4:182,5:330,6:28,7:1522,8:37,9:280,10:16,11:86
+ 53076 multiletter control sequences out of 65536+600000
+ 155 fonts using 37132103 bytes
+ 128i,13n,139p,1911b,818s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public/fira/FiraSan
 s-Italic.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public
 /fira/FiraSans-Regular.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/o
 pentype/public/fira/FiraSans-Bold.otf><C:/Users/gener/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/gener/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/txfonts/rtxmi.pfb><C:/Users/gener/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Users/gener/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb><C:/Users/gener/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on lecture05.pdf (10 pages, 68807 bytes).
+rograms/MiKTeX/fonts/type1/public/newtx/txsys.pfb><C:/Users/gener/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/newtxsf/zsfmi-reg.pfb><C:/Users/gener/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
+Output written on lecture06.pdf (5 pages, 53245 bytes).
 
-PDF statistics: 125 PDF objects out of 1000 (max. 8388607)
- 23 named destinations out of 1000 (max. 131072)
- 32 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 82 PDF objects out of 1000 (max. 8388607)
+ 11 named destinations out of 1000 (max. 131072)
+ 16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
