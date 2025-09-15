@@ -227,47 +227,63 @@ keepspaces=true
 \section{Measuring the fitness of linear models}
 
 \begin{frame}{``Noise'' and linear regression model}
-    \textbf{Underlying assumption:} the (input) variables $x_1,\ldots,x_N$ are not random, but there is natural variability in the ``$y$-direction'' (value of $f_{\tilde{\bf w}}$), represented with a random variable. \newline 
-    For some $b$ and some ${\bf w} = [w_1,\ldots, w_N]^T$, 
-    \[y = b + {\bf x}^T{\bf w} + \varepsilon\]
+    \textbf{Underlying assumption:} the (input) variables $x_1,\ldots,x_N$ are not random, but there is natural variability in the ``$y$-direction'' (value of $f_{\tilde{\bf w}}$), represented with a random variable.\footnote{Note that, if you instead consider the random variable to be in another direction (swapping some $x_j$ with $y$) then there is a \emph{different} linear regression.} \newline 
+    \pause
+    So, there is a $b$ and ${\bf w} = [w_1,\ldots, w_N]^T$, so that the relationship between ${\bf x}$ and $y$ is 
+    \[y = b + {\bf x}^T{\bf w} + \varepsilon,\]
+    where $\varepsilon$ is a random variable with mean (first moment) equal to $0$. 
+    \pause
+    \begin{itemize}
+        \item Critically, the distribution of $\varepsilon$ should be independent of ${\bf x}$. 
+        \pause
+        \item A common consideration: $\varepsilon$ \href{https://en.wikipedia.org/wiki/Normal_distribution}{normally distributed}.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{Least Squares loss function}
-    On given data $({\bf x}_1, y_1), ({\bf x}_2, y_2), \ldots, ({\bf x}_P, y_P)$, the measure that is commonly used for how well a linear regression model, $f_{b,{\bf w}}({\bf x}) = b + {\bf x}^T{\bf w}$, fits the data is the Least Squares loss (cost) function. 
-    \vspace*{-8pt}
-    \begin{itemize}
-        \item \textit{This is $P$ times the Mean Squared Error.}
-    \end{itemize}
-
-    Following notation from textbook, this loss function is 
-        \[g(b, {\bf w}) = \sum_{p=1}^P\left(f_{b,{\bf w}}({\bf x}_p) - y_p\right)^2.\]
+    On given data $({\bf x}_1, y_1), ({\bf x}_2, y_2), \ldots, ({\bf x}_P, y_P)$, a common measure for how well a linear regression model fits is the \textbf{Mean Squared Error}. If the intercept and ${\bf w}$ vector for the regression line are $b^\star$ and ${\bf w}^\star$ then we have $\hat{y}_i = b^\star + {\bf x}_i^T{\bf w}^\star$ and the Mean Squared Error is 
+        \[\frac1{P}\sum_{i=1}^P\left(\hat{y}_i - y_i\right)^2 = \frac1{P}\sum_{i=1}^P\left(b^\star + {\bf x}_i^T{\bf w}^\star - y_i\right)^2.\]
     
-    %\centering 
-    % \includegraphics[width=0.4\textwidth]{lsr-error-lines.png}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Meaning of Least Squares loss}
-    For $1\le p\le P$, since $f_{b,{\bf w}}({\bf x}_p) = \hat{y}_p$, the quantity $|f_{b,{\bf w}}({\bf x}_p) - y_p|$ is the vertical distance from $(x_p, y_p)$ to the point predicted by the linear model, $(x_p, \hat{y}_p)$. 
-
-    Additionally, the length of the vector ${\bf y} - \hat{\bf y}$ (which is the distance from ${\bf y}$ to the point determined by $\tilde{\bf w}$, in the column space of our feature matrix) is equal to 
-        \[\sqrt{(\hat{y}_1 - y_1)^2 + (\hat{y}_2 - y_2)^2 + \ldots + (\hat{y}_P - y_P)^2} = \sqrt{g(b, {\bf w})}.\]
-
-    We see that minimizing $g(b, {\bf w})$ is the same as minimizing that distance, which will give us the $\hat{\bf y}$ in the column space that makes ${\bf y} - \hat{\bf y}$ be orthogonal to the column space.
+    \pause
+    It is helpful to think of this as a function on an arbitrary choice of parameters $\tilde{\bf w} = (b, {\bf w})$.  Dropping the division by $P$, this is the \textbf{Least Squares loss} function: \pause\ if $f_{\tilde{\bf w}}({\bf x}) = b + {\bf x}^T{\bf w}$ is the linear model for parameters $\tilde{\bf w}=(b,w_1,\ldots,w_N)$ then this loss function is  
+    
+        \[g(\tilde{\bf w}) = \sum_{i=1}^P\left(f_{\tilde{\bf w}}({\bf x}_i) - y_i\right)^2.\]
+    
 \end{frame}
 
 \begin{frame}
     \frametitle{Minimizing the Least Squares loss}
-    The data $\{({\bf x}_p, y_p)\}_{p=1}^P$ is fixed. How do we solve the problem 
-                \[\underset{\text{minimize}}{b,{\bf w}} g(b, {\bf w})?\]
-    We can use methods from calculus, specifically the first order condition {--} that we want all partial derivatives equal to zero. 
+    For fixed data $\{({\bf x}_i, y_i)\}_{i=1}^P$, how do we solve the problem 
+                \[\underset{\tilde{\bf w}}{\text{minimize}}\ g(\tilde{\bf w})?\]
+    \pause
+    We can use methods from calculus to determine the minimum (and the minimizer, to set equal to $\tilde{\bf w}$). Specifically, the first order condition is useful {--} that we want a value of $\tilde{\bf w}$ where all partial derivatives of $g(\tilde{\bf w})$ are equal to zero. 
     \begin{itemize}
-        \item Note, what are the variables of the function $g$?  They are the parameters $b,w_1,w_2,\ldots,w_N$.
+        \pause
+        \item Note, what are the variables for the partial derivative? They are the parameters in $\tilde{\bf w}$, namely $b,w_1,w_2,\ldots,w_N$.
+        \pause
+        \item There will be the input (independent variables) ${\bf x}$ to the linear function; but $g$ is a function of the \emph{parameters}.
     \end{itemize}
     \vfill
     \pause
     Next: a review of calculus minimization techniques.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Meaning of Least Squares loss}
+    For $1\le i\le P$, the quantity $|f_{b,{\bf w}}({\bf x}_i) - y_i|$ is the vertical distance from $({\bf x}_i, y_i)$ to the point predicted by the linear model, $({\bf x}_i, f_{\tilde{\bf w}}({\bf x}_i))$. 
+    
+    \pause
+    \begin{center} 
+    \includegraphics[width=0.3\textwidth]{../../Images/lsr-error-lines.png}
+    \end{center}
+
+    \pause
+    The length of the vector ${\bf y} - \hat{\bf y}$ (\textit{i.e.}, the distance from ${\bf y}$ to the vector of predictions, in the column space of our feature matrix) is equal to 
+        \[\sqrt{(f_{\tilde{\bf w}}({\bf x}_1) - y_1)^2 + (f_{\tilde{\bf w}}({\bf x}_2) - y_2)^2 + \ldots + (f_{\tilde{\bf w}}({\bf x}_P) - y_P)^2} = \sqrt{g(\tilde{\bf w})}.\]
+
+    \pause
+    We see that minimizing $g(\tilde{\bf w})$ is the same as minimizing that distance, giving the $\hat{\bf y}$ in the column space that makes ${\bf y} - \hat{\bf y}$ orthogonal to the column space.
 \end{frame}
 
 \end{document}
