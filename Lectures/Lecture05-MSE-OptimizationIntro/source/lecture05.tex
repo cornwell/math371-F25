@@ -5,6 +5,7 @@
 \usepackage{amsthm}
 \usepackage{etoolbox}
 \usepackage{multicol}
+\usepackage{caption}
 
 \usetheme[progressbar=frametitle, numbering=none]{metropolis}
 \usecolortheme[snowy]{owl}
@@ -43,7 +44,8 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[sfdefault,scaled=.85]{FiraSans}
-\usepackage{newtxsf}
+%\usepackage{newtxsf}
+\usepackage{mathpazo}
 
 \usepackage{listings}
 
@@ -181,19 +183,54 @@ keepspaces=true
 \section{Generalizing Linear regression to multiple variables}
 
 \begin{frame}{Extending the linear regression procedure}
-    If you have data $({\bf x}_1,y_1), ({\bf x}_2,y_2), \ldots, ({\bf x}_P, y_P)$ where, for some $N>1$ the input ${\bf x}_p$ is a vector in $\bb R^N$, can you still do linear regression?
+    If you have data $({\bf x}_1,y_1), ({\bf x}_2,y_2), \ldots, ({\bf x}_P, y_P)$ where, for some $N>1$ the input ${\bf x}_i$ is a vector in $\bb R^N$, can you still do linear regression?
 
-    For each $p$ with $1\le p\le P$, say that ${\bf x}_p = {\scriptsize \begin{bmatrix}x_{1,p}\\ x_{2,p}\\ \vdots\\ x_{N,p}\end{bmatrix}}$ and define a $P\times(N+1)$ matrix $A$ so that the $p^{th}$ row is $[1, x_{1,p}, x_{2,p}, \ldots, x_{N,p}]$. In other words, if we define $\tilde{\bf x}_p$ to be the vector in $\bb R^{N+1}$ which has $1$ as its first component and ${\bf x}_p$ as the remaining $N$ components, then 
+    \pause
+    For each $i$ with $1\le i\le P$, say that ${\bf x}_i = {\scriptsize \begin{bmatrix}x_{1,i}\\ x_{2,i}\\ \vdots\\ x_{N,i}\end{bmatrix}}$. Define a $P\times(N+1)$ matrix $A$ so that the $i^{th}$ row is $[1, x_{1,i}, x_{2,i}, \ldots, x_{N,i}]$.\pause \newline 
+    In other words, set $\tilde{\bf x}_i$ equal to the vector in $\bb R^{N+1}$ with $1$ as its first component and ${\bf x}_i$ for the remaining $N$ components. Then 
         \[A = \begin{bmatrix} \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} & \tilde{\bf x}_1^T & \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} \\ \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} & \tilde{\bf x}_2^T & \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} \\ & \vdots & \\ \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} & \tilde{\bf x}_P^T & \overset{\rule{0.4cm}{0.02cm}}{\phantom{.}} \end{bmatrix}.\]
 \end{frame}
 
 \begin{frame}{Extending the linear regression procedure}
-    With the matrix $A$ from the previous slide, a solution $\tilde{\bf w}^\star = [b^\star, w_1^\star, \ldots, w_N^\star]^T$ to the normal equations $A^TA\tilde{\bf w} = A^T{\bf y}$ provides the coefficients for a linear regression model for this data.
+    A solution $\tilde{\bf w}^\star = [b^\star, w_1^\star, \ldots, w_N^\star]^T$ to the normal equations $A^TA\tilde{\bf w} = A^T{\bf y}$ (with $A$ as above) gives coefficients for a linear model for the data.\footnote{\small The matrix $A^TA$ is $(N+1)\times(N+1)$ and $A^T{\bf y}$ is a vector in $\bb R^{N+1}$.}
 
-    That is, the (affine) linear function $f_{\tilde{\bf w}^\star}({\bf x}) = b^\star + w_1^\star x_1 + \ldots + w_N^\star x_N = b\star + {\bf x}^T{\bf w}^\star$ is the best fit linear function to model the given data.
+    \vspace*{-2pt}
+    \pause
+    Write ${\bf w}^\star \in \bb R^{N}$ for the non-constant coefficient vector ${\scriptsize [w_1^\star,w_2^\star,\ldots,w_N^\star]^T}$. The affine linear model on the data, in $N$ variables, is \vspace*{-4pt} 
+    \[f_{\tilde{\bf w}^\star}({\bf x}) = b^\star + w_1^\star x_1 + \ldots + w_N^\star x_N = b^\star + {\bf x}^T{\bf w}^\star.\] 
+
+    \vspace*{-15pt}   
+    \begin{enumerate}
+        \pause
+        \item[(1)] $f_{\tilde{\bf w}^\star}({\bf x})$ is affine linear, meaning the difference in two function values is a dot product on the difference of the input. Specifically, $f_{\tilde{\bf w}^\star}({\bf x}) - f_{\tilde{\bf w}^\star}({\bf x}') = ({\bf x} - {\bf x}')^T{\bf w}^\star$.
+        \pause
+        \item[(2)] The graph of $f_{\tilde{\bf w}^\star}({\bf x})$ is a hyperplane\footnote{\small Generalization of a plane in $\bb R^3$.} in $\bb R^{N+1}$ with normal vector ${\scriptsize [1,-w_1^\star, \ldots, -w_N^\star]^T}$.
+    \end{enumerate}
+    \vfill
+\end{frame}
+
+\begin{frame}{Example}
+    \textbf{A concrete example:} using the data in \ct{'Advertising.csv'}, found in the \href{https://github.com/cornwell/math371-S25/blob/main/DataSets/}{DataSets folder} of the course site. \newline 
+    This contains data on amounts spent (in thousands of dollars) on TV, Radio, and Newspaper advertising in 200 different markets, as well as the amounts sold in each market (in thousands of units).
+    
+    \pause
+    \begin{multicols}{2}
+    To perform linear regression, with independent variables \ct{'TV'}, \ct{'Radio'}, and \ct{'Newspaper'} and setting $y$ equal to \ct{'Sales'}, one may follow the procedure above. The matrix $A$ described is $200\times 4$ ($N=3$).\pause\ The resulting coefficients are (approximately) \[{\scriptsize [b^\star, w_1^\star, w_2^\star, w_3^\star] = [2.9389, 0.0458, 0.1885, -0.001].}\]
+    
+    \begin{figure}[tight]
+    \includegraphics[width=0.3\textwidth]{../../Images/multiregression-higherangle.png}
+    \caption*{{\footnotesize 3D projection of\\ Advertising model}}
+    \end{figure}
+    \end{multicols}
 \end{frame}
 
 \section{Measuring the fitness of linear models}
+
+\begin{frame}{``Noise'' and linear regression model}
+    \textbf{Underlying assumption:} the (input) variables $x_1,\ldots,x_N$ are not random, but there is natural variability in the ``$y$-direction'' (value of $f_{\tilde{\bf w}}$), represented with a random variable. \newline 
+    For some $b$ and some ${\bf w} = [w_1,\ldots, w_N]^T$, 
+    \[y = b + {\bf x}^T{\bf w} + \varepsilon\]
+\end{frame}
 
 \begin{frame}
     \frametitle{Least Squares loss function}

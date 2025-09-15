@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  10 SEP 2025 21:17
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2025.1.12)  14 SEP 2025 13:44
  restricted system commands enabled.
 **lecture06
 (./lecture06.tex
@@ -2189,59 +2189,64 @@ File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
 File: listings.cfg 2024/05/25 1.10b listings configuration
 ))
 Package: listings 2024/05/25 1.10b (Carsten Heinz)
+(C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/mathpazo.sty
+Package: mathpazo 2020/03/25 PSNFSS-v9.3 Palatino w/ Pazo Math (D.Puga, WaS) 
+\symupright=\mathgroup10
+)
 \c@question=\count386
+
 (./lecture06.aux)
 \openout1 = lecture06.aux
 
-LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 170.
+LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 172.
 LaTeX Font Info:    Trying to load font information for OML+ntxsfmi on input li
-ne 170.
+ne 172.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtxsf/omlntxsfmi.fd
 File: omlntxsfmi.fd 2014/11/16 Fontinst v1.933 font definitions for OML/ntxsfmi
 .
 )
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 172.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-70.
+72.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 172.
 LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 
-170.
+172.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 172.
 LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line
- 170.
+ 172.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -2303,69 +2308,65 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring ON on input line 170.
+Package hyperref Info: Link coloring ON on input line 172.
  (./lecture06.out) (./lecture06.out)
 \@outlinefile=\write5
 
 \openout5 = lecture06.out
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/FiraSans(0)/m/n --> OT1/cmss/m/n on input line 170.
-
+(Font)                  OT1/ppl/m/n --> OT1/cmss/m/n on input line 172.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/FiraSans(0)/b/n --> OT1/cmss/b/n on input line 170.
-
-\symnumbers=\mathgroup10
-\sympureletters=\mathgroup11
+(Font)                  OT1/ppl/b/n --> OT1/cmss/b/n on input line 172.
+\symnumbers=\mathgroup11
+\sympureletters=\mathgroup12
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmr/m/n on input line 170.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 170.
+(Font)                  OT1/cmss/m/n --> TU/ppl/m/n on input line 172.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/FiraSans(0)/b/n --> TU/FiraSans(0)/b/n on input lin
-e 170.
+(Font)                  OT1/zplm/b/n --> TU/FiraSans(0)/b/n on input line 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/FiraSans(0)/b/n --> TU/FiraSans(0)/b/n on input lin
-e 170.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 170.
+(Font)                  OT1/zplm/b/n --> TU/FiraSans(0)/b/n on input line 172.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/FiraSans(0)/m/n --> TU/FiraSans(0)/m/n on input lin
-e 170.
+e 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/FiraSans(0)/b/n --> TU/FiraSans(0)/m/n on input lin
-e 170.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 170.
+e 172.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/FiraSans(0)/m/it --> TU/FiraSans(0)/m/it on input l
-ine 170.
+(Font)                  OT1/ppl/m/it --> TU/FiraSans(0)/m/it on input line 172.
+
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/FiraSans(0)/b/it --> TU/FiraSans(0)/m/it on input l
-ine 170.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 170.
+(Font)                  OT1/ppl/b/it --> TU/FiraSans(0)/m/it on input line 172.
+
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/FiraMono(0)/m/n --> TU/FiraMono(0)/m/n on input lin
-e 170.
+e 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/FiraMono(0)/b/n --> TU/FiraMono(0)/m/n on input lin
-e 170.
+e 172.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
 (Font)                  TU/FiraSans(0)/m/n --> TU/FiraSans(0)/b/n on input line
- 170.
+ 172.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  TU/FiraSans(0)/m/it --> TU/FiraSans(0)/b/it on input li
-ne 170.
+ne 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> TU/lmr/b/n on input line 170.
+(Font)                  OT1/cmss/b/n --> TU/ppl/b/n on input line 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
 (Font)                  TU/FiraSans(0)/b/n --> TU/FiraSans(0)/b/n on input line
- 170.
+ 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  TU/FiraSans(0)/m/n --> TU/FiraSans(0)/b/n on input line
- 170.
+ 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  TU/FiraSans(0)/m/it --> TU/FiraSans(0)/b/it on input li
-ne 170.
+ne 172.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  TU/FiraMono(0)/m/n --> TU/FiraMono(0)/b/n on input line
- 170.
+ 172.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/translator/translator-b
 asic-dictionary-English.dict
@@ -2391,96 +2392,139 @@ Dictionary: translator-numbers-dictionary, Language: English
 heorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Command `\dddot' is already robust on input line 170.
-LaTeX Info: Command `\ddddot' is already robust on input line 170.
+LaTeX Info: Command `\dddot' is already robust on input line 172.
+LaTeX Info: Command `\ddddot' is already robust on input line 172.
 \c@lstlisting=\count393
  (./lecture06.nav)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.10004pt on input line 170.
+(Font)              scaled to size 5.10004pt on input line 172.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 6.80005pt on input line 170.
+(Font)              scaled to size 6.80005pt on input line 172.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 12.24008pt on input line 174.
+(Font)              scaled to size 12.24008pt on input line 176.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 12.24008pt on input line 174.
+(Font)              scaled to size 12.24008pt on input line 176.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 8.50006pt on input line 174.
+(Font)              scaled to size 8.50006pt on input line 176.
 
-Overfull \vbox (39.45392pt too high) detected at line 174
+Overfull \vbox (39.45392pt too high) detected at line 176
  []
 
 
 
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 3.40002pt on input line 174.
+(Font)              scaled to size 3.40002pt on input line 176.
 [1
 
 {C:/Users/gener/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 (./lecture06.toc)
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 10.20007pt on input line 179.
+(Font)              scaled to size 10.20007pt on input line 181.
 LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 10.20007pt on input line 179.
+(Font)              scaled to size 10.20007pt on input line 181.
 
 
 [2
 
-]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 190
-.
- (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 190
-.
+] (./lecture06.toc)
 
-(C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+[3
+
+]
+LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
+194.
+ (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
+194.
+
+(C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
+194.
+
+(C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 194.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 194.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 194.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 194.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 194.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 194.
 LaTeX Font Info:    Trying to load font information for U+ntxsfmia on input lin
-e 190.
+e 194.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtxsf/untxsfmia.fd
 File: untxsfmia.fd 2014/11/16 Fontinst v1.933 font definitions for U/ntxsfmia.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
-190.
+194.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
-190.
+194.
 
 (C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/n' will be
-(Font)              scaled to size 5.18503pt on input line 190.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 9.30756pt on input line 190.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 6.80005pt on input line 190.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
-(Font)              scaled to size 5.18503pt on input line 190.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
+194.
 
+(C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 9.30756pt on input line 194.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 6.80005pt on input line 194.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/m/it' will be
+(Font)              scaled to size 5.10004pt on input line 194.
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 
+194.
 
-[3
-
-]
+(C:/Users/gener/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ufplmbb.fd
+File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
+)
 
 [4
 
 ]
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 9.30756pt on input line 206.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 6.80005pt on input line 206.
-LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
-(Font)              scaled to size 5.18503pt on input line 206.
-
 
 [5
+
+]
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 9.30756pt on input line 210.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 6.80005pt on input line 210.
+LaTeX Font Info:    Font shape `TU/FiraSans(0)/b/n' will be
+(Font)              scaled to size 5.10004pt on input line 210.
+
+
+[6
+
+] (./lecture06.toc)
+
+[7
+
+]
+
+[8
+
+]
+
+[9
 
 ]
 \tf@nav=\write6
@@ -2502,32 +2546,37 @@ L3 programming layer <2024-05-27>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `lecture06.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: D307EDB3B7CD1BAA75F1A2559F65E2F8;335.
 )
 
 Here is how much of LuaTeX's memory you used:
- 31453 strings out of 475915
+ 31671 strings out of 475915
  125031,1977958 words of node,token memory allocated
- 7524 words of node memory still in use:
-   74 hlist, 12 vlist, 9 rule, 37 disc, 4 local_par, 11 math, 158 glue, 106 kern
-, 23 penalty, 463 glyph, 142 attribute, 73 glue_spec, 142 attribute_list, 4 writ
-e, 28 pdf_literal, 30 pdf_colorstack nodes
-   avail lists: 1:1,2:245,3:123,4:182,5:330,6:28,7:1522,8:37,9:280,10:16,11:86
- 53076 multiletter control sequences out of 65536+600000
- 155 fonts using 37132103 bytes
+ 2045 words of node memory still in use:
+   30 hlist, 9 vlist, 6 rule, 3 disc, 2 local_par, 40 glue, 13 kern, 10 penalty,
+ 23 glyph, 103 attribute, 73 glue_spec, 103 attribute_list, 4 write, 28 pdf_lite
+ral, 30 pdf_colorstack nodes
+   avail lists: 2:325,3:142,4:197,5:321,6:30,7:2091,8:37,9:330,10:16,11:120
+ 53224 multiletter control sequences out of 65536+600000
+ 178 fonts using 37949575 bytes
  128i,13n,139p,1911b,818s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public/fira/FiraSan
-s-Italic.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public
-/fira/FiraSans-Regular.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/o
-pentype/public/fira/FiraSans-Bold.otf><C:/Users/gener/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/gener/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/txfonts/rtxmi.pfb><C:/Users/gener/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/newtx/txsys.pfb><C:/Users/gener/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/newtxsf/zsfmi-reg.pfb><C:/Users/gener/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on lecture06.pdf (5 pages, 53245 bytes).
+{C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Us
+ers/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public/fira/FiraSans-Ital
+ic.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentype/public/fira/
+FiraSans-Regular.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fonts/opentyp
+e/public/fira/FiraSans-Bold.otf><C:/Users/gener/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/gener/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gener/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/gener/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gener/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmbb.pfb><C:/Users/ge
+ner/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Use
+rs/gener/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/U
+sers/gener/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtxsf/zsfmia-reg.p
+fb>
+Output written on lecture06.pdf (9 pages, 75571 bytes).
 
-PDF statistics: 82 PDF objects out of 1000 (max. 8388607)
- 11 named destinations out of 1000 (max. 131072)
- 16 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 133 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 131072)
+ 32 words of extra memory for PDF output out of 10000 (max. 100000000)
 
