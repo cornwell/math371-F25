@@ -183,11 +183,19 @@ keepspaces=true
 \section{Approximations from derivatives}
 
 \begin{frame}{Linear approximations}
-    Say that $g:\bb R\to\bb R$ is a twice differentiable function (at least).  Write $w$ for input to $g$, so $g(w)$.
+    $g:\bb R\to\bb R$, a twice-differentiable function (at least).  Write $w$ for input to $g$, so $g(w)$.
 
-    The linear approximation to $g(w)$, at a point $(v, g(v))$ on its graph, is the function whose graph is the tangent line:
+    \textbf{Linear approximation} to $g(w)$. At a point $(v, g(v))$ on its graph, function whose graph is the tangent line:
         \[h(w) = g(v) + g'(v)(w - v).\]
-    This is also called the first order Taylor series approximation (or Taylor polynomial) of $g$. It approximates values of $g$ for inputs near $v$.
+    \vspace*{-12pt}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Also called first order Taylor series approximation (or Taylor polynomial) of $g$. 
+            \item Approximates values of $g$, for inputs near $v$.
+        \end{itemize}
+
+        \includegraphics[width=0.35\textwidth]{../../Images/graph-and-linearapproximation.png}
+    \end{multicols}
 
     %\centering
     %\includegraphics
@@ -198,6 +206,7 @@ keepspaces=true
 
     \[h(w) = g(v) + g'(v)(w - v) + \frac12g''(v)(w - v)^2.\]
 
+    
     Note: if $g'(v) = 0$ and $g''(v) > 0$, then $h(w) \ge g(v)$. So (where the approximation is quite good, sufficiently near $v$), values of the original function $g(w)$ should be larger or equal to $g(v)$ (A local minimum).
 
     The opposite is true if $g'(v) = 0$ and $g''(v) < 0$.
