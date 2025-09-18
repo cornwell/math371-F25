@@ -1,2 +1,2 @@
 \beamer@sectionintoc {1}{Approximations from derivatives}{3}{0}{1}
-\beamer@sectionintoc {2}{Stationary points}{7}{0}{2}
+\beamer@sectionintoc {2}{Stationary points}{17}{0}{2}

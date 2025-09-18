@@ -164,6 +164,7 @@ keepspaces=true
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\cl}[1]{\mathcal{#1}}
 \newcommand{\comment}[1]{}
+\newcommand{\m}[1]{\begin{bmatrix}#1\end{bmatrix}}
 
 \author{Chris Cornwell}
 \date{September 11 and 16, 2025}
@@ -202,28 +203,73 @@ keepspaces=true
 \end{frame}
 
 \begin{frame}{Second order (quadratic) approximations}
-    To approximate $g$ better near $v$ (and in a larger interval around $v$), we can use the second order Taylor polynomial {--} which incorporates both first and second derivative information.  This is the function:
-
+    To approximate $g$ better (and in a larger interval around $v$), can use the second order Taylor polynomial. This is the function:
     \[h(w) = g(v) + g'(v)(w - v) + \frac12g''(v)(w - v)^2.\]
 
-    
-    Note: if $g'(v) = 0$ and $g''(v) > 0$, then $h(w) \ge g(v)$. So (where the approximation is quite good, sufficiently near $v$), values of the original function $g(w)$ should be larger or equal to $g(v)$ (A local minimum).
+    \pause
+    \begin{multicols}{2}
+    {\footnotesize
+    \begin{itemize}
+        \item Incorporates both first and second derivative.  
+        \pause
+        \item {\bf Local minimum.} If $g'(v) = 0$ and $g''(v) > 0$, then $h(w) \ge g(v)$. (near $v$, approximation is good, values of $g(w) \geq g(v)$).
+        \pause
+        \item If $g'(v) = 0$ and $g''(v) < 0$, then opposite of the last item is true.
+    \end{itemize}
+    }
 
-    The opposite is true if $g'(v) = 0$ and $g''(v) < 0$.
+    \includegraphics[width=0.35\textwidth]{../../Images/graph-and-quadapproximations.png}
+    \end{multicols}
 \end{frame}
 
-\begin{frame}{Extending approximations to multiple variables}
-    We may extend the first and second order approximations to the setting of multiple variables. This requires the use of the gradient where, if ${\bf w} = [w_1\ w_2\ \ldots\ w_N]^T$, then 
+\begin{frame}{First order approximation in multiple variables}
+    Extending to the setting of multiple variables. 
+    \begin{itemize}
+        \item Use the gradient where, if ${\bf w} = [w_1\ w_2\ \ldots\ w_N]^T$, then 
         \[\nabla g = [\frac{\partial g}{\partial w_1}\ \frac{\partial g}{\partial w_2}\ \ldots\ \frac{\partial g}{\partial w_N}]^T.\]
-    The linear approximation is $h({\bf w}) = g({\bf v}) + \nabla g({\bf v})^T({\bf w} - {\bf v})$. (Note that this \emph{is} a linear function; its graph is a translate of the subspace of $\bb R^{N+1}$ that is normal to $[-\nabla g({\bf v})^T,\ 1]^T$, the translation is by a vector whose dot product with $[-\nabla g({\bf v})^T,\ 1]^T$ is equal to $g({\bf v}) - \nabla g({\bf v})^T{\bf v}$.)
+    \end{itemize}
+
+    \pause
+    {\bf Linear approximation:} is $h({\bf w}) = g({\bf v}) + \nabla g({\bf v})^T({\bf w} - {\bf v})$. 
+    \begin{itemize}
+        \pause
+        \item \emph{Is} a (affine) linear function; graph is translation of subspace of $\bb R^{N+1}$ that is normal to $[-\nabla g({\bf v})^T,\ 1]^T$%, the translation is by a vector whose dot product with $[-\nabla g({\bf v})^T,\ 1]^T$ is equal to $g({\bf v}) - \nabla g({\bf v})^T{\bf v}$.)
+        \pause
+        \item The graph of $h({\bf w})$ is the tangent (hyper)plane to graph of $g({\bf w})$ at the point $({\bf v}, g({\bf v}))$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Second order approximation in multiple variables}
+    For second order approximations, use a matrix called the \textbf{Hessian}, $\nabla^2g$. \pause 
+    \begin{itemize}
+        \item The matrix $\nabla^2g$ (evaluated at ${\bf v}$) is the matrix of second order partial derivatives of $g$:
+        \[\nabla^2g = \m{\frac{\partial^2 g}{\partial w_1\partial w_1} & \frac{\partial^2 g}{\partial w_1\partial w_2} & \ldots & \frac{\partial^2 g}{\partial w_1\partial w_N} \\ 
+        \frac{\partial^2 g}{\partial w_2\partial w_1} & \frac{\partial^2 g}{\partial w_2\partial w_2} & \ldots & \frac{\partial^2 g}{\partial w_2\partial w_N} \\ 
+         & & \ddots & \\ 
+        \frac{\partial^2 g}{\partial w_N \partial w_1} & \frac{\partial^2 g}{\partial w_N\partial w_2} & \ldots & \frac{\partial^2 g}{\partial w_N\partial w_N}
+        }.\]
+    \end{itemize}
+
+    \pause
+    {\bf Second order approximation:} is 
+        \[h({\bf w}) = g({\bf v}) + \nabla g({\bf v})^T({\bf w} - {\bf v}) + \frac12({\bf w}-{\bf v})^T\nabla^2g({\bf v})({\bf w} - {\bf v}). \]
+    \vspace*{-12pt}
+    \begin{itemize}
+        \pause
+        \item There is something like the second derivative test in this general case; is more involved to describe. In practice, techniques using first order approximations are the most commonly used.
+    \end{itemize}
 \end{frame}
 
 \section{Stationary points}
 
 \begin{frame}{Stationary points versus (local) minimal}
-\end{frame}
-
-\begin{frame}{First order condition}
+    A \textbf{stationary point} (or, \textbf{critical point}) of $g$ is a point ${\bf v}$ where $\nabla g({\bf v})$ is the zero vector. (Called the ``first order condition for optimality.'')
+    \pause
+    \begin{itemize}
+        \item Means that ${\bf v}$ is point where all partial derivatives of $g$ are zero.
+        \pause
+        \item A minimum of $g$ can only occur at a stationary point. However, other things can happen at a stationary point too {--} maximum of $g$ or a ``saddle'' point.
+    \end{itemize}
 \end{frame}
 
 \end{document}
