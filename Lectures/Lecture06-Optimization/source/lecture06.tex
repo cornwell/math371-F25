@@ -5,6 +5,7 @@
 \usepackage{amsthm}
 \usepackage{etoolbox}
 \usepackage{multicol}
+\usepackage{caption}
 
 \usetheme[progressbar=frametitle, numbering=none]{metropolis}
 \usecolortheme[snowy]{owl}
@@ -35,6 +36,7 @@
 \definecolor{bggray}{RGB}{232, 233, 235}
 
 \setbeamercolor{alerted text}{fg=mygreen}
+\setbeamercolor{block body alerted}{bg=bggray}
 \setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
 
 \setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
@@ -270,6 +272,55 @@ keepspaces=true
         \pause
         \item A minimum of $g$ can only occur at a stationary point. However, other things can happen at a stationary point too {--} maximum of $g$ or a ``saddle'' point.
     \end{itemize}
+\end{frame}
+
+\begin{frame}{The Chain rule}
+    The \textbf{chain rule} is very useful for understanding derivatives and gradients. The more general version of it (``suped up'' from Calculus I):
+    \pause
+    \begin{alertblock}{Chain rule.}
+        If the composition $f(g({\bf w}))$ is defined and each of $f$ and $g$ are differentiable, then the derivative of the composition is $Df(g({\bf w}))\cdot Dg({\bf w})$.\footnote{``$Df$'' and ``$Dg$'' mean, take the appropriate version of the derivative for the function. If the function is from $\mathbb R$ to $\mathbb R$, this is the $f'$ from Calc I; if it is multi-variable (from $\mathbb R^N$ to $\mathbb R$, for some $N>1$), then $Df$ means $\nabla f$. If $f$ has vector output, there is a matrix of partial derivatives for $Df$.} 
+    \end{alertblock}
+    
+    \pause
+    {\bf Example:} given a fixed vector ${\bf a}$, set $h({\bf w}) = \frac{1}{1+e^{{\bf a}^T{\bf w}}}$. This is a composition of $f(x) = \frac{1}{1+e^x}$ and $g({\bf w}) = {\bf a}^T{\bf w}$. Thus, 
+    
+    \[\scriptsize \nabla h({\bf w}) = f'(g({\bf w}))\cdot \nabla g({\bf w}) = \left(\frac{-e^{{\bf a}^T{\bf w}}}{1 + e^{{\bf a}^T{\bf w}}}\right){\bf a}.\]
+\end{frame}
+
+\begin{frame}{Example of stationary points}
+    Here we look at the stationary points of the function $f(w_1,w_2) = w_1^3+3w_1w_2+w_2^3$.
+
+    {\small
+    \begin{itemize}
+        \item $\nabla f(w_1,w_2) = [3w_1^2 + 3w_2,\quad 3w_1+3w_2^2]^T$
+    \end{itemize}
+    \pause
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item If a stationary pt., $3w_1^2 + 3w_2=0$ and $3w_1+3w_2^2=0$; so, $w_2 = -w_1^2$; using this and simplifying, $w_1+w_1^4 = 0$.
+            \pause
+            \item We get: either $w_1=0$ (with $w_2=0$ also), or $w_1=-1$ (with $w_2=-1$ also). \newline 
+            See Figure on right.
+        \end{itemize}
+
+        \begin{figure}
+        \includegraphics[width=0.3\textwidth]{../../Images/stationary-points_PolyFunction-2Vars.png}
+        \captionsetup{font=scriptsize}
+        \caption*{Vertical lines placed over stationary\newline\ points $(0,0)$ and $(-1,-1)$}
+        \end{figure}
+    \end{multicols}
+    }
+\end{frame}
+
+\begin{frame}{Convex functions}
+    Function $g:\mathbb R\to\mathbb R$ is called \textbf{convex} if $g''(v) \ge 0$ for all $v$.\footnote{A different definition (which is equivalent): $g$ is \textbf{convex at $v$} if the linear approximation at $v$ has a graph that is below the graph of $g$, near $v$; it is then \textbf{convex} if it is convex at $v$ for all $v$ in $\mathbb R$. This extends to multiple variables.} 
+
+    \pause
+    \begin{alertblock}{Example.} The function $g(w) = e^w - w$ is a convex function, since $g''(w) = e^w$, and $e^v$ is bigger than zero for all $v$.
+    \end{alertblock}
+    \centering 
+    \includegraphics[width=0.35\textwidth]{../../Images/convex-1Var.png}
+    \vfill
 \end{frame}
 
 \end{document}
