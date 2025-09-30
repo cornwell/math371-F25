@@ -34,9 +34,11 @@
 \definecolor{links}{rgb}{0,0.4,0.75}
 
 \definecolor{bggray}{RGB}{232, 233, 235}
+\setbeamercolor{alerted text}{fg=mygreen}
+\setbeamercolor{block body alerted}{bg=bggray}
+\setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
 
 \usecolortheme[named=mygreen]{structure}
-\setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
 
 \setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
 
@@ -189,24 +191,24 @@ keepspaces=true
     \end{enumerate}
     
     \centering 
-    \includegraphics[]{}
+    \includegraphics[width=0.45\textwidth]{../../Images/going-downhill.png}
 \end{frame}
 
 \section{Gradient Descent}
 
 %%%%
 \begin{frame}
-\frametitle{The general procedure}
-    Have a function $\mathcal L:\mathbb R^p \to \mathbb R$ (our case, a loss function with $\Omega=\mathbb R^p$). Want to approximate minimizer in $\mathbb R^p$ for $\mathcal L$. 
+\frametitle{Gradient Descent - a first-order method}
+    Looking to minimize a loss (cost) function $\ell:\mathbb R^N \to \mathbb R$. Want to approximate stationary point for $\ell$ in $\mathbb R^N$, in order to minimize $\ell$ (hopefully). 
 
     \pause
     \begin{itemize}
-        \item Select (any) initial $\omega^{(0)}\in \mathbb R^p$ and a learning rate $\eta_t > 0$ for each step $t\ge 1$.\footnote{In these slides, $\eta_t$ will be constant in $t$; however, in many scenarios $\eta_t$ decreases as $t$ increases.} 
+        \item In addition to choosing initial ${\bf w}^{(0)}\in \mathbb R^N$, pick a \textbf{learning rate} $\alpha_{t+1} > 0$ for each step in the process (also called ``step size'').\footnote{For us, we will usually use $\alpha_{t+1}$ that is constant in $t$, meaning it is the same for all steps; however, in many scenarios $\alpha_t$ decreases as $t$ increases.} 
         \pause
-        \item Next, for $t\ge 1$, iteratively assign
-        \[\omega^{(t)} = \omega^{(t-1)} - \eta_t\nabla\mathcal L(\omega^{(t-1)}).\]
+        \item For each $t\ge 0$, iteratively assign
+        \[{\bf w}^{(t+1)} = {\bf w}^{(t)} - \alpha_{t+1}\nabla\ell({\bf w}^{(t)}).\]
         \pause
-        \item Iterate until some \textbf{stopping condition} is met (say it happens when $t = T$). The approximate minimizer is $\omega^{(T)}$.
+        \item As in the general optimization description, proceed until a \textbf{stopping condition} is met.
     \end{itemize}
 
     \pause
@@ -219,32 +221,113 @@ keepspaces=true
         }
     \end{itemize}
 \end{frame}
+%%%%
+\begin{frame}{Relation to Linear approximations}
+    The update step in Gradient Descent uses the linear approximation to the loss function in order to make an update.
+
+    \pause 
+    Note: linear approximation is 
+    \[h({\bf w}) = \ell({\bf w}^{(t)}) + \nabla\ell({\bf w}^{(t)})^T({\bf w} - {\bf w}^{(t)}).\]
+    How does one change ${\bf w}^{(t)}$ to make $h({\bf w})$ decrease the most? Want some (fixed length vector) $\Delta{\bf w}$ so that $h({\bf w}^{(t)}) - h({\bf w}^{(t)}+\Delta{\bf w})$ is as large as possible.
+
+    \pause
+    Since \[h({\bf w}^{(t)}) - h({\bf w}^{(t)}+\Delta{\bf w}) = -\nabla\ell({\bf w}^{(t)})^T\Delta{\bf w}\]
+    this occurs when $\nabla\ell({\bf w}^{(t)})^T\Delta{\bf w}$ is as negative as possible, which is when $\Delta{\bf w}$ is in the opposite direction of $\nabla\ell({\bf w}^{(t)})$; and so, our update is ${\bf w}^{(t+1)} = {\bf w}^{(t)}+\Delta{\bf w} = {\bf w}^{(t)}-\alpha_{t+1}\nabla\ell({\bf w}^{(t)})$.
+\end{frame}
+%%%%
+% \begin{frame}
+%     \frametitle{Batch, Mini-batch, and Stochastic Gradient Descent}
+%     In machine learning, our true interest is to minimize the \textit{population} loss function, meaning: \newline 
+%     \pause
+%     \begin{quote}
+%         Given our parameters $\omega\in\Omega$ and some point $({\bf x},y) \in \mathbb R^d\times Y$, we have a measure of loss for that point, $\mathcal L_{({\bf x},y)}(\omega)$ (``per-example'' loss); the population loss at $\omega$ is the \emph{expected value} of per-example loss, expectation with resp.~to $P_{X,Y}$.
+%     \end{quote}
+%     \pause
+%     Lacking access to population loss function, use empirical loss $\mathcal L_{\mathcal S}$, which gives expected value {--} mean {--} from $\mathcal S$ of per-example loss.
+
+%     \pause
+%     \textbf{Batch Gradient Descent:} gradient of $\mathcal L_{\mathcal S}$ is used in each update. 
+
+%     \pause
+%     \textbf{Stochastic Gradient Descent:} in each update, select one random point from $\mathcal S$ and use gradient of per-example loss at that point.
+
+%     \pause
+%     \textbf{Mini-batch Gradient Descent:} Between Batch and Stochastic. Each update, random subset $\mathcal S' \subset \mathcal S$ taken (fixed size); the gradient of $\mathcal L_{\mathcal S'}$ is used.
+
+%     \pause
+%     \emph{Important}: expected value of gradient used should be $\nabla\mathcal L_{\mathcal S}$ (which is, hopefully, close to gradient of population loss).
+        
+% \end{frame}
+
 
 %%%%
 \begin{frame}
-    \frametitle{Batch, Mini-batch, and Stochastic Gradient Descent}
-    In machine learning, our true interest is to minimize the \textit{population} loss function, meaning: \newline 
-    \pause
-    \begin{quote}
-        Given our parameters $\omega\in\Omega$ and some point $({\bf x},y) \in \mathbb R^d\times Y$, we have a measure of loss for that point, $\mathcal L_{({\bf x},y)}(\omega)$ (``per-example'' loss); the population loss at $\omega$ is the \emph{expected value} of per-example loss, expectation with resp.~to $P_{X,Y}$.
-    \end{quote}
-    \pause
-    Lacking access to population loss function, use empirical loss $\mathcal L_{\mathcal S}$, which gives expected value {--} mean {--} from $\mathcal S$ of per-example loss.
+    \frametitle{Convergence}
+    Does gradient descent converge to point at which loss function is minimized? Is it even guaranteed to converge?
 
     \pause
-    \textbf{Batch Gradient Descent:} gradient of $\mathcal L_{\mathcal S}$ is used in each update. 
+    Short answer: No, not necessarily. 
 
-    \pause
-    \textbf{Stochastic Gradient Descent:} in each update, select one random point from $\mathcal S$ and use gradient of per-example loss at that point.
+    \ldots so, \textit{in what cases} can we guarantee such a thing?
 
-    \pause
-    \textbf{Mini-batch Gradient Descent:} Between Batch and Stochastic. Each update, random subset $\mathcal S' \subset \mathcal S$ taken (fixed size); the gradient of $\mathcal L_{\mathcal S'}$ is used.
+    \phantom{To demonstrate the difficulty, imagine a ``toy'' loss function: $\ell:\mathbb R\to\mathbb R$ with $\ell(w) = w^2$. At each $w$ we have $\nabla\ell = \left(\frac{d\ell}{dw}\right) = (2w)$.} 
 
-    \pause
-    \emph{Important}: expected value of gradient used should be $\nabla\mathcal L_{\mathcal S}$ (which is, hopefully, close to gradient of population loss).
-        
-\end{frame}
+    \phantom{Say learning rate: $\eta > 1$. Then, at any $w^{(t)} > 0$, we get }
+        \[\ \ \]
+    \phantom{and so $|w^{(t+1)}| > |w^{(t)}|$. Likewise, if $w^{(t)} < 0$ then $|w^{(t+1)}| > |w^{(t)}|$.}
     
+    \centering
+    \begin{tikzpicture}
+        \draw[opacity=0] (0,1) -- (0,0);
+    \end{tikzpicture}
+\end{frame}
+
+%%%%
+\begin{frame}
+    \frametitle{Issues with convergence}
+    To demonstrate the difficulty, imagine a ``toy'' loss function: $\ell:\mathbb R\to\mathbb R$ with $\ell(w) = w^2$. At each $w$ we have $\nabla\ell = \left(\frac{d\ell}{dw}\right) = (2w)$. 
+
+    \pause
+    Say learning rate: $\alpha_{t+1} > 1$ for all $t$. Then, at any $w^{(t)} > 0$, we get 
+        \[w^{(t+1)} = w^{(t)} - 2\alpha_{t+1} w^{(t)} < w^{(t)} - 2w^{(t)} = -w^{(t)},\]
+    and so $w^{(t+1)}<-w^{(t)}$ which means that $|w^{(t+1)}| > |w^{(t)}|$. \pause Likewise, if $w^{(t)} < 0$ then $|w^{(t+1)}| > |w^{(t)}|$.
+    
+    \pause
+    So, get divergence when $\alpha_{t+1} > 1$. However, if $0< \alpha_{t+1} < 1$, then (for the function $\ell(w)=w^2$, at least) it will converge to minimizer $w=0$.
+
+    \pause
+    \begin{figure}
+    \includegraphics[height=0.3\textheight]{../../Images/GD-choosing-lr.png}
+    \caption{Gradient descent on $\ell(w) = w^2$. Left: $\alpha = 1.05$; right: $\alpha = 0.95$.}
+    \end{figure}
+\end{frame}
+
+\section{Newton's method - a second-order method}
+
+%%%%
+\begin{frame}{Newton's method}
+    As before, we want to use approximations to get closer to a stationary point of $\ell:\mathbb R^N\to\mathbb R$, however we will now use a second order approximation:
+    \[h({\bf w}) = \ell({\bf w}^{(t)}) + \nabla\ell({\bf w}^{(t)})^T({\bf w} - {\bf w}^{(t)}) 
+    + \frac12({\bf w} - {\bf w}^{(t)})^T\nabla^2\ell({\bf w}^{(t)})({\bf w}-{\bf w}^{(t)}).\]
+
+    \pause 
+    As a consequence from the recent homework, this has a stationary point at a solution to the linear equation $\nabla^2\ell({\bf w}^{(t)}){\bf w} = \nabla^2\ell({\bf w}^{(t)}){\bf w}^{(t)} - \nabla\ell({\bf w}^{(t)})$. Call that solution ${\bf w}^{(t+1)}$.
+
+    Repeat the above step until some stopping condition is met.
+\end{frame}
+
+
+%%%%
+\begin{frame}{Newton's method - advantages and disadvantages}
+    \textbf{Advantage:} When converging to a minimum of the function, Newton's method will converge in fewer steps.
+
+    \textbf{Disadvantages:} One has to compute the Hessian {--} more computation time and more storage needed. Solving the linear system can also have numerical issues and take more time.
+
+    Also, if $\ell$ is not convex (and ${\bf w}^{(t)}$ is not in a convex region for the function), then it may approach a maximum instead of minimum.
+
+\end{frame}
+
+\section{Examples and some convergence guarantees}
 %%%%
 \begin{frame}
 \frametitle{Example with Linear regression}
@@ -333,48 +416,6 @@ while (max of last_update > threshhold){
 }
 return p
 \end{pseudo}
-\end{frame}
-
-%%%%
-\begin{frame}
-    \frametitle{Convergence}
-    Does gradient descent converge to point at which loss function is minimized? Is it even guaranteed to converge?
-
-    \pause
-    Short answer: No, not necessarily. 
-
-    \ldots so, \textit{in what cases} can we guarantee such a thing?
-
-    \phantom{To demonstrate the difficulty, imagine a ``toy'' loss function: $\ell:\mathbb R\to\mathbb R$ with $\ell(w) = w^2$. At each $w$ we have $\nabla\ell = \left(\frac{d\ell}{dw}\right) = (2w)$.} 
-
-    \phantom{Say learning rate: $\eta > 1$. Then, at any $w^{(t)} > 0$, we get }
-        \[\ \ \]
-    \phantom{and so $|w^{(t+1)}| > |w^{(t)}|$. Likewise, if $w^{(t)} < 0$ then $|w^{(t+1)}| > |w^{(t)}|$.}
-    
-    \centering
-    \begin{tikzpicture}
-        \draw[opacity=0] (0,1) -- (0,0);
-    \end{tikzpicture}
-\end{frame}
-
-%%%%
-\begin{frame}
-    \frametitle{Issues with convergence}
-    To demonstrate the difficulty, imagine a ``toy'' loss function: $\ell:\mathbb R\to\mathbb R$ with $\ell(w) = w^2$. At each $w$ we have $\nabla\ell = \left(\frac{d\ell}{dw}\right) = (2w)$. 
-
-    \pause
-    Say learning rate: $\eta > 1$. Then, at any $w^{(t)} > 0$, we get 
-        \[w^{(t+1)} = w^{(t)} - 2\eta w^{(t)} < w^{(t)} - 2w^{(t)} = -w^{(t)},\]
-    and so $|w^{(t+1)}| > |w^{(t)}|$. \pause Likewise, if $w^{(t)} < 0$ then $|w^{(t+1)}| > |w^{(t)}|$.
-    
-    \pause
-    So, it diverges when $\eta > 1$. However, if $0< \eta < 1$, then it will converge (to minimizer $w=0$).
-
-    \pause
-    \begin{figure}
-    \includegraphics[height=0.3\textheight]{../../Images/GD-choosing-lr.png}
-    \caption{Gradient descent on $\ell(w) = w^2$. Left: $\eta = 1.05$; right: $\eta = 0.95$.}
-    \end{figure}
 \end{frame}
 
 %%%%
