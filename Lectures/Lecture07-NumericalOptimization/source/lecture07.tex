@@ -159,8 +159,6 @@ keepspaces=true
     \end{beamerboxesrounded}\hfill
     }
 
-\theoremstyle{example}
-\newtheorem{question}{Question}
 
 \newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
 \newcommand{\ttt}[1]{{\small\texttt{#1}}}
@@ -330,17 +328,17 @@ keepspaces=true
 \section{Examples and some convergence guarantees}
 %%%%
 \begin{frame}
-\frametitle{Example with Linear regression}
+\frametitle{Example with single-variable Linear regression}
     % example of it working
-    Last time: given sample data $\mathcal S$ for simple linear regression, and using MSE as empirical loss, $\mathcal L_{\mathcal S}(m,b) = \frac1n\sum_{i=1}^n(mx_i + b - y_i)^2$, we found 
-        \[\nabla\mathcal L_{\mathcal S}(m,b) = 
+    Least Squares cost function for Linear regression is determined by sample data $\mathcal S=\{(x_i,y_i)\}_{i=1}^P$: given the data, the cost function is $g_{\mathcal S}(b,w) = \sum_{i=1}^P(b+wx_i - y_i)^2$. In homework you found, 
+        \[\nabla g_{\mathcal S}(b,w) = 
         {\footnotesize
-        \left( \frac{2}{n}\sum_{i=1}^n(mx_i + b - y_i)x_i, \quad \frac{2}{n}\sum_{i=1}^n(mx_i + b - y_i) \right).
+        \left( 2\sum_{i=1}^P(b+wx_i - y_i), \quad 2\sum_{i=1}^P(b+wx_i - y_i)x_i \right).
         }
         \]
     
     \pause
-    Example: batch gradient descent working on the \lstinline[language=Python, stringstyle=\ttfamily\color{strings}]{'Example1.csv'} data.
+    Example: batch gradient descent working on the \ct{'Example1.csv'} data.
 
     \begin{wrapfigure}{R}{0.5\textwidth}
         \includegraphics[width=0.47\textwidth]{../../Images/example1-lsrline.png}
@@ -349,7 +347,7 @@ keepspaces=true
     \vfill
     The LSR line, using closed form. 
     \begin{itemize}
-        \item $\hat{m}\approx 1.520, \hat{b}=-0.3346$:
+        \item $w^\star\approx 1.520, b^\star=-0.3346$:
     \end{itemize}
     \vspace{48pt}
     \vfill
@@ -359,14 +357,14 @@ keepspaces=true
 \begin{frame}
     \frametitle{Example with Linear regression}
     % example of it working
-    Last time: given sample data $\mathcal S$ for simple linear regression, and using MSE as empirical loss, $\mathcal L_{\mathcal S}(m,b) = \frac1n\sum_{i=1}^n(mx_i + b - y_i)^2$, we found 
-        \[\nabla\mathcal L_{\mathcal S}(m,b) = 
+    Least Squares cost function for Linear regression is determined by sample data $\mathcal S=\{(x_i,y_i)\}_{i=1}^P$: given the data, the cost function is $g_{\mathcal S}(b,w) = \sum_{i=1}^P(b+wx_i - y_i)^2$. In homework you found, 
+        \[\nabla g_{\mathcal S}(b,w) = 
         {\footnotesize
-        \left( \frac{2}{n}\sum_{i=1}^n(mx_i + b - y_i)x_i, \quad \frac{2}{n}\sum_{i=1}^n(mx_i + b - y_i) \right).
+        \left( 2\sum_{i=1}^P(b+wx_i - y_i), \quad 2\sum_{i=1}^P(b+wx_i - y_i)x_i \right).
         }
         \]
     
-    Example: batch gradient descent working on the \lstinline[language=Python, stringstyle=\ttfamily\color{strings}]{'Example1.csv'} data.
+    Example: batch gradient descent working on the \ct{'Example1.csv'} data.
 
     % ``seeing'' it converge
     \begin{wrapfigure}{R}{0.5\textwidth}
@@ -389,13 +387,13 @@ keepspaces=true
     \frametitle{Implementing Gradient Descent}
     Some notes on implementation of the gradient descent updates.
     
-    {\color{mygreen}1.} Each partial derivative of $\mathcal L_{\mathcal S}$, can compute it in one line of code. \pause Presuming \texttt{x} and \texttt{y} are arrays of coordinates for sample data, and that \lstinline[language=Python,basicstyle=\ttfamily,keywordstyle=\color{keywords}]{n = len(x)}, the following computes the partial derivatives:
+    {\color{mygreen}1.} Each partial deriv.\ of $g_{\mathcal S}$, can compute it in one line of code. \pause Presuming \texttt{x}, \texttt{y} are arrays of coordinates for data, current parameter values are \texttt{b}, \texttt{w}, the following gives partial derivatives:
 
 \begin{codeblock}
 
 \begin{python}
-partial_m = (2/n)*np.sum( (m*x + b - y)*x )
-partial_b = (2/n)*np.sum( (m*x + b - y) )
+partial_w = 2*np.sum( (w*x + b - y)*x )
+partial_b = 2*np.sum( (w*x + b - y) )
 \end{python}
 
 \end{codeblock}
@@ -407,45 +405,45 @@ partial_b = (2/n)*np.sum( (m*x + b - y) )
 \begin{pseudo}
 ## lr is learning rate; threshhold is for stopping;
 input: X, y, lr, threshhold
-p = initial array of parameters
+params = initial array of parameters
 while (max of last_update > threshhold){
-    grad = compute_grad(p, X, y)
-    last_update = | grad / p | ## entrywise array division
-    # handle p[i] near 0
-    p = p - lr*grad
+    grad = compute_grad(params, X, y)
+    last_update = | grad / params | ## entrywise array division
+    # handle params[i] near 0
+    params = params - lr*grad
 }
-return p
+return params
 \end{pseudo}
 \end{frame}
 
 %%%%
 \begin{frame}
     \frametitle{Guarantees of convergence}
-    If your loss function is differentiable and a \textbf{convex function}, and if have some ``control'' on size of the gradient then, by choosing $\eta$ small enough, can guarantee convergence. 
+    If your loss function is differentiable and a \textbf{convex function}, and if have some ``control'' on size of the gradient then, by choosing $\alpha_{t+1}$ small enough, can guarantee convergence. 
 
     \pause
-    \begin{theorem}Suppose that $\mathcal L:\mathbb R^p\to\mathbb R$ is differentiable and convex, and suppose that $\nabla \mathcal L$ is \textit{Lipschitz continuous}\footnote{Meaning: $\exists$ a constant $C$ s.t.\ for all $\omega_1, \omega_2$, $|\nabla\mathcal L(\omega_1) - \nabla\mathcal L(\omega_2)| \le C|\omega_1 - \omega_2|$.} with some constant $C>0$ and that $\eta \le 1/C$. Then, for a minimizer $\omega^*$ of $\mathcal L$, 
-            \[\mathcal L(\omega^{(t)}) - \mathcal L(\omega^*) \le \frac{|\omega^{(0)} - \omega^*|^2}{2\eta t}.\]
-    \end{theorem}
+    \begin{alertblock}{Theorem}Suppose a loss function $g_{\mathcal S}:\mathbb R^{N+1}\to\mathbb R$ is differentiable and convex, and suppose that $\nabla g_{\mathcal S}$ is \textit{Lipschitz continuous}\footnote{Meaning: $\exists$ a constant $C$ s.t.\ for all $\tilde w_1, \tilde w_2$, $|\nabla g_{\mathcal S}(\tilde w_1) - \nabla g_{\mathcal S}(\tilde w_2)| \le C|\tilde w_1 - \tilde w_2|$.} with some constant $C>0$ and that $\alpha_{t+1}=\alpha \le 1/C$ (constant learning rate). Then, for a minimizer $\tilde w^\star$ of $g_{\mathcal S}$, 
+            \[g_{\mathcal S}(\tilde w^{(t)}) - g_{\mathcal S}(\tilde w^\star) \le \frac{|\tilde w^{(0)} - \tilde w^\star|^2}{2\alpha t}.\]
+    \end{alertblock}
     \pause
     \begin{itemize}
-        \item The difference between $\mathcal L(\omega^{(t)})$ and the minimimum of $\mathcal L$ is bounded by a constant times $1/t$.
+        \item The difference between $g_{\mathcal S}(\tilde w^{(t)})$ and the minimimum of $g_{\mathcal S}$ is bounded by a constant times $1/t$.
     \end{itemize}
 \end{frame}
 
 %%%%
 \begin{frame}
     \frametitle{Guarantees of convergence}
-    Previous theorem requires using actual gradient of $\mathcal L$ in each update step. Here is a convergence guarantee that allows for a random vector ${\bf D}_t$, in place of $\nabla\mathcal L$, as long as $\mathbb E[{\bf D}_t | \omega^{(t)}] = \nabla\mathcal L(\omega^{(t)})$. 
+    Previous theorem requires using actual gradient of $g_{\mathcal S}$ in each update step. Here is a convergence guarantee that allows for a random vector ${\bf D}_t$, in place of $\nabla g_{\mathcal S}$, as long as $\mathbb E[{\bf D}_t | \tilde w^{(t)}] = \nabla g_{\mathcal S}(\tilde w^{(t)})$. 
     \begin{itemize}
-        \item e.g., in Stochastic or Mini-batch gradient descent.
+        \item e.g., use this in alternate versions of gradient descent, \textit{e.g.}, ``mini-batch gradient descent.''
     \end{itemize}
 
     \pause
-    \begin{theorem}Suppose that $\mathcal L$ is differentiable and convex, that $\omega^{(0)} = {\bf 0}$, and that $\eta = \frac{1}{\sqrt{K}}$ for an integer $K > 0$. Finally, suppose that $|{\bf D}_t| \le 1$ for all $1\le t\le K$. Then, for a minimizer $\omega^*$ of $\mathcal L$,
-            \[\mathbb E[\mathcal L(\bar\omega)] - \mathcal L(\omega^*) \le \frac{1}{\sqrt{K}}\]
-    where $\bar\omega$ is the average of $\omega^{(1)}, \omega^{(2)}, \ldots, \omega^{(K)}$.
-    \end{theorem}
+    \begin{alertblock}{Theorem}Suppose that $g_{\mathcal S}$ is differentiable and convex, that $\tilde w^{(0)} = {\bf 0}$, and that for all $t$, $\alpha_{t+1} = \frac{1}{\sqrt{K}}$ for an integer $K > 0$. Finally, suppose that $|{\bf D}_t| \le 1$ for all $1\le t\le K$. Then, for a minimizer $\tilde w^\star$ of $g_{\mathcal S}$,
+            \[\mathbb E[g_{\mathcal S}(\bar w)] - g_{\mathcal S}(\tilde w^\star) \le \frac{1}{\sqrt{K}}\]
+    where $\bar w$ is the average of $\tilde w^{(1)}, \tilde w^{(2)}, \ldots, \tilde w^{(K)}$.
+    \end{alertblock}
 \end{frame}
 
 \end{document}
