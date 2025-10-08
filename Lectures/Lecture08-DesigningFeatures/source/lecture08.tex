@@ -1,0 +1,195 @@
+\documentclass{beamer}
+
+\usepackage{helvet}
+\usepackage{hyperref, graphicx}
+\usepackage{amsthm}
+\usepackage{etoolbox}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usepackage{ulem}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[ ]
+{
+\begin{frame}{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{11} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal - use in headings
+
+% Custom colors
+\usepackage{color}
+\definecolor{TUGray}{RGB}{101,101,137}
+\definecolor{TUBlack}{RGB}{30,0,0}
+\definecolor{mygreen}{RGB}{45,111,63}
+\definecolor{keywords}{RGB}{205,114,0}
+\definecolor{comments}{RGB}{181,51,139}
+\definecolor{strings}{RGB}{58,144,81}
+\definecolor{numeric}{RGB}{66,110,176}
+\definecolor{linos}{rgb}{0.4,0.4,0.4}
+\definecolor{links}{rgb}{0,0.4,0.75}
+
+\definecolor{bggray}{RGB}{232, 233, 235}
+\setbeamercolor{alerted text}{fg=mygreen}
+\setbeamercolor{block body alerted}{bg=bggray}
+\setbeamercolor{normal text}{fg=TUBlack}\usebeamercolor*{normal text}
+
+\usecolortheme[named=mygreen]{structure}
+
+\setbeamercolor{codecol}{fg=TUGray!25!black,bg=bggray}
+
+\hypersetup{colorlinks, linkcolor=links, urlcolor=links}
+
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,scaled=.85]{FiraSans}
+\usepackage{mathpazo}
+
+
+\usepackage{listings}
+
+\newtoggle{InString}{}% Keep track of if we are within a string
+\togglefalse{InString}% Assume not initally in string
+
+\newcommand\digitstyle{\color{numeric}}
+\makeatletter
+\newcommand{\ProcessDigit}[1]
+{%
+  \ifnum\lst@mode=\lst@Pmode\relax%
+   {\digitstyle #1}%
+  \else
+    #1%
+  \fi
+}
+\makeatother
+
+\lstset{literate=%
+    {0}{{{\ProcessDigit{0}}}}1
+    {1}{{{\ProcessDigit{1}}}}1
+    {2}{{{\ProcessDigit{2}}}}1
+    {3}{{{\ProcessDigit{3}}}}1
+    {4}{{{\ProcessDigit{4}}}}1
+    {5}{{{\ProcessDigit{5}}}}1
+    {6}{{{\ProcessDigit{6}}}}1
+    {7}{{{\ProcessDigit{7}}}}1
+    {8}{{{\ProcessDigit{8}}}}1
+    {9}{{{\ProcessDigit{9}}}}1
+	{<=}{{\(\leq\)}}1
+	{>=}{{\(\geq\)}}1,
+	% morestring=[b]",
+    % morestring=[b]',
+    % morecomment=[l]{//},
+}
+
+\lstdefinelanguage{Pseudo}{
+    morekeywords={return, while, if, for, input},
+    morecomment=[l]{\#},
+}
+
+% Pseudocode style
+\newcommand\pseudostyle{\lstset{
+language=Pseudo,
+basicstyle=\fontfamily{ccr}\scriptsize,
+commentstyle=\it\scriptsize\color{linos},
+keywordstyle=\it\bfseries\scriptsize,
+mathescape=true,
+literate=
+    {=}{$\leftarrow{}$}{1}
+    {==}{$={}$}{1}
+    {<=}{{\(\leq\)}}1
+	{>=}{{\(\geq\)}}1,
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=12pt,
+belowskip=0pt,
+frame=tB,
+keepspaces=true
+}}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttfamily\tiny,
+numbers=left,
+numberstyle=\tiny\color{linos},
+morekeywords={self, np},              % Add keywords here
+keywordstyle=\tiny\color{keywords},
+commentstyle=\it\tiny\color{comments},    % Custom highlighting style
+stringstyle=\tiny\color{strings},
+xleftmargin=18pt,
+xrightmargin=4pt,
+aboveskip=0pt,
+belowskip=0pt,
+escapeinside={(*@}{@*)},
+frame=l,                         % Any extra options here
+showstringspaces=false,
+keepspaces=true
+}}
+
+% Pseudocode environment
+\lstnewenvironment{pseudo}[1][]
+{
+    \pseudostyle
+    \lstset{
+        #1
+    }
+}
+{}
+
+% Python environment 
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{
+	#1
+	}
+}
+{}
+
+% wrap the Python environment
+\newenvironment{codeblock}
+    {\hfill\begin{beamerboxesrounded}[lower=codecol, width=0.8\textwidth]
+    \medskip
+
+    }
+    { 
+    \end{beamerboxesrounded}\hfill
+    }
+
+
+\newcommand{\ct}[1]{\lstinline[language=Python]!#1!}
+\newcommand{\ttt}[1]{{\small\texttt{#1}}}
+\newcommand{\lsitem}[2]{\ttt{{#1}[}\ct{#2}\ttt{]}}
+
+\author{Chris Cornwell}
+\date{Oct.~7, 2025}
+\title{Feature Design in Regression}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%%%%
+\begin{frame}
+\frametitle{General approach to numerical optimization}
+    Approach to minimization of function $g$. 
+
+    \pause
+    \begin{enumerate}
+        \item Start the process from some initial point ${\bf w}^{(0)}$.
+        \pause
+        \item After $t$ steps, with ${\bf w}^{(t)}$ as current input to $g$, update it to some ${\bf w}^{(t)}$, ``going downhill'' toward a stationary point. 
+        \pause
+        \item Repeat Step (2) {--} converging to a stationary point, in good scenario {--} until you meet a \textbf{stopping condition} at some step $T$. The approximate stationary point (potentially a minimizer) is ${\bf w}^{(T)}$.
+    \end{enumerate}
+    
+    \centering 
+    \includegraphics[width=0.45\textwidth]{../../Images/going-downhill.png}
+\end{frame}
+
+\end{document}

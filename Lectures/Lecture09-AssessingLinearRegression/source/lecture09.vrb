@@ -1,0 +1,23 @@
+\frametitle{Example}
+\textbf{Simulate noisy linear data:} make 30 points, from a line with slope $-1.6$ and $y$-intercept $0.8$; put noise into the $y$-coordinate with standard deviation $\sigma = 0.5$.
+\pause
+
+\begin{codeblock}
+
+\begin{python}
+x = np.random.uniform(0, 2, size=30)
+
+def simulate_data(x, std):
+    return -1.6*x + 0.8 + np.random.normal(0, std, size=len(x))
+y = simulate_data(x, 0.5)
+\end{python}
+
+\end{codeblock}
+
+\pause
+With this simulated data set, compute the slope $w^\star$ and intercept $b^\star$ from linear regression; then put $w^\star$, and $b^\star$, into a list of slopes, intercepts respectively. Iterate this 1000 times $\to$ a list of 1000 slopes, another with 1000 intercepts.
+\vspace*{12pt}
+
+\pause
+What is the mean of these slopes and intercepts that were found?
+
