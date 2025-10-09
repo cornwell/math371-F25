@@ -1,4 +1,4 @@
 \beamer@sectionintoc {1}{Confidence intervals with linear regression}{3}{0}{1}
 \beamer@sectionintoc {2}{Measuring how well LSR line fits}{21}{0}{2}
 \beamer@sectionintoc {3}{Example with Multiple variables}{36}{0}{3}
-\beamer@sectionintoc {4}{Polynomial fitting}{61}{0}{4}
+\beamer@sectionintoc {4}{Polynomial fitting}{60}{0}{4}
