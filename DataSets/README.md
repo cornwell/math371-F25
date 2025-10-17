@@ -102,3 +102,8 @@ college[['Apps','Accept', 'Enroll', 'Top10perc']].describe()
 | 50%   |  1558    |  1110    |  434     |     23      |
 | 75%   |  3624    |  2424    |  902     |     35      |
 | max   | 48094    | 26330    | 6392     |     96      |
+
+## Kleiber's Law Data
+Data containing the body mass (kg) and metabolic rate (kJ/day) of various animals over a wide range of different masses. Data was obtained from folder for exercises from Machine Learning Refined textbook.
+
+Consists of 1498 observations on the two variables: Body Mass (`mass`) in kg, and Metabolic Rate (`meta_rate`) in kJ per day.
