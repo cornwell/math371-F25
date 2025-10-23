@@ -1,0 +1,16 @@
+\frametitle{Perceptron algorithm}
+Suppose the data is linearly separable. Also, make \ct{x} be a $P\times N$ array of points, with i$^{th}$ row equal to ${\bf x}_i$, and \ct{y} an array of the labels. In the pseudocode below, use capitalization for the ``tilde'' notation: \ct{W} is $\tilde{\bf w}$ and the $i^{th}$ row of \ct{X} is $\tilde{\bf x}_i$.
+
+The Perceptron algorithm finds \ct{W} iteratively as follows.\footnote{Recall, in pseudo-code block, left-facing arrow means \textit{assign} to variable on left.}
+\pause
+
+\begin{pseudo}
+input: x, y  ## x is P by N, y is 1d array
+X = prepend 1 to each row of x
+W = (0,0,...,0)  ## Initial W
+while (exists i with y[i]*dot(W, X[i]) <= 0){
+    W = W + y[i]*X[i] # smallest such i
+}
+return W
+\end{pseudo}
+
