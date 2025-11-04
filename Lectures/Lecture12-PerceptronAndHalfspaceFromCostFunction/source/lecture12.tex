@@ -212,8 +212,22 @@ keepspaces=true
     \end{figure}
 
     \vspace*{12pt} \phantom{i}\newline 
-    This is equivalent to wanting $y_i(\tilde{\bf x}_i^\top\tilde{\bf w}) \ge 1$ for all $i=1,\ldots,P$. Recall, $S$ being linearly separable implies that there must be a $\tilde{\bf w}$ that achieves this.
+    This is equivalent to wanting, for all $i=1,\ldots,P$, $\tilde{\bf x}_i^\top\tilde{\bf w} \ge 1$ if $y_i=1$ and $\tilde{\bf x}_i^\top\tilde{\bf w} \le 1$ if $y_i=-1$. That is, we want $y_i(\tilde{\bf x}_i^\top\tilde{\bf w}) \ge 1$. \newline 
+    Recall, $S$ being linearly separable implies that there must be a $\tilde{\bf w}$ that achieves this.
     \end{multicols}
+\end{frame}
+\begin{frame}
+    \frametitle{Cost function for margin halfspace model}
+    As we are looking for $\tilde{\bf w}$ so that $y_i(\tilde{\bf x}_i^\top\tilde{\bf w}) \ge 1$ for all $i=1,\ldots,P$, it makes sense to have $({\bf x}_i, y_i)$ contribute $0$ to our cost function if this inequality works for that $i$. So, we might set 
+            \[g_3(\tilde{\bf w}) = \sum_{i=1}^P\max\left(0, 1 - y_i(\tilde{\bf x}_i^\top\tilde{\bf w})\right).\]
+    
+    (Note that, when not using a margin and using the max cost function, rather than softmax, there was a trivial minimizer of $\tilde {\bf w} = \vec{\bf 0}$, which we do not want to use.)
+
+    \textbf{Softmax approximation} for margin halfspace: As before, if we want a smooth function we can replace the $\max$ in the cost function with $\operatorname{softmax}$: 
+        \[(Alternate)\quad g_3(\tilde{\bf w}) = \sum_{i=1}^P\operatorname{softmax}\left(0, 1 - y_i(\tilde{\bf x}_i^\top\tilde{\bf w})\right).\]
+
+    \textbf{Squared max} for margin halfspace: Another option for a 
+    \[g_4(\tilde{\bf w}) = \sum_{i=1}^P\left(\max\left(0, 1 - y_i(\tilde{\bf x}_i^\top\tilde{\bf w})\right)\right)^2.\]
 \end{frame}
 \section{Accuracy and Counting Costs}
 
