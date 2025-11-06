@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.1 (MiKTeX 24.1) (format=lualatex 2025.1.13)  4 NOV 2025 12:27
+This is LuaHBTeX, Version 1.17.1 (MiKTeX 24.1) (format=lualatex 2025.1.13)  6 NOV 2025 09:56
  restricted system commands enabled.
 **lecture12
 (./lecture12.tex
@@ -1831,7 +1831,9 @@ Overfull \vbox (6.28513pt too high) detected at line 231
 
 ] (./lecture12.toc) [9
 
-] (./lecture12.toc) [10
+] [10
+
+] (./lecture12.toc) [11
 
 ]
 \tf@nav=\write6
@@ -1853,16 +1855,16 @@ Package rerunfilecheck Info: File `lecture12.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 30064 strings out of 476497
+ 30068 strings out of 476497
  100000,1977958 words of node,token memory allocated
- 3369 words of node memory still in use:
+ 3377 words of node memory still in use:
    29 hlist, 13 vlist, 5 rule, 15 disc, 6 local_par, 72 glue, 36 kern, 14 penalt
-y, 139 glyph, 98 attribute, 64 glue_spec, 98 attribute_list, 4 write, 8 pdf_lite
-ral, 4 pdf_start_link, 4 pdf_end_link, 4 pdf_action, 40 pdf_colorstack nodes
-   avail lists: 2:361,3:151,4:154,5:406,6:16,7:2431,8:42,9:457,10:16,11:99
- 51078 multiletter control sequences out of 65536+600000
+y, 139 glyph, 100 attribute, 64 glue_spec, 100 attribute_list, 4 write, 8 pdf_li
+teral, 4 pdf_start_link, 4 pdf_end_link, 4 pdf_action, 40 pdf_colorstack nodes
+   avail lists: 2:357,3:151,4:154,5:406,6:16,7:2431,8:45,9:457,10:16,11:99
+ 51080 multiletter control sequences out of 65536+600000
  156 fonts using 32408471 bytes
- 128i,11n,116p,379b,504s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,11n,116p,480b,504s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ccornwell/AppData/Local/Programs/MiKTeX/fonts/opentype/public/fira/Fir
 aSans-Bold.otf>{C:/Users/ccornwell/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
 /base/8r.enc}<//?/c:/users/ccornwell/appdata/local/programs/miktex/fonts/opentyp
@@ -1880,9 +1882,9 @@ pData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmbb.pfb><C:/Users/cco
 rnwell/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb><C:/U
 sers/ccornwell/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb
 >
-Output written on lecture12.pdf (10 pages, 131004 bytes).
+Output written on lecture12.pdf (11 pages, 135373 bytes).
 
-PDF statistics: 177 PDF objects out of 1000 (max. 8388607)
- 25 named destinations out of 1000 (max. 131072)
+PDF statistics: 184 PDF objects out of 1000 (max. 8388607)
+ 27 named destinations out of 1000 (max. 131072)
  48 words of extra memory for PDF output out of 10000 (max. 100000000)
 
