@@ -231,6 +231,24 @@ keepspaces=true
 \end{frame}
 \section{Accuracy and Counting Costs}
 
-\section{The Logistic Regression Cost}
+\begin{frame}{The Counting Cost Function}
+    Suppose that we have found our stationary point (or approximation to it), $\tilde{\bf w}^{\star} = (b^\star, {\bf w}^\star)$. Given a ``new'' data point, ${\bf x}_{new}$, the halfspace model that we would use to predict labels on data is: make predicted $y_{new} = 1$ if the dot product $\tilde{{\bf x}_{new}}\cdot\tilde{\bf w}^\star = b^\star + {\bf x}_{new}\cdot{\bf w}^\star$ is positive; alternatively, when that dot product is negative, predict $y_{new} = -1$.
+
+    Using the ``sign'' function: 
+        \[f({\bf x}_{new}) = \operatorname{sign}\left(\tilde{\bf x}_{new}\cdot\tilde{\bf w}^\star\right).\]
+    
+    To measure the accuracy of this model on our given data $S = \{({\bf x}_i, y_i)\}$, compute how many this prediction function gets to agree with $y_i$; that is, 
+        \[g_0(\tilde{\bf w}^\star) = \sum_{i=1}^P\max\left(0, -y_i f({\bf x}_i)\right) = \sum_{i=1}^P\max\left(0, -y_i\ \operatorname{sign}(\tilde{\bf x}_{new}\cdot\tilde{\bf w}^\star)\right).\]
+    The accuracy is then $1 - \frac{g_0({\bf w}^\star)}{P}$. We did not directly minimize this function {--} there are several problems with using it in an optimization procedure. Instead we optimized one of the previous cost functions; but they are related. 
+\end{frame}
+\begin{frame}{Smoothing the Counting Cost}
+    Logistic function 
+
+    the hyperbolic tangent... more like $\operatorname{tanh}(y_i(\tilde{\bf x}\cdot\tilde{\bf w})/2)$; want this approximately equal to 1. Then...terms in $g_2$ will be approximately 0.
+\end{frame}
+\section{The Logistic Function as your Cost}
+\begin{frame}{Negative Log-Loss}
+    Use $\sigma((b+x_i\cdot w))$ as the output of the model; labels 1 and 0 instead; ...
+\end{frame}
 
 \end{document}

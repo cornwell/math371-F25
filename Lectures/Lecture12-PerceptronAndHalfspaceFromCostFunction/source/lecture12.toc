@@ -1,4 +1,4 @@
 \beamer@sectionintoc {1}{The Perceptron Cost and Softmax}{3}{0}{1}
 \beamer@sectionintoc {2}{The Margin Perceptron and Other Cost Functions}{4}{0}{2}
 \beamer@sectionintoc {3}{Accuracy and Counting Costs}{9}{0}{3}
-\beamer@sectionintoc {4}{The Logistic Regression Cost}{10}{0}{4}
+\beamer@sectionintoc {4}{The Logistic Regression Cost}{11}{0}{4}
