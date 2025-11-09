@@ -1,7 +1,7 @@
 # Fall 2025, Final Project
 
 ## Overview
-The final project will give you the opportunity to analyze the data in the class ``Reservoirs'' repository, data which is related to physical and chemical properties of the water found in the Liberty, Loch Raven, and Prettyboy reservoirs in the Chesapeake Bay watershed. Your analysis should use either regression or classification model(s) that we have discussed and take into account considerations such as statistical significance of variables and controlling overfitting. The projects are to be submitted on an individual basis; however, it is hoped that you will have discussions with other students and that this will provide opportunities to learn from each other.
+The final project will give you the opportunity to analyze the data in the [class ``Reservoirs'' repository](https://github.com/cornwell/reservoir-data), data which is related to physical and chemical properties of the water found in the Liberty, Loch Raven, and Prettyboy reservoirs in the Chesapeake Bay watershed. Your analysis should use either regression or classification model(s) that we have discussed and take into account considerations such as statistical significance of variables and controlling overfitting. The projects are to be submitted on an individual basis; however, it is hoped that you will have discussions with other students and that this will provide opportunities to learn from each other.
 
 You may choose either a regression task or a classification task. Depending on the specific task, and which part of the data used, the goals of your project may vary somewhat.
 
