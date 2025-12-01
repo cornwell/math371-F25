@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{Support Vector Machines, continued}{2}{0}{1}
+\beamer@sectionintoc {2}{Kernels}{22}{0}{2}
