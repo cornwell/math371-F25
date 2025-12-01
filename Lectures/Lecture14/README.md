@@ -1,0 +1,1 @@
+The PDF slides contained in the source subfolder is from a lecture in a previous semester. Until I make an update, there will likely be a few notation differences and some references to machine learning models that we did not discuss this semester &ndash; _e.g._, decision trees.
